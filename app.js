@@ -133,10 +133,16 @@ const SHARE_FORMATS = {
 
 const AUTO_ICON_RULES = [
   { icon: 'birthday', phrases: ['HAPPY BIRTHDAY'], words: ['BIRTHDAY'] },
-  { icon: 'heart', phrases: ['I LOVE YOU'], words: ['LOVE', 'XOXO'] },
+  { icon: 'heart', phrases: ['I LOVE YOU'], words: ['LOVE', 'XOXO', 'VALENTINE'] },
   { icon: 'thanks', phrases: ['THANK YOU'], words: ['THANKS'] },
   { icon: 'school', phrases: ['BACK TO SCHOOL'], words: ['SCHOOL', 'CLASS', 'TEACHER', 'STUDENT'] },
-  { icon: 'hello', phrases: ['GOOD MORNING'], words: ['HELLO', 'WELCOME', 'HI'] },
+  { emoji: '👋', label: 'Greeting icon', phrases: ['GOOD MORNING', 'GOODBYE'], words: ['HELLO', 'HI', 'WELCOME', 'BYE'] },
+  { emoji: '👏', label: 'Celebration icon', phrases: ['WELL DONE'], words: ['CONGRATULATIONS'] },
+  { emoji: '👐', label: 'Signing icon', phrases: [], words: ['SIGN', 'SIGNING', 'ASL'] },
+  { emoji: '👍', label: 'Yes icon', phrases: [], words: ['YES'] },
+  { emoji: '👎', label: 'No or bad icon', phrases: [], words: ['NO', 'BAD'] },
+  { emoji: '✌️', label: 'Peace or two icon', phrases: [], words: ['PEACE', 'TWO'] },
+  { emoji: '👌', label: 'Okay icon', phrases: [], words: ['OK', 'OKAY'] },
 ];
 
 function normalizedPhrase(value = '') {
