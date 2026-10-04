@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SignMyWord Insights</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="site-shell header">
+    <a class="brand" href="./"><span class="brand__accent">Sign</span><span class="brand__word">MyWord</span></a>
+  </header>
+  <main class="insights-page">
+    <div class="insights-page__heading">
+      <div>
+        <p class="result-section__eyebrow">Local analytics</p>
+        <h1>SignMyWord Insights</h1>
+        <p>Anonymous counters and product choices stored in this browser. The dashboard now covers the core SignMyWord data plan: funnel, languages, themes, formats, categories and blocked demand. Site-wide trending is handled separately by the optional trends API.</p>
+      </div>
+      <button class="button button--secondary" id="reset-insights" type="button">Reset local data</button>
+    </div>
+
+    <section class="insights-grid" id="insights-grid"></section>
+
+    <section class="insights-funnel">
+      <h2>Search → share funnel</h2>
+      <div id="insights-funnel"></div>
+    </section>
+
+    <section class="insights-funnel">
+      <h2>Language demand</h2>
+      <div id="language-breakdown"></div>
+    </section>
+
+    <section class="insights-funnel">
+      <h2>Popular themes</h2>
+      <div id="theme-breakdown"></div>
+    </section>
+
+    <section class="insights-funnel">
+      <h2>Image sizes</h2>
+      <div id="format-breakdown"></div>
+    </section>
+
+    <section class="insights-funnel">
+      <h2>Search categories</h2>
+      <div id="category-breakdown"></div>
+    </section>
+
+    <section class="insights-funnel">
+      <h2>What this data can decide</h2>
+      <p>Use the funnel to improve sharing, language demand to decide which alphabet to add next, themes and sizes to optimise defaults, categories to plan content, and blocked searches to review moderation or unmet demand.</p>
+    </section>
+
+    <p><a class="terms-back" href="./">← Back to SignMyWord</a></p>
+  </main>
+  <script src="./stats.js" defer></script>
+</body>
+</html>

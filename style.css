@@ -1,0 +1,6949 @@
+:root {
+  /* SignMyWord brand tokens — Fluent-style UI + Material-style tonal surfaces */
+  --smw-bg-base: #ffffff;
+  --smw-bg-page: #f8fafc;
+  --smw-bg-subtle: #f8fafc;
+  --smw-bg-blue-soft: #eff6ff;
+  --smw-bg-green-soft: #ecfdf8;
+  --smw-bg-purple-soft: #f5f3ff;
+  --smw-text-primary: #102a56;
+  --smw-text-body: #172033;
+  --smw-text-secondary: #52657d;
+  --smw-blue: #2563eb;
+  --smw-blue-hover: #1d4ed8;
+  --smw-blue-pressed: #1e40af;
+  --smw-teal: #0f9f94;
+  --smw-teal-dark: #0f766e;
+  --smw-purple: #7c3aed;
+  --smw-purple-hover: #6d28d9;
+  --smw-whatsapp: #15803d;
+  --smw-border: #d9e2ef;
+  --smw-border-strong: #cbd5e1;
+  --smw-radius-md: 12px;
+  --smw-radius-lg: 18px;
+  --smw-radius-xl: 24px;
+  --smw-radius-full: 999px;
+  --smw-shadow: 0 12px 32px rgba(16, 42, 86, 0.08);
+  --smw-shadow-hover: 0 16px 40px rgba(16, 42, 86, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--smw-bg-base);
+  color: var(--smw-text-primary);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(20, 121, 248, 0.28);
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.language-pill:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.mobile-only-title,
+.hero__intro-mobile,
+.mobile-disclaimer,
+.mobile-output-meta {
+  display: none;
+}
+
+.site-shell {
+  width: min(1200px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.header {
+  min-height: 86px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 16px 0 10px;
+  text-align: center;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--smw-text-primary);
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.language-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+  border: 1px solid var(--smw-border);
+  background: #fff;
+  color: var(--smw-text-primary);
+  border-radius: var(--smw-radius-full);
+  padding: 9px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  white-space: nowrap;
+}
+
+.language-pill .flag-icon {
+  margin-right: 2px;
+}
+
+.language-pill > span:last-child {
+  display: inline-block;
+  line-height: 1;
+}
+
+.language-pill:hover {
+  border-color: var(--smw-blue);
+}
+
+.language-pill--active {
+  color: #fff;
+  background: var(--smw-blue);
+  border-color: var(--smw-blue);
+}
+
+.hero {
+  padding: 34px 0 38px;
+  text-align: center;
+}
+
+.hero h1 {
+  max-width: 1120px;
+  margin: 0 auto;
+  font-size: clamp(42px, 5vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.hero__intro {
+  max-width: 920px;
+  margin: 16px auto 0;
+  color: var(--smw-text-secondary);
+  font-size: 18px;
+}
+
+.badges {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: var(--smw-bg-subtle);
+  border-radius: var(--smw-radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+}
+
+.generator {
+  display: grid;
+  grid-template-columns: 310px minmax(0, 526px) 316px;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.generator > .panel {
+  height: 100%;
+}
+
+.panel {
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-xl);
+  padding: 24px;
+}
+
+.panel--input {
+  background: var(--smw-bg-blue-soft);
+}
+
+.panel--output {
+  background: var(--smw-bg-green-soft);
+}
+
+.panel--share {
+  background: var(--smw-bg-purple-soft);
+}
+
+.panel__heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.panel__heading h2 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.step {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.step--1 {
+  background: var(--smw-blue);
+}
+
+.step--2 {
+  background: var(--smw-teal);
+}
+
+.step--3 {
+  background: var(--smw-purple);
+}
+
+.panel__copy {
+  margin: 0 0 18px;
+  color: var(--smw-text-secondary);
+  font-size: 14px;
+}
+
+.word-form {
+  display: grid;
+  gap: 8px;
+}
+
+.word-form .button {
+  margin-top: 10px;
+}
+
+.word-form label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.word-input {
+  width: 100%;
+  height: 56px;
+  border: 2px solid var(--smw-blue);
+  border-radius: var(--smw-radius-md);
+  background: #fff;
+  color: var(--smw-text-primary);
+  padding: 0 18px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.message {
+  min-height: 20px;
+  margin: 2px 0 0;
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+}
+
+.message:empty {
+  display: none;
+}
+
+.button {
+  min-height: 41px;
+  border: 0;
+  border-radius: var(--smw-radius-md);
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 17px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.button--primary {
+  color: #fff;
+  background: var(--smw-blue);
+}
+
+.button--primary:hover {
+  background: #086be6;
+}
+
+.button--secondary {
+  color: var(--smw-blue);
+  background: #fff;
+  border: 1px solid var(--smw-border);
+}
+
+.button--whatsapp {
+  color: #fff;
+  background: var(--smw-whatsapp);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.examples-label {
+  margin: 18px 0;
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.example-chip {
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-full);
+  padding: 8px 12px;
+  background: #fff;
+  color: var(--smw-text-primary);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 15px;
+}
+
+.output-meta {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.output-language {
+  flex: 0 0 auto;
+  border-radius: var(--smw-radius-full);
+  background: var(--smw-blue);
+  color: #fff;
+  padding: 9px 14px;
+  font-size: 14px;
+}
+
+.letter-output {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 178px;
+}
+
+.letter-card {
+  width: 88px;
+  height: 178px;
+  padding: 14px 12px;
+  border-radius: var(--smw-radius-lg);
+  background: var(--smw-bg-blue-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.letter-card__letter {
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.letter-card__image {
+  flex: 1;
+  min-height: 98px;
+  padding: 8px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-md);
+  background: #fff;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.letter-card__image img {
+  display: block;
+  max-width: 100%;
+  max-height: 88px;
+  width: auto;
+  height: auto;
+}
+
+.letter-card--bsl .letter-card__image {
+  padding: 3px;
+}
+
+.letter-card--bsl .letter-card__image img {
+  max-width: 100%;
+  max-height: 102px;
+}
+
+.sign-image--cropped {
+  object-fit: contain;
+}
+
+.letter-card__fallback {
+  color: var(--smw-text-secondary);
+  font-size: 11px;
+  text-align: center;
+}
+
+.letter-separator {
+  width: 22px;
+  min-height: 178px;
+  display: grid;
+  place-items: center;
+  color: var(--smw-text-secondary);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.source-note {
+  margin: 14px 0 0;
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+}
+
+.share-stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 126px;
+  grid-template-areas:
+    "url url"
+    "actions qr";
+  gap: 14px 12px;
+  align-items: start;
+}
+
+.share-url {
+  grid-area: url;
+}
+
+.share-actions {
+  grid-area: actions;
+  display: grid;
+  gap: 10px;
+}
+
+.qr-wrap {
+  grid-area: qr;
+}
+
+.share-caption {
+  grid-area: caption;
+}
+
+.share-url {
+  width: 100%;
+  height: 41px;
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-md);
+  background: #fff;
+  color: var(--smw-text-primary);
+  padding: 0 12px;
+  font-size: 12px;
+}
+
+.qr-wrap {
+  width: 126px;
+  min-height: 126px;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  border: 2px solid var(--smw-border);
+  border-radius: var(--smw-radius-md);
+  background: #fff;
+}
+
+.qr-wrap img,
+.qr-wrap canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.share-caption {
+  margin: 0;
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+}
+
+.how {
+  padding: 42px 0 48px;
+}
+
+.how h2 {
+  margin: 0 0 18px;
+  text-align: center;
+  font-size: 28px;
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.how-card {
+  padding: 20px;
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-lg);
+  background: var(--smw-bg-subtle);
+}
+
+.how-card__title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+}
+
+.how-card__title .step {
+  width: 38px;
+  height: 38px;
+  flex-basis: 38px;
+  font-size: 16px;
+}
+
+.how-card p {
+  margin: 14px 0 0;
+  color: var(--smw-text-secondary);
+  font-size: 14px;
+}
+
+.disclaimer {
+  margin: 18px auto 0;
+  max-width: 920px;
+  color: var(--smw-text-secondary);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.info-section {
+  padding: 24px 0 52px;
+}
+
+.info-section__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.info-card {
+  padding: 24px;
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-lg);
+  background: #fff;
+}
+
+.info-card h2 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+
+.info-card p {
+  margin: 0;
+  color: var(--smw-text-secondary);
+}
+
+.footer {
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--smw-border);
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: start;
+}
+
+.footer p {
+  margin: 0 0 8px;
+}
+
+.footer a {
+  color: var(--smw-blue);
+}
+
+
+.button--image {
+  color: #fff;
+  background: var(--smw-purple);
+}
+
+.button--image:hover {
+  background: #6930d9;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.image-modal[hidden] {
+  display: none;
+}
+
+.image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.image-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 24, 52, 0.58);
+  backdrop-filter: blur(5px);
+}
+
+.image-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(620px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow: auto;
+  padding: 24px;
+  border: 1px solid var(--smw-border);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(16, 42, 86, 0.24);
+}
+
+.image-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.image-modal__eyebrow {
+  margin: 0 0 4px;
+  color: var(--smw-purple);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.image-modal__header h2 {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.image-modal__close {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--smw-bg-subtle);
+  color: var(--smw-text-primary);
+  cursor: pointer;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.image-style-picker {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin: 20px 0 16px;
+  padding: 0 0 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(16, 42, 86, 0.28) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.image-style-picker::-webkit-scrollbar {
+  height: 6px;
+}
+
+.image-style-picker::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.image-style-picker::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(16, 42, 86, 0.28);
+}
+
+.image-style-pill {
+  flex: 0 0 auto;
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-full);
+  padding: 9px 14px;
+  background: #fff;
+  color: var(--smw-text-primary);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.image-style-pill--active {
+  border-color: var(--smw-blue);
+  background: var(--smw-blue);
+  color: #fff;
+}
+
+.share-image-preview-wrap {
+  min-height: 360px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--smw-border);
+  border-radius: 18px;
+  background: var(--smw-bg-subtle);
+}
+
+.share-image-loading {
+  padding: 40px 20px;
+  color: var(--smw-text-secondary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.share-image-preview {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.image-modal__status {
+  min-height: 20px;
+  margin: 10px 0 0;
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+}
+
+.image-modal__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.share-card-capture {
+  position: fixed;
+  left: -20000px;
+  top: 0;
+  width: 1080px;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.share-card {
+  width: 1080px;
+  height: 1350px;
+  overflow: hidden;
+  padding: 60px;
+  border-radius: 0;
+  background: linear-gradient(145deg, #eef6ff 0%, #ffffff 55%, #f6f0ff 100%);
+  color: #102a56;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.share-card--dark {
+  background: linear-gradient(145deg, #071a38 0%, #102a56 55%, #07152d 100%);
+  color: #fff;
+}
+
+.share-card--colourful {
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.34), transparent 28%),
+    linear-gradient(145deg, #7047eb 0%, #1479f8 50%, #10b9a9 100%);
+  color: #fff;
+}
+
+.share-card__brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.share-card__logo {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: #1479f8;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.share-card--colourful .share-card__logo {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.55);
+}
+
+.share-card__brand-name {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.share-card__title {
+  max-width: 940px;
+  margin: 0 0 30px;
+  color: #102a56;
+  font-size: 58px;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+  overflow-wrap: anywhere;
+}
+
+.share-card--dark .share-card__title,
+.share-card--colourful .share-card__title {
+  color: #fff;
+}
+
+.share-card__letters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-content: start;
+  flex: 1;
+  min-height: 0;
+}
+
+.share-card__letter {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #d7e3f4;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #102a56;
+}
+
+.share-card--dark .share-card__letter {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.share-card--colourful .share-card__letter {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.9);
+  color: #102a56;
+}
+
+.share-card__letter-name {
+  margin: 0 0 10px;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.share-card__letter-box {
+  min-height: 170px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 10px;
+  border: 1px solid #d7e3f4;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.share-card__letter-box img {
+  display: block;
+  max-width: 100%;
+  max-height: 155px;
+  width: auto;
+  height: auto;
+}
+
+.share-card__letter--bsl .share-card__letter-box {
+  padding: 3px;
+}
+
+.share-card__letter--bsl .share-card__letter-box img {
+  max-width: 100%;
+  max-height: 175px;
+}
+
+.share-card__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.share-card__footer-copy {
+  display: grid;
+  gap: 5px;
+  font-size: 21px;
+  line-height: 1.25;
+}
+
+.share-card__footer-copy strong {
+  font-size: 28px;
+}
+
+.share-card__qr {
+  width: 142px;
+  height: 142px;
+  flex: 0 0 142px;
+  display: grid;
+  place-items: center;
+  margin: 0 18px 18px 0;
+  padding: 8px;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.share-card__qr img,
+.share-card__qr canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fit longer words into the fixed 1080 × 1350 social card. */
+.share-card--dense .share-card__brand {
+  margin-bottom: 20px;
+}
+
+.share-card--dense .share-card__title {
+  margin-bottom: 20px;
+  font-size: 44px;
+}
+
+.share-card--dense .share-card__letters {
+  gap: 12px;
+}
+
+.share-card--dense .share-card__letter {
+  padding: 12px;
+}
+
+.share-card--dense .share-card__letter-name {
+  font-size: 27px;
+  margin-bottom: 7px;
+}
+
+.share-card--dense .share-card__letter-box {
+  min-height: 105px;
+}
+
+.share-card--dense .share-card__letter-box img {
+  max-height: 92px;
+}
+
+.share-card--very-dense .share-card__letters {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.share-card--very-dense .share-card__brand {
+  margin-bottom: 14px;
+}
+
+.share-card--very-dense .share-card__title {
+  margin-bottom: 14px;
+  font-size: 34px;
+}
+
+.share-card--very-dense .share-card__letter {
+  padding: 9px;
+  border-radius: 16px;
+}
+
+.share-card--very-dense .share-card__letter-name {
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+
+.share-card--very-dense .share-card__letter-box {
+  min-height: 72px;
+  padding: 6px;
+  border-radius: 12px;
+}
+
+.share-card--very-dense .share-card__letter-box img {
+  max-height: 64px;
+}
+
+.share-card--very-dense .share-card__footer {
+  margin-top: 14px;
+}
+
+.share-card--very-dense .share-card__footer-copy {
+  font-size: 17px;
+}
+
+.share-card--very-dense .share-card__footer-copy strong {
+  font-size: 23px;
+}
+
+.share-card--very-dense .share-card__qr {
+  width: 110px;
+  height: 110px;
+  flex-basis: 110px;
+}
+
+
+.flag-icon {
+  width: 20px;
+  height: 14px;
+  flex: 0 0 20px;
+  display: inline-block;
+  border-radius: 2px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: inset 0 0 0 1px rgba(16, 42, 86, 0.12);
+}
+
+.flag-icon--gb {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 36'%3E%3Cpath fill='%23012169' d='M0 0h60v36H0z'/%3E%3Cpath stroke='%23fff' stroke-width='7.2' d='m0 0 60 36M60 0 0 36'/%3E%3Cpath stroke='%23C8102E' stroke-width='4.4' d='m0 0 60 36M60 0 0 36'/%3E%3Cpath stroke='%23fff' stroke-width='12' d='M30 0v36M0 18h60'/%3E%3Cpath stroke='%23C8102E' stroke-width='7.2' d='M30 0v36M0 18h60'/%3E%3C/svg%3E");
+}
+
+.flag-icon--us {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 741 390'%3E%3Cpath fill='%23fff' d='M0 0h741v390H0z'/%3E%3Cg fill='%23B22234'%3E%3Cpath d='M0 0h741v30H0zM0 60h741v30H0zM0 120h741v30H0zM0 180h741v30H0zM0 240h741v30H0zM0 300h741v30H0zM0 360h741v30H0z'/%3E%3C/g%3E%3Cpath fill='%233C3B6E' d='M0 0h296.4v210H0z'/%3E%3Cg fill='%23fff'%3E%3Ccircle cx='24' cy='18' r='5'/%3E%3Ccircle cx='72' cy='18' r='5'/%3E%3Ccircle cx='120' cy='18' r='5'/%3E%3Ccircle cx='168' cy='18' r='5'/%3E%3Ccircle cx='216' cy='18' r='5'/%3E%3Ccircle cx='264' cy='18' r='5'/%3E%3Ccircle cx='48' cy='42' r='5'/%3E%3Ccircle cx='96' cy='42' r='5'/%3E%3Ccircle cx='144' cy='42' r='5'/%3E%3Ccircle cx='192' cy='42' r='5'/%3E%3Ccircle cx='240' cy='42' r='5'/%3E%3Ccircle cx='24' cy='66' r='5'/%3E%3Ccircle cx='72' cy='66' r='5'/%3E%3Ccircle cx='120' cy='66' r='5'/%3E%3Ccircle cx='168' cy='66' r='5'/%3E%3Ccircle cx='216' cy='66' r='5'/%3E%3Ccircle cx='264' cy='66' r='5'/%3E%3Ccircle cx='48' cy='90' r='5'/%3E%3Ccircle cx='96' cy='90' r='5'/%3E%3Ccircle cx='144' cy='90' r='5'/%3E%3Ccircle cx='192' cy='90' r='5'/%3E%3Ccircle cx='240' cy='90' r='5'/%3E%3Ccircle cx='24' cy='114' r='5'/%3E%3Ccircle cx='72' cy='114' r='5'/%3E%3Ccircle cx='120' cy='114' r='5'/%3E%3Ccircle cx='168' cy='114' r='5'/%3E%3Ccircle cx='216' cy='114' r='5'/%3E%3Ccircle cx='264' cy='114' r='5'/%3E%3Ccircle cx='48' cy='138' r='5'/%3E%3Ccircle cx='96' cy='138' r='5'/%3E%3Ccircle cx='144' cy='138' r='5'/%3E%3Ccircle cx='192' cy='138' r='5'/%3E%3Ccircle cx='240' cy='138' r='5'/%3E%3Ccircle cx='24' cy='162' r='5'/%3E%3Ccircle cx='72' cy='162' r='5'/%3E%3Ccircle cx='120' cy='162' r='5'/%3E%3Ccircle cx='168' cy='162' r='5'/%3E%3Ccircle cx='216' cy='162' r='5'/%3E%3Ccircle cx='264' cy='162' r='5'/%3E%3Ccircle cx='48' cy='186' r='5'/%3E%3Ccircle cx='96' cy='186' r='5'/%3E%3Ccircle cx='144' cy='186' r='5'/%3E%3Ccircle cx='192' cy='186' r='5'/%3E%3Ccircle cx='240' cy='186' r='5'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+
+.popular-searches {
+  margin-top: 34px;
+  padding: 28px 30px 30px;
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-xl);
+  background: linear-gradient(135deg, #f8fbff 0%, #ffffff 52%, #f7f2ff 100%);
+}
+
+.popular-searches[hidden] {
+  display: none;
+}
+
+.popular-searches__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 22px;
+}
+
+.popular-searches__eyebrow {
+  margin: 0 0 4px;
+  color: var(--smw-purple);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.popular-searches h2 {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.popular-searches__subtitle {
+  margin: 7px 0 0;
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+}
+
+.popular-searches__total {
+  flex: 0 0 auto;
+  margin: 0;
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.popular-word-cloud {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 14px;
+  min-height: 50px;
+}
+
+.popular-word {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(20, 121, 248, 0.14);
+  border-radius: 14px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--smw-text-primary);
+  cursor: pointer;
+  font-size: var(--popular-size, 18px);
+  font-weight: var(--popular-weight, 700);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+.popular-word:hover,
+.popular-word:focus-visible {
+  border-color: rgba(20, 121, 248, 0.38);
+  box-shadow: 0 8px 24px rgba(16, 42, 86, 0.08);
+  transform: translateY(-1px);
+}
+
+.popular-word__label {
+  color: #102a56;
+  font-weight: 800;
+}
+
+.popular-word__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.popular-word[data-tier="high"] .popular-word__count {
+  background: #ffe3d2;
+  color: #9a3412;
+}
+
+.popular-word[data-tier="medium"] .popular-word__count {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.popular-word[data-tier="low"] .popular-word__count {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.legal-footer {
+  margin-top: 34px;
+  border-top: 1px solid var(--smw-border);
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+}
+
+.legal-footer__inner {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.legal-footer a {
+  color: var(--smw-text-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.legal-footer a:hover {
+  color: var(--smw-blue);
+  text-decoration: underline;
+}
+
+.terms-page {
+  width: min(760px, calc(100% - 40px));
+  margin: 30px auto 60px;
+}
+
+.terms-page h1 {
+  margin: 0 0 8px;
+  font-size: clamp(34px, 6vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.terms-page__updated {
+  margin: 0 0 28px;
+  color: var(--smw-text-secondary);
+  font-size: 13px;
+}
+
+.terms-page h2 {
+  margin: 28px 0 8px;
+  font-size: 20px;
+}
+
+.terms-page p {
+  margin: 0 0 12px;
+  color: var(--smw-text-secondary);
+}
+
+.terms-back {
+  display: inline-flex;
+  margin-top: 22px;
+  color: var(--smw-blue);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 1100px) {
+  .generator {
+    grid-template-columns: 1fr 1.7fr;
+  }
+
+  .panel--share {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .popular-searches {
+    display: none !important;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .site-shell {
+    width: min(calc(100% - 32px), 420px);
+  }
+
+  .header {
+    min-height: 64px;
+    padding: 12px 0 8px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: left;
+  }
+
+  .brand {
+    flex: 0 1 auto;
+    min-width: 0;
+    font-size: 21px;
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+
+  .language-switcher {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: flex-end;
+    width: auto;
+    gap: 6px;
+  }
+
+  .language-switcher .language-pill {
+    min-height: 36px;
+    column-gap: 9px;
+    padding: 7px 13px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .language-switcher .flag-icon {
+    width: 18px;
+    height: 12px;
+    flex-basis: 18px;
+    margin-right: 2px;
+  }
+
+  .hero {
+    margin-top: 0;
+    padding: 18px 0 22px;
+    text-align: left;
+  }
+
+  .hero h1 {
+    max-width: 360px;
+    margin: 0;
+    font-size: clamp(30px, 8.2vw, 34px);
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+    text-align: left;
+    text-wrap: balance;
+  }
+
+  .hero__intro {
+    max-width: 360px;
+    margin: 12px 0 0;
+    font-size: 15px;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  .hero__intro-desktop,
+  .desktop-only-title {
+    display: none;
+  }
+
+  .hero__intro-mobile,
+  .mobile-only-title {
+    display: inline;
+  }
+
+  /* Phone order: result first, then input, then sharing. */
+  .generator {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 4px;
+  }
+
+  .panel {
+    width: 100%;
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .panel--output {
+    order: 1;
+  }
+
+  .panel--input {
+    order: 2;
+  }
+
+  .panel--share {
+    order: 3;
+    grid-column: auto;
+  }
+
+  .panel__heading {
+    margin-bottom: 16px;
+  }
+
+  .panel__heading .step {
+    display: none;
+  }
+
+  .panel__heading h2 {
+    width: 100%;
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.2;
+    text-align: left;
+  }
+
+  .mobile-output-title {
+    display: block;
+    width: 100%;
+    color: var(--smw-text-primary);
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+  }
+
+  .panel__copy,
+  .examples-label,
+  .examples,
+  .output-meta,
+  .source-note {
+    display: none;
+  }
+
+  .word-form {
+    gap: 10px;
+  }
+
+  .word-form label {
+    display: block;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.35;
+    text-align: left;
+  }
+
+  .word-form .button {
+    margin-top: 4px;
+  }
+
+  .word-input {
+    height: 54px;
+    padding-inline: 14px;
+    font-size: 20px;
+  }
+
+  .button {
+    min-height: 44px;
+  }
+
+  /* Readable sign cards: two columns instead of a squeezed horizontal strip. */
+  .letter-output {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    min-height: 0;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .letter-card {
+    width: 100%;
+    height: auto;
+    min-height: 174px;
+    padding: 14px 12px;
+    gap: 10px;
+  }
+
+  .letter-card__letter {
+    font-size: 28px;
+  }
+
+  .letter-card__image {
+    min-height: 104px;
+  }
+
+  .letter-card__image img {
+    max-height: 92px;
+  }
+
+  .letter-card--bsl .letter-card__image {
+    padding: 3px;
+  }
+
+  .letter-card--bsl .letter-card__image img {
+    max-height: 112px;
+  }
+
+  .letter-separator {
+    width: 100%;
+    min-height: 24px;
+    grid-column: 1 / -1;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+  }
+
+  .mobile-output-meta {
+    display: block;
+    margin: 14px 0 0;
+    color: var(--smw-text-secondary);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: left;
+  }
+
+  .share-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "url"
+      "actions"
+      "qr";
+    gap: 12px;
+  }
+
+  .share-actions {
+    display: grid;
+    gap: 12px;
+  }
+
+  .share-url {
+    height: 40px;
+    font-size: 11px;
+    text-overflow: ellipsis;
+  }
+
+  .qr-wrap {
+    width: 118px;
+    min-height: 118px;
+    padding: 7px;
+  }
+
+  #share-native,
+  .share-caption {
+    display: none;
+  }
+
+  .how,
+  .info-section,
+  .footer {
+    display: none;
+  }
+
+  .image-modal {
+    padding: 10px;
+    align-items: end;
+  }
+
+  .image-modal__dialog {
+    width: 100%;
+    max-height: 92vh;
+    padding: 18px;
+    border-radius: 22px 22px 14px 14px;
+  }
+
+  .image-modal__header h2 {
+    font-size: 22px;
+  }
+
+  .share-image-preview-wrap {
+    min-height: 260px;
+  }
+
+  .image-modal__actions {
+    grid-template-columns: 1fr;
+  }
+
+  .legal-footer {
+    margin-top: 24px;
+  }
+
+  .legal-footer__inner {
+    min-height: 58px;
+    font-size: 12px;
+  }
+
+  .mobile-disclaimer {
+    display: block;
+    width: min(calc(100% - 32px), 420px);
+    margin-top: 14px;
+    margin-bottom: 28px;
+    color: var(--smw-text-secondary);
+    text-align: center;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+
+/* 2026 marketing refresh: one clear type → see → share journey */
+.header {
+  min-height: 74px;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.brand {
+  font-size: 27px;
+}
+
+.marketing-hero {
+  margin-top: 4px;
+  background:
+    radial-gradient(circle at 76% 22%, rgba(20,121,248,.14), transparent 28%),
+    linear-gradient(135deg, #eef8ff 0%, #f9fcff 50%, #eef6ff 100%);
+  border-block: 1px solid #e3edf9;
+}
+
+.marketing-hero__inner {
+  padding-block: 54px 48px;
+  text-align: center;
+}
+
+.marketing-hero__eyebrow,
+.result-section__eyebrow {
+  margin: 0 0 7px;
+  color: var(--smw-blue);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.marketing-hero h1 {
+  max-width: 880px;
+  margin: 0 auto;
+  font-size: clamp(42px, 5.5vw, 66px);
+  line-height: .99;
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+
+.marketing-hero__intro {
+  max-width: 760px;
+  margin: 18px auto 0;
+  color: var(--smw-text-secondary);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.hero-word-form {
+  width: min(720px, 100%);
+  margin: 28px auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.hero-word-input {
+  height: 60px;
+  text-align: left;
+  padding-inline: 20px;
+  border-width: 1px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.hero-go {
+  min-width: 142px;
+  min-height: 60px;
+  border-radius: 14px;
+  font-size: 15px;
+}
+
+.hero-message {
+  width: min(720px, 100%);
+  margin: 8px auto 0;
+  text-align: left;
+}
+
+.hero-examples {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.result-section {
+  margin-top: 34px;
+  padding: 30px;
+  border: 1px solid var(--smw-border);
+  border-radius: 26px;
+  background: #fff;
+  box-shadow: var(--smw-shadow);
+}
+
+.result-section__heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.result-section__heading h2 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+
+.result-section .output-meta {
+  min-height: 0;
+  margin: 10px 0 20px;
+  color: var(--smw-text-secondary);
+}
+
+.result-section .output-language {
+  max-width: 360px;
+  padding: 9px 14px;
+  background: var(--smw-bg-blue-soft);
+  border: 1px solid var(--smw-border);
+  color: var(--smw-text-primary);
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.result-section .letter-output {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  min-height: 0;
+}
+
+.result-section .letter-card {
+  width: 100%;
+  height: 230px;
+  min-width: 0;
+  padding: 16px;
+  background: #edf7ff;
+  border: 1px solid #d7e9fa;
+}
+
+.result-section .letter-card__letter {
+  font-size: 28px;
+}
+
+.result-section .letter-card__image {
+  min-height: 150px;
+  padding: 6px;
+}
+
+.result-section .letter-card__image img {
+  max-height: 146px;
+  max-width: 100%;
+}
+
+.result-section .letter-card--bsl .letter-card__image {
+  padding: 2px;
+}
+
+.result-section .letter-card--bsl .letter-card__image img {
+  max-height: 158px;
+}
+
+.result-section .letter-output--short .letter-card {
+  height: 270px;
+}
+
+.result-section .letter-output--short .letter-card__image {
+  min-height: 188px;
+}
+
+.result-section .letter-output--short .letter-card__image img {
+  max-height: 184px;
+}
+
+.result-section .letter-output--long {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.result-section .letter-output--long .letter-card {
+  height: 190px;
+}
+
+.result-section .letter-output--long .letter-card__image {
+  min-height: 118px;
+}
+
+.result-section .letter-output--long .letter-card__image img {
+  max-height: 114px;
+}
+
+.primary-share-actions {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.5fr) repeat(3, minmax(130px, .65fr));
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.primary-share-actions .button {
+  min-height: 50px;
+}
+
+.primary-share-actions__image {
+  background: linear-gradient(135deg, #1479f8, #6d3dea);
+}
+
+.share-utility {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 92px;
+  gap: 10px;
+  align-items: center;
+}
+
+.share-utility .share-url {
+  height: 42px;
+  color: var(--smw-text-secondary);
+}
+
+.share-utility .qr-wrap {
+  width: 92px;
+  min-height: 92px;
+  padding: 5px;
+}
+
+.share-utility .qr-wrap img,
+.share-utility .qr-wrap canvas {
+  max-width: 80px !important;
+  height: auto !important;
+}
+
+.popular-searches {
+  margin-top: 26px;
+  background: linear-gradient(135deg, #fff9e9 0%, #fffdf7 48%, #eef9ff 100%);
+  border-color: #f0e4c5;
+}
+
+.popular-searches__eyebrow {
+  color: #d46012;
+}
+
+
+.share-card__topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.share-card__topline .share-card__brand {
+  margin-bottom: 0;
+}
+
+.share-card__language {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.9);
+  color: #102a56;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.share-card__language .flag-icon {
+  width: 36px;
+  height: 24px;
+  flex-basis: 36px;
+}
+
+.share-card__title {
+  max-width: 920px;
+  margin-bottom: 26px;
+  font-size: 54px;
+}
+
+.share-card--short .share-card__letters {
+  width: 780px;
+  align-self: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.share-card--short .share-card__letter {
+  padding: 18px;
+}
+
+.share-card--short .share-card__letter-box {
+  min-height: 280px;
+}
+
+.share-card--short .share-card__letter-box img {
+  max-height: 265px;
+}
+
+.share-card--short .share-card__letter--bsl .share-card__letter-box img {
+  max-height: 280px;
+}
+
+.share-card--short .share-card__title {
+  font-size: 52px;
+}
+
+.share-card__footer-copy span {
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .result-section .letter-output,
+  .result-section .letter-output--long {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .primary-share-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .primary-share-actions__image {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .header {
+    min-height: 62px;
+    padding: 10px 0;
+  }
+
+  .brand {
+    font-size: 20px;
+  }
+
+  .marketing-hero {
+    margin-top: 0;
+  }
+
+  .marketing-hero__inner {
+    padding-block: 30px 28px;
+    text-align: left;
+  }
+
+  .marketing-hero__eyebrow {
+    display: none;
+  }
+
+  .marketing-hero h1 {
+    max-width: 100%;
+    font-size: clamp(32px, 9.5vw, 40px);
+    line-height: 1.02;
+    text-align: left;
+  }
+
+  .marketing-hero__intro {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .hero-word-form {
+    margin-top: 20px;
+    grid-template-columns: minmax(0, 1fr) 86px;
+    gap: 8px;
+  }
+
+  .hero-word-input {
+    height: 52px;
+    min-width: 0;
+    padding-inline: 13px;
+    font-size: 14px;
+  }
+
+  .hero-go {
+    min-width: 0;
+    min-height: 52px;
+    padding-inline: 10px;
+    font-size: 12px;
+  }
+
+  .hero-examples {
+    justify-content: flex-start;
+  }
+
+  .result-section {
+    width: min(calc(100% - 24px), 440px);
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .result-section__heading {
+    display: block;
+  }
+
+  .result-section__eyebrow,
+  .result-section__heading .output-language,
+  .result-section > .output-meta {
+    display: none;
+  }
+
+  .mobile-output-title {
+    display: block;
+    font-size: 21px;
+  }
+
+  .result-section .letter-output,
+  .result-section .letter-output--short,
+  .result-section .letter-output--medium,
+  .result-section .letter-output--long {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .result-section .letter-card,
+  .result-section .letter-output--short .letter-card,
+  .result-section .letter-output--long .letter-card {
+    min-height: 0;
+    height: 190px;
+    padding: 12px;
+  }
+
+  .result-section .letter-card__letter {
+    font-size: 25px;
+  }
+
+  .result-section .letter-card__image,
+  .result-section .letter-output--short .letter-card__image,
+  .result-section .letter-output--long .letter-card__image {
+    min-height: 124px;
+  }
+
+  .result-section .letter-card__image img,
+  .result-section .letter-output--short .letter-card__image img,
+  .result-section .letter-output--long .letter-card__image img {
+    max-height: 120px;
+  }
+
+  .result-section .letter-card--bsl .letter-card__image img {
+    max-height: 132px;
+  }
+
+  .primary-share-actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    margin-top: 18px;
+  }
+
+  .primary-share-actions__image {
+    grid-column: 1 / -1;
+  }
+
+  .primary-share-actions .button {
+    min-height: 46px;
+    padding-inline: 10px;
+    font-size: 12px;
+  }
+
+  .primary-share-actions #share-whatsapp {
+    display: inline-flex;
+  }
+
+  .primary-share-actions #share-native {
+    display: inline-flex;
+  }
+
+  .share-utility {
+    display: none;
+  }
+
+  .source-note {
+    display: none;
+  }
+}
+
+
+@media (min-width: 761px) {
+  .share-utility {
+    display: none !important;
+  }
+}
+
+
+/* Multi-word phrases: keep each word together instead of using space separators. */
+.result-section .letter-output--phrase {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.word-sign-group {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #dbe8f6;
+  border-radius: 20px;
+  background: #f9fcff;
+}
+
+.word-sign-group__title {
+  margin: 0 0 14px;
+  color: var(--smw-text-primary);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .04em;
+}
+
+.word-sign-group__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+
+.result-section .word-sign-group__cards .letter-card {
+  width: 100%;
+  height: 220px;
+}
+
+.result-section .word-sign-group__cards .letter-card__image {
+  min-height: 145px;
+}
+
+.result-section .word-sign-group__cards .letter-card__image img {
+  max-height: 140px;
+}
+
+.result-section .word-sign-group__cards .letter-card--bsl .letter-card__image img {
+  max-height: 154px;
+}
+
+.result-section .word-sign-group__cards .letter-separator {
+  width: 100%;
+  min-height: 220px;
+}
+
+@media (min-width: 761px) {
+  .word-sign-group__cards {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 190px));
+  }
+
+  .word-sign-group__cards:has(.letter-card:only-child) {
+    grid-template-columns: minmax(150px, 190px);
+  }
+}
+
+@media (max-width: 760px) {
+  .result-section .letter-output--phrase {
+    gap: 14px;
+  }
+
+  .word-sign-group {
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .word-sign-group__title {
+    margin-bottom: 11px;
+    font-size: 16px;
+  }
+
+  .word-sign-group__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .word-sign-group__cards:has(.letter-card:only-child) {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 150px;
+  }
+
+  .result-section .word-sign-group__cards .letter-card {
+    height: 180px;
+    padding: 11px;
+  }
+
+  .result-section .word-sign-group__cards .letter-card__image {
+    min-height: 116px;
+  }
+
+  .result-section .word-sign-group__cards .letter-card__image img {
+    max-height: 112px;
+  }
+
+  .result-section .word-sign-group__cards .letter-card--bsl .letter-card__image img {
+    max-height: 124px;
+  }
+
+  .result-section .word-sign-group__cards .letter-separator {
+    min-height: 180px;
+  }
+}
+
+
+/* Share-image phrase layout and reliable inline language flags */
+.share-flag-svg {
+  width: 36px;
+  height: 22px;
+  display: block;
+  flex: 0 0 36px;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(16, 42, 86, 0.12);
+}
+
+.share-card__language {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.share-card--phrase .share-card__title {
+  margin-bottom: 20px;
+  font-size: 46px;
+}
+
+.share-card__letters--phrase {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+  width: 100%;
+  align-content: start;
+}
+
+.share-card__word-group {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid rgba(16, 42, 86, 0.10);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.share-card--dark .share-card__word-group {
+  border-color: rgba(255,255,255,.18);
+  background: rgba(255,255,255,.07);
+}
+
+.share-card--colourful .share-card__word-group {
+  border-color: rgba(255,255,255,.34);
+  background: rgba(255,255,255,.14);
+}
+
+.share-card__word-title {
+  margin: 0 0 10px;
+  color: inherit;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .04em;
+}
+
+.share-card__word-letters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.share-card__word-letters .share-card__letter {
+  min-width: 0;
+  padding: 9px;
+  border-radius: 15px;
+}
+
+.share-card__word-letters .share-card__letter-name {
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+
+.share-card__word-letters .share-card__letter-box {
+  min-height: 105px;
+  padding: 4px;
+  border-radius: 11px;
+}
+
+.share-card__word-letters .share-card__letter-box img {
+  max-height: 98px;
+}
+
+.share-card__word-letters .share-card__letter--bsl .share-card__letter-box img {
+  max-height: 106px;
+}
+
+.share-card__word-group:first-child .share-card__word-letters {
+  grid-template-columns: repeat(auto-fit, minmax(145px, 190px));
+}
+
+.share-card--phrase .share-card__footer {
+  margin-top: 16px;
+}
+
+
+/* Stronger phrase grouping for exported share images */
+.share-card--phrase .share-card__letters--phrase {
+  display: flex !important;
+  flex-direction: column;
+  gap: 16px !important;
+}
+
+.share-card--phrase .share-card__word-group {
+  display: block;
+  width: 100%;
+  padding: 14px 16px 16px;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 18px;
+  background: rgba(255,255,255,.12);
+}
+
+.share-card--light.share-card--phrase .share-card__word-group {
+  border-color: rgba(16,42,86,.10);
+  background: rgba(255,255,255,.72);
+}
+
+.share-card--phrase .share-card__word-title {
+  display: block;
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.share-card--phrase .share-card__word-letters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.share-card--phrase .share-card__word-group:first-child .share-card__word-letters,
+.share-card--phrase .share-card__word-group:last-child .share-card__word-letters {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 190px));
+}
+
+.share-card--phrase .share-card__word-letters .share-card__letter {
+  min-height: 0;
+}
+
+.share-card--phrase .share-card__word-letters .share-card__letter-box {
+  min-height: 92px;
+}
+
+.share-card--phrase .share-card__word-letters .share-card__letter-box img {
+  max-height: 88px;
+}
+
+
+/* SignMyWord two-colour wordmark + GoHenry-inspired adjacent navigation layout */
+.header {
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+.brand {
+  flex: 0 0 auto;
+  gap: 0;
+  font-weight: 800;
+}
+
+.brand__accent {
+  color: var(--smw-blue);
+}
+
+.brand__word {
+  color: var(--smw-text-primary);
+}
+
+.header .language-switcher {
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .header {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .brand {
+    font-size: 20px;
+  }
+
+  .header .language-switcher {
+    margin-left: 0;
+    gap: 5px;
+  }
+
+  .header .language-switcher .language-pill {
+    padding-inline: 10px;
+  }
+}
+
+
+/* Accessible typography system: distinctive headings + highly readable UI copy */
+body {
+  font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.52;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", Arial, sans-serif;
+}
+
+.brand,
+.marketing-hero h1,
+.result-section__heading h2,
+.mobile-output-title,
+.popular-searches h2,
+.image-modal__header h2,
+.share-card__brand-name,
+.share-card__title,
+.terms-page h1,
+.terms-page h2 {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.marketing-hero__intro,
+.popular-searches__subtitle,
+.source-note,
+.terms-page p {
+  letter-spacing: 0.005em;
+}
+
+.language-pill,
+.button,
+.example-chip,
+.output-language,
+.popular-word,
+.popular-word__count {
+  font-weight: 700;
+}
+
+.word-input {
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 760px) {
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .marketing-hero__intro {
+    font-size: 15px;
+  }
+}
+
+
+/* SignMyWord product tools: recent searches, practice, embed and richer sharing */
+.example-chip--surprise {
+  border-color: rgba(123, 63, 242, .24);
+  background: var(--smw-bg-purple-soft);
+  color: #5b27c8;
+}
+
+.recent-searches {
+  width: min(720px, 100%);
+  margin: 16px auto 0;
+  text-align: center;
+}
+
+.recent-searches[hidden] {
+  display: none;
+}
+
+.recent-searches h2 {
+  margin: 0 0 8px;
+  color: var(--smw-text-secondary);
+  font-family: "Atkinson Hyperlegible Next", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.recent-searches__chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.recent-search-chip,
+.result-tool {
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-full);
+  padding: 8px 12px;
+  background: #fff;
+  color: var(--smw-text-primary);
+  cursor: pointer;
+  font: 700 12px/1.2 "Atkinson Hyperlegible Next", Arial, sans-serif;
+  text-decoration: none;
+}
+
+.recent-search-chip:hover,
+.result-tool:hover {
+  border-color: var(--smw-blue);
+  color: var(--smw-blue);
+}
+
+.result-tools {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.result-tool[aria-pressed="true"] {
+  border-color: var(--smw-purple);
+  background: var(--smw-bg-purple-soft);
+  color: #5b27c8;
+}
+
+.practice-mode .result-section .letter-card__letter,
+.practice-mode .result-section .word-sign-group__title,
+.practice-mode .result-section .output-meta,
+.practice-mode .result-section .mobile-output-meta,
+.practice-mode .result-section .mobile-output-title {
+  visibility: hidden;
+}
+
+.practice-mode .result-section .letter-card__image {
+  border-color: rgba(20, 121, 248, .25);
+}
+
+.image-format-picker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -2px 0 16px;
+}
+
+.image-format-picker__label {
+  margin-right: 2px;
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.image-format-pill {
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-full);
+  padding: 8px 12px;
+  background: #fff;
+  color: var(--smw-text-primary);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.image-format-pill--active {
+  border-color: var(--smw-blue);
+  background: var(--smw-bg-blue-soft);
+  color: var(--smw-blue);
+}
+
+.image-modal__actions {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.image-attribution {
+  margin: 10px 0 0;
+  text-align: center;
+  font-size: 11px;
+}
+
+.image-attribution a {
+  color: var(--smw-text-secondary);
+}
+
+/* Extra share-card themes */
+.share-card--love {
+  background:
+    radial-gradient(circle at 86% 10%, rgba(255,255,255,.32), transparent 24%),
+    linear-gradient(145deg, #ff5f8f 0%, #8b48e8 48%, #5132d4 100%);
+  color: #fff;
+}
+
+.share-card--birthday {
+  background:
+    radial-gradient(circle at 18% 14%, rgba(255,255,255,.38), transparent 18%),
+    radial-gradient(circle at 88% 18%, rgba(255,255,255,.24), transparent 20%),
+    linear-gradient(145deg, #ffb347 0%, #ff7d74 44%, #7056ef 100%);
+  color: #fff;
+}
+
+.share-card--school {
+  background:
+    linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(145deg, #123d73 0%, #1479f8 52%, #0fa7a0 100%);
+  background-size: 34px 34px, 34px 34px, auto;
+  color: #fff;
+}
+
+.share-card--love .share-card__title,
+.share-card--birthday .share-card__title,
+.share-card--school .share-card__title {
+  color: #fff;
+}
+
+.share-card--love .share-card__language,
+.share-card--birthday .share-card__language,
+.share-card--school .share-card__language {
+  background: rgba(255,255,255,.92);
+}
+
+/* Share output sizes */
+.share-card--format-square {
+  height: 1080px;
+  padding: 50px;
+}
+
+.share-card--format-square .share-card__topline {
+  margin-bottom: 18px;
+}
+
+.share-card--format-square .share-card__title {
+  margin-bottom: 18px;
+  font-size: 44px;
+}
+
+.share-card--format-square .share-card__letters {
+  gap: 10px;
+}
+
+.share-card--format-square .share-card__letter {
+  padding: 10px;
+}
+
+.share-card--format-square .share-card__letter-box {
+  min-height: 105px;
+}
+
+.share-card--format-square .share-card__letter-box img {
+  max-height: 98px;
+}
+
+.share-card--format-square .share-card__footer {
+  margin-top: 14px;
+}
+
+.share-card--format-square.share-card--phrase .share-card__word-group {
+  padding: 10px 12px 12px;
+}
+
+.share-card--format-square.share-card--phrase .share-card__word-title {
+  font-size: 20px;
+  margin-bottom: 7px;
+}
+
+.share-card--format-square.share-card--phrase .share-card__word-letters .share-card__letter-box {
+  min-height: 72px;
+}
+
+.share-card--format-square.share-card--phrase .share-card__word-letters .share-card__letter-box img {
+  max-height: 68px;
+}
+
+.share-card--format-story {
+  height: 1920px;
+  padding: 74px 64px;
+}
+
+.share-card--format-story .share-card__title {
+  max-width: 900px;
+  font-size: 62px;
+  margin-bottom: 42px;
+}
+
+.share-card--format-story .share-card__letters {
+  align-content: center;
+}
+
+.share-card--format-story .share-card__footer {
+  margin-top: auto;
+  padding-top: 36px;
+}
+
+.share-card--format-story.share-card--phrase .share-card__word-group {
+  padding: 22px;
+}
+
+.share-card--format-story.share-card--phrase .share-card__word-title {
+  font-size: 30px;
+}
+
+.share-card--format-story.share-card--phrase .share-card__word-letters .share-card__letter-box {
+  min-height: 150px;
+}
+
+.share-card--format-story.share-card--phrase .share-card__word-letters .share-card__letter-box img {
+  max-height: 145px;
+}
+
+/* Embed mode: a clean result widget for third-party sites */
+.embed-mode {
+  background: transparent;
+}
+
+.embed-mode .header,
+.embed-mode .marketing-hero,
+.embed-mode .popular-searches,
+.embed-mode .legal-footer,
+.embed-mode .mobile-disclaimer,
+.embed-mode .primary-share-actions,
+.embed-mode .result-tools,
+.embed-mode .share-utility,
+.embed-mode .source-note {
+  display: none !important;
+}
+
+.embed-mode .result-section {
+  width: min(100% - 20px, 900px);
+  margin: 10px auto;
+  box-shadow: none;
+}
+
+@media (max-width: 760px) {
+  .recent-searches {
+    text-align: left;
+  }
+
+  .recent-searches__chips {
+    justify-content: flex-start;
+  }
+
+  /* Keep every quick example, including Surprise me, on one mobile row. */
+  .hero-examples {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  .hero-examples > span {
+    flex: 0 0 auto;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .hero-examples .example-chip {
+    flex: 0 0 auto;
+    min-width: 0;
+    padding: 7px 7px;
+    font-size: 11px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .result-tools {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .result-tool {
+    padding-inline: 8px;
+    text-align: center;
+    font-size: 11px;
+  }
+
+  .image-modal__actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Classroom worksheet */
+.classroom-page {
+  background: #f7faff;
+}
+
+.classroom-shell {
+  width: min(1060px, calc(100% - 32px));
+  margin: 24px auto 60px;
+}
+
+.classroom-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: start;
+  margin-bottom: 22px;
+  padding: 22px;
+  border: 1px solid var(--smw-border);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.classroom-toolbar h1 {
+  margin: 0 0 7px;
+  font-family: Inter, sans-serif;
+  font-size: 32px;
+}
+
+.classroom-toolbar p {
+  margin: 0 0 14px;
+  color: var(--smw-text-secondary);
+}
+
+.classroom-textarea {
+  width: 100%;
+  min-height: 150px;
+  resize: vertical;
+  border: 1px solid var(--smw-border);
+  border-radius: 14px;
+  padding: 14px;
+  background: #fff;
+  color: var(--smw-text-primary);
+  font: 600 16px/1.45 "Atkinson Hyperlegible Next", Arial, sans-serif;
+}
+
+.classroom-controls {
+  display: grid;
+  gap: 9px;
+  min-width: 210px;
+}
+
+.classroom-preview {
+  display: grid;
+  gap: 20px;
+}
+
+.classroom-word {
+  break-inside: avoid;
+  padding: 18px;
+  border: 1px solid var(--smw-border);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.classroom-word h2 {
+  margin: 0 0 12px;
+  font-family: Inter, sans-serif;
+  font-size: 22px;
+}
+
+.classroom-word__letters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.classroom-letter {
+  min-height: 128px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 14px;
+  background: var(--smw-bg-blue-soft);
+}
+
+.classroom-letter strong {
+  font-size: 18px;
+}
+
+.classroom-letter img {
+  width: 100%;
+  height: 92px;
+  object-fit: contain;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.classroom-page.quiz-mode .classroom-word h2,
+.classroom-page.quiz-mode .classroom-letter strong {
+  visibility: hidden;
+}
+
+@media print {
+  .classroom-page {
+    background: #fff;
+  }
+
+  .classroom-page .header,
+  .classroom-toolbar,
+  .legal-footer {
+    display: none !important;
+  }
+
+  .classroom-shell {
+    width: 100%;
+    margin: 0;
+  }
+
+  .classroom-preview {
+    gap: 12px;
+  }
+
+  .classroom-word {
+    border-color: #bbb;
+    box-shadow: none;
+  }
+}
+
+
+/* Local SignMyWord insights */
+.insights-page {
+  width: min(1060px, calc(100% - 32px));
+  margin: 34px auto 64px;
+}
+
+.insights-page__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.insights-page h1 {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  font-size: 38px;
+  line-height: 1.05;
+  letter-spacing: -.04em;
+}
+
+.insights-page__heading p {
+  max-width: 700px;
+  margin: 10px 0 0;
+  color: var(--smw-text-secondary);
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.insight-card {
+  display: grid;
+  gap: 4px;
+  padding: 18px;
+  border: 1px solid var(--smw-border);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.insight-card strong {
+  font-family: Inter, sans-serif;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.insight-card span {
+  color: var(--smw-text-secondary);
+  font-size: 13px;
+}
+
+.insights-funnel {
+  margin-top: 20px;
+  padding: 22px;
+  border: 1px solid var(--smw-border);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.insights-funnel h2 {
+  margin: 0 0 14px;
+  font-family: Inter, sans-serif;
+}
+
+.funnel-row {
+  display: grid;
+  grid-template-columns: 1fr auto 180px;
+  gap: 14px;
+  padding: 10px 0;
+  border-top: 1px solid #edf2f8;
+}
+
+.funnel-row:first-child {
+  border-top: 0;
+}
+
+.funnel-row span:last-child {
+  color: var(--smw-text-secondary);
+  text-align: right;
+}
+
+@media (max-width: 760px) {
+  .insights-page__heading {
+    display: grid;
+  }
+
+  .insights-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .funnel-row {
+    grid-template-columns: 1fr auto;
+  }
+
+  .funnel-row span:last-child {
+    grid-column: 1 / -1;
+    text-align: left;
+    font-size: 12px;
+  }
+}
+
+/* Mobile alignment polish — 2026-10-02 */
+@media (max-width: 760px) {
+  /* Use the phone width properly while keeping a comfortable edge. */
+  .site-shell {
+    width: calc(100% - 24px);
+    max-width: none;
+  }
+
+  .header {
+    width: calc(100% - 24px);
+    gap: 10px;
+  }
+
+  .marketing-hero__inner {
+    padding-block: 28px 26px;
+    text-align: left;
+  }
+
+  /* A slightly smaller headline prevents the copy feeling squeezed. */
+  .marketing-hero h1 {
+    width: 100%;
+    max-width: none;
+    font-size: clamp(32px, 8.9vw, 36px);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+    text-align: left;
+  }
+
+  .marketing-hero__intro {
+    width: 100%;
+    max-width: none;
+    margin-top: 14px;
+    font-size: 16px;
+    line-height: 1.45;
+    text-align: left;
+  }
+
+  /* Avoid squeezing the input beside the CTA on a phone. */
+  .hero-word-form {
+    width: 100%;
+    margin-top: 22px;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .hero-word-input {
+    width: 100%;
+    height: 54px;
+    padding-inline: 16px;
+    font-size: 16px;
+  }
+
+  .hero-go {
+    width: 100%;
+    min-width: 0;
+    min-height: 52px;
+    padding-inline: 16px;
+    font-size: 15px;
+  }
+
+  /* Keep examples and recent searches on the same left/right alignment. */
+  .hero-examples,
+  .recent-searches {
+    width: 100%;
+    margin-inline: 0;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .recent-searches__chips {
+    justify-content: flex-start;
+  }
+}
+/* End mobile alignment polish */
+
+/* Classroom mobile layout fix — 2026-10-02 */
+@media (max-width: 760px) {
+  .classroom-shell {
+    width: calc(100% - 24px);
+    margin: 18px auto 44px;
+  }
+
+  .classroom-toolbar {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-bottom: 18px;
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .classroom-toolbar > div {
+    min-width: 0;
+  }
+
+  .classroom-toolbar h1 {
+    margin-bottom: 8px;
+    font-size: clamp(28px, 8vw, 34px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+
+  .classroom-toolbar p {
+    margin-bottom: 14px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .classroom-textarea {
+    width: 100%;
+    min-height: 180px;
+    padding: 14px 16px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .classroom-controls {
+    width: 100%;
+    min-width: 0;
+    gap: 10px;
+  }
+
+  .classroom-controls .button {
+    width: 100%;
+    min-height: 52px;
+    padding: 13px 16px;
+    font-size: 16px;
+  }
+
+  .classroom-controls label {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 2px;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .classroom-controls input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    margin: 0;
+  }
+
+  .classroom-preview {
+    gap: 14px;
+  }
+
+  .classroom-word {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .classroom-word h2 {
+    font-size: 20px;
+  }
+
+  .classroom-word__letters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .classroom-letter {
+    min-width: 0;
+    min-height: 118px;
+    padding: 9px;
+  }
+
+  .classroom-letter img {
+    height: 84px;
+  }
+}
+/* End classroom mobile layout fix */
+
+
+/* SEO landing pages */
+.seo-page {
+  padding: 28px 0 72px;
+}
+
+.seo-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 28px;
+  color: var(--smw-text-secondary);
+  font-size: 0.92rem;
+}
+
+.seo-breadcrumb a {
+  color: var(--smw-blue);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.seo-eyebrow {
+  margin: 0 0 8px;
+  color: var(--smw-blue);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+}
+
+.seo-page h1 {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.seo-lead {
+  max-width: 820px;
+  margin: 20px 0 0;
+  color: var(--smw-text-secondary);
+  font-family: "Atkinson Hyperlegible Next", Inter, sans-serif;
+  font-size: clamp(1.08rem, 2vw, 1.3rem);
+  line-height: 1.7;
+}
+
+.seo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 28px 0 42px;
+}
+
+.seo-page section {
+  margin-top: 42px;
+}
+
+.seo-page section > h2,
+.seo-home h2 {
+  margin: 0 0 16px;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  letter-spacing: -0.025em;
+}
+
+.alphabet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
+  gap: 14px;
+}
+
+.alphabet-letter {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-lg);
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(16, 42, 86, 0.04);
+  text-align: center;
+  text-decoration: none;
+}
+
+.alphabet-letter:hover {
+  border-color: var(--smw-blue);
+  transform: translateY(-2px);
+}
+
+.alphabet-letter img {
+  width: 100%;
+  height: 126px;
+  object-fit: contain;
+}
+
+.alphabet-letter strong {
+  font-size: 1.08rem;
+}
+
+.seo-copy {
+  max-width: 860px;
+}
+
+.seo-copy p {
+  color: var(--smw-text-secondary);
+  font-family: "Atkinson Hyperlegible Next", Inter, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.seo-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.seo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 142px;
+  padding: 22px;
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-lg);
+  background: var(--smw-bg-subtle);
+  text-decoration: none;
+}
+
+.seo-card strong {
+  font-size: 1.05rem;
+}
+
+.seo-card span {
+  color: var(--smw-text-secondary);
+  font-family: "Atkinson Hyperlegible Next", Inter, sans-serif;
+}
+
+.seo-note {
+  margin-top: 38px;
+  padding: 18px 20px;
+  border-radius: var(--smw-radius-md);
+  background: var(--smw-bg-blue-soft);
+  color: var(--smw-text-secondary);
+  font-family: "Atkinson Hyperlegible Next", Inter, sans-serif;
+}
+
+.seo-example-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.seo-example-links a {
+  padding: 10px 14px;
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-full);
+  color: var(--smw-blue);
+  background: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.seo-word-letters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(126px, 150px));
+  gap: 14px;
+}
+
+.seo-letter-card {
+  margin: 0;
+  padding: 14px;
+  border: 1px solid var(--smw-border);
+  border-radius: var(--smw-radius-lg);
+  text-align: center;
+  background: #fff;
+}
+
+.seo-letter-card img {
+  width: 100%;
+  height: 126px;
+  object-fit: contain;
+}
+
+.seo-letter-card figcaption {
+  margin-top: 6px;
+  font-weight: 800;
+}
+
+.seo-home {
+  padding: 44px 0 24px;
+}
+
+.seo-home__intro {
+  max-width: 760px;
+  margin: 0 0 24px;
+  color: var(--smw-text-secondary);
+  font-family: "Atkinson Hyperlegible Next", Inter, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 760px) {
+  .seo-page {
+    padding-top: 18px;
+  }
+
+  .seo-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .alphabet-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .alphabet-letter {
+    min-height: 160px;
+  }
+
+  .alphabet-letter img,
+  .seo-letter-card img {
+    height: 112px;
+  }
+
+  .seo-actions {
+    display: grid;
+  }
+
+  .seo-actions .button {
+    width: 100%;
+  }
+}
+
+
+/* SignMyWord mobile image-maker step — 2026-10-03 */
+@keyframes smw-image-step-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@media (max-width: 760px) {
+  .image-modal {
+    display: block;
+    padding: 0;
+    background: #fff;
+  }
+
+  .image-modal__backdrop {
+    display: none;
+  }
+
+  .image-modal__dialog {
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow-y: auto;
+    padding: 0 18px calc(24px + env(safe-area-inset-bottom));
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+    animation: smw-image-step-in 220ms ease-out;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .image-modal__header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    margin: 0 -18px;
+    padding: calc(14px + env(safe-area-inset-top)) 18px 14px;
+    border-bottom: 1px solid var(--smw-border);
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+  }
+
+  .image-modal__header > div {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .image-modal__header h2 {
+    font-size: 21px;
+  }
+
+  .image-modal__eyebrow {
+    margin-bottom: 2px;
+    font-size: 10px;
+  }
+
+  .image-modal__close {
+    order: -1;
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+    font-size: 0;
+    background: var(--smw-bg-subtle);
+  }
+
+  .image-modal__close::before {
+    content: "←";
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .image-style-picker {
+    margin-top: 18px;
+  }
+
+  .image-format-picker {
+    margin-bottom: 14px;
+  }
+
+  .share-image-preview-wrap {
+    min-height: 0;
+    border-radius: 18px;
+  }
+
+  .image-modal__actions {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .image-modal__actions .button {
+    min-height: 52px;
+    font-size: 16px;
+  }
+}
+/* End SignMyWord mobile image-maker step */
+
+
+/* SignMyWord minimal mobile journey — 2026-10-03 */
+.image-title-mobile {
+  display: none;
+}
+
+.image-customise {
+  margin: 20px 0 0;
+}
+
+.image-customise__summary {
+  display: none;
+}
+
+.image-customise__body,
+.image-customise:not([open]) > .image-customise__body {
+  display: block !important;
+}
+
+.image-customise .image-style-picker {
+  margin-top: 0;
+}
+
+@media (max-width: 760px) {
+  /* Step 1: keep the first screen focused on language, word and Show signs. */
+  .hero-examples,
+  .recent-searches {
+    display: none !important;
+  }
+
+  /* Step 2: only the two actions needed to continue the journey. */
+  .primary-share-actions {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .primary-share-actions .button {
+    width: 100%;
+    min-height: 52px;
+    font-size: 16px;
+  }
+
+  #copy-link,
+  #share-whatsapp,
+  .result-tools,
+  .share-utility,
+  .source-note {
+    display: none !important;
+  }
+
+  /* Step 3: full-screen image view with preview and actions first. */
+  .image-title-desktop {
+    display: none;
+  }
+
+  .image-title-mobile {
+    display: inline;
+  }
+
+  .image-modal__dialog {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image-modal__header {
+    order: 0;
+  }
+
+  /* Keep customisation directly under the header so changing the
+     preview size never pushes Theme / Size / Icon below the fold. */
+  .image-customise {
+    order: 1;
+    margin: 12px 0 0;
+  }
+
+  .share-image-preview-wrap {
+    order: 2;
+    margin-top: 16px;
+  }
+
+  .image-modal__status {
+    order: 3;
+  }
+
+  .image-modal__actions {
+    order: 4;
+  }
+
+  #copy-image {
+    display: none;
+  }
+
+  /* Customisation stays before the generated preview on mobile. */
+  .image-customise {
+    border: 1px solid var(--smw-border);
+    border-radius: 16px;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .image-customise__summary {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+    list-style: none;
+    color: var(--smw-text-primary);
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .image-customise__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .image-customise__summary::after {
+    content: "⌄";
+    flex: 0 0 auto;
+    color: var(--smw-blue);
+    font-size: 20px;
+    line-height: 1;
+    transform: translateY(-1px);
+  }
+
+  .image-customise[open] .image-customise__summary::after {
+    content: "⌃";
+  }
+
+  .image-customise__hint {
+    margin-left: auto;
+    color: var(--smw-text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .image-customise:not([open]) > .image-customise__body {
+    display: none !important;
+  }
+
+  .image-customise[open] > .image-customise__body {
+    display: block !important;
+    padding: 0 14px 14px;
+    border-top: 1px solid var(--smw-border);
+  }
+
+  .image-customise[open] .image-format-picker,
+  .image-customise[open] .image-icon-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    overflow: visible;
+  }
+
+  .image-customise .image-style-picker {
+    margin: 14px 0 12px;
+  }
+
+  .image-customise .image-format-picker {
+    margin: 0;
+  }
+
+  .image-attribution {
+    order: 5;
+  }
+}
+/* End SignMyWord minimal mobile journey */
+
+
+/* SignMyWord mobile customise themes fit — 2026-10-03 */
+@media (max-width: 760px) {
+  /* Show every theme option fully inside the mobile Customise panel. */
+  .image-customise[open] .image-style-picker {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .image-customise[open] .image-style-pill {
+    width: 100%;
+    min-width: 0;
+    padding: 9px 6px;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+/* End SignMyWord mobile customise themes fit */
+
+
+/* SignMyWord mobile customise visual fix — 2026-10-03 */
+@media (max-width: 760px) {
+  /* Never crop the generated preview on the mobile image step. */
+  .share-image-preview-wrap {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+  }
+
+  .share-image-preview {
+    width: 100%;
+    max-width: 100%;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain;
+    border: 1px solid var(--smw-border);
+    border-radius: 18px;
+    background: var(--smw-bg-subtle);
+  }
+
+  /* Let the expanded panel grow naturally so Theme AND Size remain visible. */
+  .image-customise,
+  .image-customise[open],
+  .image-customise[open] > .image-customise__body {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .image-customise[open] > .image-customise__body {
+    padding: 0 14px 16px;
+  }
+
+  /* Real theme previews rather than six identical white pills. */
+  .image-customise[open] .image-style-picker {
+    margin: 16px 0 14px;
+  }
+
+  .image-customise[open] .image-style-pill {
+    min-height: 52px;
+    border: 2px solid transparent;
+    font-weight: 800;
+    box-shadow: inset 0 0 0 1px rgba(16, 42, 86, .12);
+  }
+
+  .image-customise[open] .image-style-pill[data-card-style="light"] {
+    background: linear-gradient(145deg, #eef6ff 0%, #ffffff 55%, #f6f0ff 100%);
+    color: #102a56;
+  }
+
+  .image-customise[open] .image-style-pill[data-card-style="dark"] {
+    background: linear-gradient(145deg, #071a38 0%, #102a56 55%, #07152d 100%);
+    color: #fff;
+  }
+
+  .image-customise[open] .image-style-pill[data-card-style="colourful"] {
+    background: linear-gradient(145deg, #7047eb 0%, #1479f8 50%, #10b9a9 100%);
+    color: #fff;
+  }
+
+  .image-customise[open] .image-style-pill[data-card-style="love"] {
+    background: linear-gradient(145deg, #ff5f8f 0%, #8b48e8 48%, #5132d4 100%);
+    color: #fff;
+  }
+
+  .image-customise[open] .image-style-pill[data-card-style="birthday"] {
+    background: linear-gradient(145deg, #ffb347 0%, #ff7d74 44%, #7056ef 100%);
+    color: #fff;
+  }
+
+  .image-customise[open] .image-style-pill[data-card-style="school"] {
+    background:
+      linear-gradient(rgba(255,255,255,.10) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px),
+      linear-gradient(145deg, #123d73 0%, #1479f8 52%, #0fa7a0 100%);
+    background-size: 16px 16px, 16px 16px, auto;
+    color: #fff;
+  }
+
+  .image-customise[open] .image-style-pill.image-style-pill--active {
+    border-color: #fff;
+    outline: 3px solid var(--smw-blue);
+    outline-offset: 1px;
+  }
+
+  /* Size is a separate, always-visible row under the theme grid. */
+  .image-customise[open] .image-format-picker {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+    margin: 0 !important;
+    padding-top: 14px;
+    border-top: 1px solid var(--smw-border);
+  }
+
+  .image-customise[open] .image-format-picker__label {
+    grid-column: 1 / -1;
+    margin: 0 0 2px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .image-customise[open] .image-format-pill {
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+    padding: 8px 5px;
+    text-align: center;
+  }
+}
+/* End SignMyWord mobile customise visual fix */
+
+
+/* SignMyWord desktop image step matches mobile flow — 2026-10-03 */
+@media (min-width: 761px) {
+  /* Use a full-page next step on desktop too, not a floating modal. */
+  .image-modal {
+    display: block;
+    padding: 0;
+    background: #fff;
+  }
+
+  .image-modal__backdrop {
+    display: none;
+  }
+
+  .image-modal__dialog {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 0 max(28px, calc((100vw - 900px) / 2)) 52px;
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+  }
+
+  .image-modal__header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    padding: 22px 0 18px;
+    border-bottom: 1px solid var(--smw-border);
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(12px);
+  }
+
+  .image-modal__header > div {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .image-modal__header h2 {
+    font-size: 30px;
+  }
+
+  .image-modal__close {
+    order: -1;
+    width: 46px;
+    height: 46px;
+    flex-basis: 46px;
+    font-size: 0;
+    background: var(--smw-bg-subtle);
+  }
+
+  .image-modal__close::before {
+    content: "←";
+    font-size: 27px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .image-title-desktop {
+    display: none;
+  }
+
+  .image-title-mobile {
+    display: inline;
+  }
+
+  .share-image-preview-wrap {
+    margin-top: 24px;
+    min-height: 0;
+    overflow: visible;
+    border: 0;
+    background: transparent;
+  }
+
+  .share-image-preview {
+    width: 100%;
+    height: auto !important;
+    max-height: none !important;
+    border: 1px solid var(--smw-border);
+    border-radius: 22px;
+    background: var(--smw-bg-subtle);
+  }
+
+  .image-modal__actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  #copy-image {
+    display: none;
+  }
+
+  /* Keep Customise optional on desktop, matching the mobile journey. */
+  .image-customise {
+    margin-top: 14px;
+    border: 1px solid var(--smw-border);
+    border-radius: 18px;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .image-customise__summary {
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 14px 16px;
+    cursor: pointer;
+    list-style: none;
+    color: var(--smw-text-primary);
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .image-customise__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .image-customise__summary::after {
+    content: "⌄";
+    color: var(--smw-blue);
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .image-customise[open] .image-customise__summary::after {
+    content: "⌃";
+  }
+
+  .image-customise__hint {
+    margin-left: auto;
+    color: var(--smw-text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .image-customise:not([open]) > .image-customise__body {
+    display: none !important;
+  }
+
+  .image-customise[open] > .image-customise__body {
+    display: block !important;
+    padding: 0 16px 16px;
+    border-top: 1px solid var(--smw-border);
+  }
+
+  .image-customise[open] .image-style-picker {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+    margin: 16px 0 14px;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .image-customise[open] .image-style-pill {
+    width: 100%;
+    min-width: 0;
+    min-height: 50px;
+    padding: 8px 6px;
+    text-align: center;
+  }
+
+  .image-customise[open] .image-format-picker {
+    display: grid;
+    grid-template-columns: auto repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    align-items: center;
+    margin: 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--smw-border);
+  }
+
+  .image-customise[open] .image-format-pill {
+    width: 100%;
+    min-height: 46px;
+  }
+}
+/* End SignMyWord desktop image step matches mobile flow */
+
+
+/* Fix image-step flex overlap — 2026-10-03 09:58 */
+/* The image page is a vertical flex column. Prevent the browser from shrinking
+   the preview to fit the viewport, which caused buttons/customise to sit over it. */
+.image-modal__header,
+.share-image-preview-wrap,
+.image-modal__status,
+.image-modal__actions,
+.image-customise,
+.image-attribution {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 760px) {
+  .share-image-preview-wrap {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    overflow: hidden;
+  }
+
+  .share-image-preview {
+    position: static !important;
+    display: block;
+    width: 100%;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0;
+  }
+
+  .image-modal__actions {
+    position: static;
+    margin-top: 14px;
+  }
+
+  .image-customise {
+    position: static;
+    margin-top: 14px;
+  }
+
+  /* Keep customisation useful without dominating the screen. */
+  .image-customise[open] .image-style-picker {
+    gap: 7px;
+    margin: 12px 0;
+  }
+
+  .image-customise[open] .image-style-pill {
+    min-height: 44px;
+    padding: 7px 5px;
+    font-size: 11px;
+  }
+
+  .image-customise[open] .image-format-picker {
+    gap: 7px;
+    padding-top: 11px;
+  }
+
+  .image-customise[open] .image-format-pill {
+    min-height: 42px;
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 761px) {
+  .share-image-preview-wrap {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    overflow: hidden;
+  }
+
+  .share-image-preview {
+    position: static !important;
+    display: block;
+    width: 100%;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0;
+  }
+}
+/* End fix image-step flex overlap */
+
+
+/* SignMyWord desktop customise theme previews — 2026-10-03 */
+@media (min-width: 761px) {
+  /* Give desktop the same visual theme previews as mobile. */
+  .image-customise[open] .image-style-pill {
+    min-height: 52px;
+    border: 2px solid transparent;
+    font-weight: 800;
+    box-shadow: inset 0 0 0 1px rgba(16, 42, 86, .12);
+  }
+
+  .image-customise[open] .image-style-pill[data-card-style="light"] {
+    background: linear-gradient(145deg, #eef6ff 0%, #ffffff 55%, #f6f0ff 100%);
+    color: #102a56;
+  }
+
+  .image-customise[open] .image-style-pill[data-card-style="dark"] {
+    background: linear-gradient(145deg, #071a38 0%, #102a56 55%, #07152d 100%);
+    color: #fff;
+  }
+
+  .image-customise[open] .image-style-pill[data-card-style="colourful"] {
+    background: linear-gradient(145deg, #7047eb 0%, #1479f8 50%, #10b9a9 100%);
+    color: #fff;
+  }
+
+  .image-customise[open] .image-style-pill[data-card-style="love"] {
+    background: linear-gradient(145deg, #ff5f8f 0%, #8b48e8 48%, #5132d4 100%);
+    color: #fff;
+  }
+
+  .image-customise[open] .image-style-pill[data-card-style="birthday"] {
+    background: linear-gradient(145deg, #ffb347 0%, #ff7d74 44%, #7056ef 100%);
+    color: #fff;
+  }
+
+  .image-customise[open] .image-style-pill[data-card-style="school"] {
+    background:
+      linear-gradient(rgba(255,255,255,.10) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px),
+      linear-gradient(145deg, #123d73 0%, #1479f8 52%, #0fa7a0 100%);
+    background-size: 16px 16px, 16px 16px, auto;
+    color: #fff;
+  }
+
+  .image-customise[open] .image-style-pill.image-style-pill--active {
+    border-color: #fff;
+    outline: 3px solid var(--smw-blue);
+    outline-offset: 1px;
+  }
+
+  /* Match mobile: Size label sits above three equal choices. */
+  .image-customise[open] .image-format-picker {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .image-customise[open] .image-format-picker__label {
+    grid-column: 1 / -1;
+    margin: 0 0 2px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .image-customise[open] .image-format-pill {
+    text-align: center;
+  }
+}
+/* End SignMyWord desktop customise theme previews */
+
+
+/* SignMyWord image step UX polish — 2026-10-03 */
+.image-modal__header {
+  min-height: 72px;
+}
+
+.image-modal__eyebrow {
+  display: none !important;
+}
+
+.image-modal__header h2 {
+  margin: 0;
+}
+
+.share-image-preview-wrap {
+  display: flex !important;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.share-image-preview {
+  width: 92% !important;
+  max-width: 720px !important;
+  height: auto !important;
+  max-height: none !important;
+  flex: 0 0 auto;
+  border: 1px solid var(--smw-border);
+  box-shadow: 0 12px 32px rgba(16,42,86,.08);
+}
+
+.image-modal__actions {
+  width: min(100%, 720px);
+  margin: 22px auto 0 !important;
+}
+
+.image-modal__actions #share-image-file {
+  background: var(--smw-blue);
+  color: #fff;
+  border-color: var(--smw-blue);
+}
+
+.image-modal__actions #download-share-image {
+  background: #fff;
+  color: var(--smw-blue);
+  border: 1px solid var(--smw-border);
+}
+
+.image-customise {
+  width: min(100%, 720px);
+  margin: 14px auto 0 !important;
+}
+
+.image-customise__summary {
+  padding-inline: 16px !important;
+}
+
+.image-customise__hint {
+  color: var(--smw-text-secondary);
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+.image-style-picker__label {
+  grid-column: 1 / -1;
+  margin: 0 0 1px;
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.image-customise[open] .image-style-picker {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  margin: 12px 0 14px !important;
+  overflow: visible !important;
+  padding: 0 !important;
+}
+
+.image-customise[open] .image-style-pill {
+  min-height: 42px !important;
+  border-radius: 12px !important;
+  padding: 6px 7px !important;
+  font-size: 11px !important;
+  box-shadow: inset 0 0 0 1px rgba(16,42,86,.12);
+}
+
+.image-customise[open] .image-style-pill.image-style-pill--active {
+  outline: 2px solid var(--smw-blue) !important;
+  outline-offset: 2px !important;
+}
+
+.image-customise[open] .image-format-picker {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  width: 100%;
+  margin: 0 !important;
+  padding-top: 12px !important;
+  border-top: 1px solid var(--smw-border);
+  border-radius: 12px;
+}
+
+.image-customise[open] .image-format-picker__label {
+  grid-column: 1 / -1;
+  margin: 0 0 8px !important;
+  color: var(--smw-text-secondary);
+  font-size: 12px !important;
+  font-weight: 800 !important;
+}
+
+.image-customise[open] .image-format-pill {
+  min-height: 40px !important;
+  width: 100%;
+  margin: 0 !important;
+  padding: 7px 5px !important;
+  border-radius: 0 !important;
+  border-right-width: 0 !important;
+  font-size: 11px !important;
+}
+
+.image-customise[open] .image-format-pill:first-of-type {
+  border-radius: 12px 0 0 12px !important;
+}
+
+.image-customise[open] .image-format-pill:last-of-type {
+  border-radius: 0 12px 12px 0 !important;
+  border-right-width: 1px !important;
+}
+
+.image-customise[open] .image-format-pill--active {
+  position: relative;
+  z-index: 1;
+  border-color: var(--smw-blue) !important;
+  border-right-width: 1px !important;
+  background: var(--smw-bg-blue-soft) !important;
+}
+
+.image-attribution {
+  margin: 16px auto 8px !important;
+  text-align: center;
+  font-size: 10px !important;
+}
+
+.image-attribution a {
+  color: #7a8eac !important;
+  text-decoration-thickness: 1px;
+}
+
+@media (max-width: 760px) {
+  .image-modal__header {
+    min-height: 64px;
+  }
+
+  .image-modal__header h2 {
+    font-size: 22px !important;
+  }
+
+  .share-image-preview-wrap {
+    margin-top: 20px !important;
+  }
+
+  .share-image-preview {
+    width: 92% !important;
+    border-radius: 16px !important;
+  }
+
+  .image-modal__actions {
+    gap: 10px !important;
+    margin-top: 22px !important;
+  }
+
+  .image-modal__actions .button {
+    min-height: 50px !important;
+    font-size: 15px !important;
+  }
+
+  .image-customise__summary {
+    min-height: 50px !important;
+  }
+}
+
+@media (min-width: 761px) {
+  .image-modal__actions {
+    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+  }
+
+  .image-customise[open] .image-style-picker {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  }
+}
+/* End SignMyWord image step UX polish */
+
+
+/* SignMyWord trending language data — 2026-10-03 */
+.popular-word__language {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: 0 0 auto;
+  margin-left: 2px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: var(--smw-bg-blue-soft);
+  color: var(--smw-text-primary);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.popular-word__flag {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.popular-word__language-name {
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .popular-word-cloud {
+    justify-content: flex-start;
+  }
+
+  .popular-word {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 10px;
+    font-size: 17px !important;
+  }
+
+  .popular-word__label {
+    min-width: 0;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+
+  .popular-word__language {
+    justify-self: end;
+  }
+
+  .popular-searches__total {
+    text-align: left;
+  }
+}
+/* End SignMyWord trending language data */
+
+
+/* Show trending language data on mobile — 2026-10-03 */
+@media (max-width: 760px) {
+  /* Override the older mobile rule that hid the trending section. */
+  .popular-searches {
+    display: block !important;
+    width: calc(100% - 24px);
+    margin: 22px auto 0;
+    padding: 18px 14px;
+    border: 1px solid #f0e4c5;
+    border-radius: 18px;
+  }
+
+  .popular-searches__header {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .popular-searches__eyebrow {
+    margin: 0 0 4px;
+    font-size: 11px;
+  }
+
+  .popular-searches h2 {
+    font-size: 22px;
+    line-height: 1.12;
+  }
+
+  .popular-searches__subtitle {
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .popular-searches__total {
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  .popular-word-cloud {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    min-height: 0;
+  }
+
+  .popular-word {
+    width: 100%;
+    min-height: 48px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 12px;
+    font-size: 16px !important;
+  }
+
+  .popular-word__count {
+    min-width: 30px;
+    height: 28px;
+    padding: 0 8px;
+    font-size: 12px;
+  }
+
+  .popular-word__label {
+    min-width: 0;
+    font-size: 16px;
+    line-height: 1.15;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+
+  .popular-word__language {
+    justify-self: end;
+    gap: 4px;
+    padding: 5px 7px;
+    font-size: 10px;
+  }
+
+  .popular-word__flag {
+    font-size: 14px;
+  }
+}
+/* End show trending language data on mobile */
+
+
+/* SignMyWord automatic share-card icons — 2026-10-03 */
+.image-icon-picker {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--smw-border);
+}
+
+.image-icon-picker__label {
+  grid-column: 1 / -1;
+  margin: 0 0 2px;
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.image-icon-pill {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid var(--smw-border);
+  border-radius: 12px;
+  padding: 7px 10px;
+  background: #fff;
+  color: var(--smw-text-primary);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.image-icon-pill--active {
+  border-color: var(--smw-blue);
+  background: var(--smw-bg-blue-soft);
+  color: var(--smw-blue);
+}
+
+.share-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px;
+  margin: 0 0 26px;
+}
+
+.share-card__title-row .share-card__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0 !important;
+}
+
+.share-card__emoji-badge {
+  width: 86px;
+  height: 86px;
+  flex: 0 0 86px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 12px 28px rgba(16,42,86,.14);
+  font-size: 48px;
+  line-height: 1;
+}
+
+.share-card__emoji-badge[hidden] {
+  display: none !important;
+}
+
+.share-card--dark .share-card__emoji-badge,
+.share-card--colourful .share-card__emoji-badge,
+.share-card--love .share-card__emoji-badge,
+.share-card--birthday .share-card__emoji-badge,
+.share-card--school .share-card__emoji-badge {
+  background: rgba(255,255,255,.94);
+}
+
+.share-card--dense .share-card__title-row {
+  margin-bottom: 20px;
+}
+
+.share-card--dense .share-card__emoji-badge {
+  width: 70px;
+  height: 70px;
+  flex-basis: 70px;
+  border-radius: 20px;
+  font-size: 39px;
+}
+
+.share-card--very-dense .share-card__title-row {
+  margin-bottom: 14px;
+}
+
+.share-card--very-dense .share-card__emoji-badge {
+  width: 58px;
+  height: 58px;
+  flex-basis: 58px;
+  border-radius: 17px;
+  font-size: 32px;
+}
+
+.share-card--format-square .share-card__title-row {
+  margin-bottom: 18px;
+}
+
+.share-card--format-square .share-card__emoji-badge {
+  width: 66px;
+  height: 66px;
+  flex-basis: 66px;
+  border-radius: 18px;
+  font-size: 36px;
+}
+
+.share-card--format-story .share-card__title-row {
+  margin-bottom: 42px;
+}
+
+.share-card--format-story .share-card__emoji-badge {
+  width: 104px;
+  height: 104px;
+  flex-basis: 104px;
+  border-radius: 28px;
+  font-size: 58px;
+}
+
+@media (max-width: 760px) {
+  .image-icon-picker {
+    margin-top: 11px;
+    padding-top: 11px;
+    gap: 7px;
+  }
+
+  .image-icon-pill {
+    min-height: 40px;
+    font-size: 11px;
+  }
+}
+/* End SignMyWord automatic share-card icons */
+
+
+/* SignMyWord compact share workflow + transparent PNG icons — 2026-10-03 */
+/* Transparent PNG artwork: no emoji font rendering, no white/grey badge box. */
+.share-card__emoji-badge {
+  display: block !important;
+  width: 58px !important;
+  height: 58px !important;
+  flex: 0 0 58px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  object-fit: contain;
+}
+
+.share-card__emoji-badge[hidden] {
+  display: none !important;
+}
+
+.share-card--dense .share-card__emoji-badge {
+  width: 52px !important;
+  height: 52px !important;
+  flex-basis: 52px !important;
+}
+
+.share-card--very-dense .share-card__emoji-badge {
+  width: 44px !important;
+  height: 44px !important;
+  flex-basis: 44px !important;
+}
+
+.share-card--format-square .share-card__emoji-badge {
+  width: 50px !important;
+  height: 50px !important;
+  flex-basis: 50px !important;
+}
+
+.share-card--format-story .share-card__emoji-badge {
+  width: 64px !important;
+  height: 64px !important;
+  flex-basis: 64px !important;
+}
+
+/* Desktop becomes a compact workspace: preview left, actions always visible right. */
+@media (min-width: 761px) {
+  .image-modal__dialog {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    grid-template-rows: auto auto auto 1fr auto;
+    column-gap: 28px;
+    row-gap: 12px;
+    width: 100% !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+    padding: 0 max(24px, calc((100vw - 1180px) / 2)) 20px !important;
+  }
+
+  .image-modal__header {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    position: relative !important;
+    min-height: 72px !important;
+    padding: 14px 0 !important;
+  }
+
+  .share-image-preview-wrap {
+    grid-column: 1;
+    grid-row: 2 / 6;
+    width: 100% !important;
+    height: calc(100vh - 100px) !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 12px 0 0;
+    overflow: hidden !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .share-image-preview {
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: calc(100vh - 125px) !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+    border-radius: 16px !important;
+  }
+
+  .image-customise {
+    grid-column: 2;
+    grid-row: 2;
+    width: 100% !important;
+    margin: 16px 0 0 !important;
+    align-self: start;
+  }
+
+  .image-modal__actions {
+    grid-column: 2;
+    grid-row: 3;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .image-modal__actions .button {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  #copy-image {
+    display: none !important;
+  }
+
+  .image-modal__status {
+    grid-column: 2;
+    grid-row: 4;
+    margin: 0 !important;
+    align-self: start;
+  }
+
+  .image-attribution {
+    grid-column: 2;
+    grid-row: 5;
+    margin: 0 0 4px !important;
+    align-self: end;
+  }
+}
+
+/* Mobile: keep the preview short enough that Share / Download are reached immediately. */
+@media (max-width: 760px) {
+  .image-modal__dialog {
+    overflow-y: auto !important;
+    padding-bottom: calc(18px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .share-image-preview-wrap {
+    order: 1 !important;
+    width: 100% !important;
+    height: min(42vh, 360px) !important;
+    min-height: 230px !important;
+    margin-top: 12px !important;
+    overflow: hidden !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .share-image-preview {
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: min(42vh, 360px) !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+    border-radius: 14px !important;
+  }
+
+  .image-modal__actions {
+    order: 2 !important;
+    width: 100% !important;
+    margin-top: 12px !important;
+    gap: 8px !important;
+  }
+
+  .image-modal__actions .button {
+    min-height: 46px !important;
+  }
+
+  .image-customise {
+    order: 3 !important;
+    width: 100% !important;
+    margin-top: 10px !important;
+  }
+
+  .image-modal__status {
+    order: 4 !important;
+    margin: 8px 0 0 !important;
+  }
+
+  .image-attribution {
+    order: 5 !important;
+    margin-top: 10px !important;
+  }
+
+  .image-customise__summary {
+    min-height: 46px !important;
+    padding-block: 9px !important;
+  }
+
+  .image-customise__hint {
+    max-width: 58%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+/* End SignMyWord compact share workflow + transparent PNG icons */
+
+
+/* Fix trending flag rendering across Windows/mobile — 2026-10-03 */
+.popular-word__flag.flag-icon {
+  width: 18px;
+  height: 12px;
+  flex: 0 0 18px;
+  margin: 0;
+  font-size: 0;
+  box-shadow: inset 0 0 0 1px rgba(16, 42, 86, .14);
+}
+
+.popular-searches__total {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.popular-searches__language-total {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.popular-searches__language-total .flag-icon {
+  width: 18px;
+  height: 12px;
+  flex-basis: 18px;
+}
+
+.popular-searches__separator {
+  opacity: .55;
+}
+
+@media (max-width: 760px) {
+  .popular-searches__total {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+
+  .popular-word__flag.flag-icon {
+    width: 17px;
+    height: 11px;
+    flex-basis: 17px;
+  }
+}
+/* End fix trending flag rendering */
+
+
+/* Merge live trending data into the search hero — 2026-10-03 */
+.popular-searches--hero {
+  width: min(900px, 100%);
+  margin: 18px auto 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+.popular-searches--hero .popular-searches__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 10px;
+  text-align: left;
+}
+
+.popular-searches--hero .popular-searches__eyebrow {
+  display: inline;
+  margin: 0 8px 0 0;
+  color: var(--smw-blue);
+  font-size: 12px;
+  letter-spacing: .02em;
+  text-transform: none;
+}
+
+.popular-searches--hero h2 {
+  display: inline;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: var(--smw-text-secondary);
+}
+
+.popular-searches--hero .popular-searches__subtitle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.popular-searches--hero .popular-searches__total {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  font-size: 11px;
+  color: var(--smw-text-secondary);
+}
+
+.popular-searches--hero .popular-word-cloud {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 0;
+}
+
+.popular-searches--hero .popular-word {
+  width: auto;
+  min-height: 38px;
+  display: inline-flex;
+  grid-template-columns: none;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border: 1px solid var(--smw-border);
+  border-radius: 999px;
+  background: rgba(255,255,255,.92);
+  box-shadow: none;
+  font-size: 13px !important;
+  letter-spacing: 0;
+  transform: none;
+}
+
+.popular-searches--hero .popular-word:hover,
+.popular-searches--hero .popular-word:focus-visible {
+  border-color: var(--smw-blue);
+  box-shadow: 0 5px 15px rgba(16,42,86,.07);
+  transform: translateY(-1px);
+}
+
+.popular-searches--hero .popular-word__count {
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  font-size: 11px;
+}
+
+.popular-searches--hero .popular-word__label {
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.popular-searches--hero .popular-word__language {
+  gap: 4px;
+  margin: 0;
+  padding: 4px 6px;
+  font-size: 9px;
+}
+
+.popular-searches--hero .popular-word__flag.flag-icon {
+  width: 16px;
+  height: 10px;
+  flex-basis: 16px;
+}
+
+/* The live trending row replaces the old Try / Recent UI. */
+.hero-examples,
+.recent-searches {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .popular-searches--hero {
+    display: block !important;
+    width: 100% !important;
+    margin: 14px 0 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  .popular-searches--hero .popular-searches__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .popular-searches--hero .popular-searches__header > div {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .popular-searches--hero .popular-searches__eyebrow {
+    font-size: 11px;
+  }
+
+  .popular-searches--hero h2 {
+    font-size: 11px;
+  }
+
+  .popular-searches--hero .popular-searches__total {
+    flex: 0 0 auto;
+    font-size: 9px;
+  }
+
+  .popular-searches--hero .popular-searches__language-total {
+    gap: 3px;
+  }
+
+  .popular-searches--hero .popular-searches__language-total .flag-icon {
+    width: 15px;
+    height: 10px;
+    flex-basis: 15px;
+  }
+
+  .popular-searches--hero .popular-word-cloud {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 7px;
+    width: calc(100vw - 32px);
+    overflow-x: auto;
+    padding: 1px 0 6px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .popular-searches--hero .popular-word-cloud::-webkit-scrollbar {
+    display: none;
+  }
+
+  .popular-searches--hero .popular-word {
+    flex: 0 0 auto;
+    width: auto;
+    min-height: 36px;
+    padding: 6px 9px;
+    font-size: 12px !important;
+  }
+
+  .popular-searches--hero .popular-word__label {
+    font-size: 12px;
+  }
+
+  .popular-searches--hero .popular-word__count {
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    font-size: 10px;
+  }
+
+  .popular-searches--hero .popular-word__language {
+    justify-self: auto;
+    padding: 3px 5px;
+    font-size: 9px;
+  }
+}
+/* End merged trending hero */
+
+
+/* SignMyWord brand + tagline lockup — 2026-10-03 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between !important;
+  gap: 24px !important;
+}
+
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  gap: 14px;
+}
+
+.brand-lockup .brand {
+  flex: 0 0 auto;
+}
+
+.brand-tagline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  padding-left: 14px;
+  color: var(--smw-text-secondary);
+  font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: .015em;
+  white-space: nowrap;
+}
+
+.brand-tagline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: 20px;
+  background: var(--smw-border);
+}
+
+.marketing-hero__eyebrow {
+  display: none !important;
+}
+
+@media (max-width: 920px) {
+  .brand-lockup {
+    gap: 10px;
+  }
+
+  .brand-tagline {
+    max-width: 170px;
+    padding-left: 10px;
+    font-size: 10px;
+    white-space: normal;
+  }
+
+  .brand-tagline::before {
+    height: 28px;
+  }
+}
+
+@media (max-width: 760px) {
+  .header {
+    min-height: 66px;
+    gap: 10px !important;
+  }
+
+  .brand-lockup {
+    flex: 1 1 auto;
+    gap: 8px;
+  }
+
+  .brand-tagline {
+    max-width: 118px;
+    padding-left: 8px;
+    font-size: 8.5px;
+    line-height: 1.15;
+    white-space: normal;
+  }
+
+  .brand-tagline::before {
+    height: 26px;
+  }
+
+  .header .language-switcher {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 470px) {
+  .header {
+    flex-wrap: wrap;
+    row-gap: 6px !important;
+    padding-block: 9px !important;
+  }
+
+  .brand-lockup {
+    flex: 1 1 100%;
+  }
+
+  .brand-tagline {
+    max-width: none;
+    font-size: 9px;
+    white-space: nowrap;
+  }
+
+  .brand-tagline::before {
+    height: 18px;
+  }
+
+  .header .language-switcher {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+/* End brand + tagline lockup */
+
+
+/* Result jump target — 2026-10-03 */
+.result-section {
+  scroll-margin-top: 18px;
+}
+/* End result jump target */
+
+
+/* SignMyWord mobile customiser always visible — 2026-10-03 */
+@media (max-width: 760px) {
+  /* Do not hide personalisation behind a disclosure on mobile. */
+  .image-customise__summary {
+    display: none !important;
+  }
+
+  .image-customise,
+  .image-customise:not([open]),
+  .image-customise[open] {
+    display: block !important;
+    order: 1 !important;
+    margin: 12px 0 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .image-customise__body,
+  .image-customise:not([open]) > .image-customise__body,
+  .image-customise[open] > .image-customise__body {
+    display: block !important;
+    padding: 14px !important;
+    border-top: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .image-customise .image-style-picker,
+  .image-customise .image-format-picker,
+  .image-customise .image-icon-picker {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .image-customise .image-style-picker {
+    margin: 0 0 14px !important;
+  }
+
+  .image-customise .image-format-picker {
+    margin: 0 0 14px !important;
+  }
+
+  .share-image-preview-wrap {
+    order: 2 !important;
+  }
+
+  .image-modal__status {
+    order: 3 !important;
+  }
+
+  .image-modal__actions {
+    order: 4 !important;
+  }
+
+  .image-attribution {
+    order: 5 !important;
+  }
+}
+/* End SignMyWord mobile customiser always visible */
+
+
+/* SignMyWord desktop customiser always visible — 2026-10-03 */
+@media (min-width: 761px) {
+  .image-customise {
+    display: block !important;
+    width: min(100%, 720px) !important;
+    margin: 16px auto 0 !important;
+    overflow: visible !important;
+  }
+
+  .image-customise__summary {
+    display: none !important;
+  }
+
+  .image-customise__body,
+  .image-customise:not([open]) > .image-customise__body,
+  .image-customise[open] > .image-customise__body {
+    display: block !important;
+    padding: 14px !important;
+    border: 1px solid var(--smw-border) !important;
+    border-radius: 16px !important;
+    background: #fff !important;
+    overflow: visible !important;
+  }
+
+  .image-customise .image-style-picker {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    margin: 0 0 14px !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  .image-customise .image-format-picker,
+  .image-customise .image-icon-picker {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin: 0 0 14px !important;
+    overflow: visible !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .image-customise .image-icon-picker {
+    margin-bottom: 0 !important;
+  }
+}
+/* End SignMyWord desktop customiser always visible */
+
+
+/* SignMyWord definitive image-modal flow fix — 2026-10-03 */
+.image-modal__dialog {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.image-modal__header {
+  order: 0 !important;
+}
+
+.share-image-preview-wrap {
+  order: 1 !important;
+  position: relative !important;
+  z-index: 1 !important;
+  margin-top: 16px !important;
+}
+
+.image-modal__status {
+  order: 2 !important;
+}
+
+.image-customise,
+.image-customise:not([open]),
+.image-customise[open] {
+  order: 3 !important;
+  position: relative !important;
+  z-index: 2 !important;
+  width: min(100%, 720px) !important;
+  margin: 16px auto 0 !important;
+  transform: none !important;
+  top: auto !important;
+  bottom: auto !important;
+  overflow: visible !important;
+}
+
+.image-customise__summary {
+  display: none !important;
+}
+
+.image-customise__body,
+.image-customise:not([open]) > .image-customise__body,
+.image-customise[open] > .image-customise__body {
+  display: block !important;
+  position: static !important;
+  transform: none !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.image-modal__actions {
+  order: 4 !important;
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  z-index: 1 !important;
+  width: min(100%, 720px) !important;
+  margin: 18px auto 0 !important;
+  transform: none !important;
+  clear: both !important;
+}
+
+.image-modal__actions .button {
+  position: static !important;
+  transform: none !important;
+  width: 100% !important;
+}
+
+.image-attribution {
+  order: 5 !important;
+}
+
+@media (min-width: 761px) {
+  .image-modal__actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .image-modal__actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+}
+/* End SignMyWord definitive image-modal flow fix */
+
+
+/* SignMyWord desktop visibility final fix — 2026-10-03 */
+@media (min-width: 761px) {
+  .image-modal__dialog {
+    display: flex !important;
+    flex-direction: column !important;
+    width: min(980px, calc(100vw - 40px)) !important;
+    height: auto !important;
+    max-height: calc(100vh - 40px) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    margin: auto !important;
+    padding: 22px 28px 28px !important;
+    border: 1px solid var(--smw-border) !important;
+    border-radius: 24px !important;
+    background: #fff !important;
+  }
+
+  .image-modal__header {
+    order: 0 !important;
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 0 0 14px !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+    background: #fff !important;
+  }
+
+  .image-customise,
+  .image-customise:not([open]),
+  .image-customise[open] {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 820px !important;
+    margin: 14px auto 0 !important;
+    flex: 0 0 auto !important;
+  }
+
+  .image-customise__summary {
+    display: none !important;
+  }
+
+  .image-customise__body,
+  .image-customise:not([open]) > .image-customise__body,
+  .image-customise[open] > .image-customise__body {
+    display: block !important;
+  }
+
+  .share-image-preview-wrap {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 820px !important;
+    height: auto !important;
+    min-height: 280px !important;
+    max-height: 48vh !important;
+    margin: 18px auto 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    flex: 0 0 auto !important;
+  }
+
+  .share-image-preview {
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 48vh !important;
+    object-fit: contain !important;
+  }
+
+  .image-modal__status {
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 820px !important;
+    margin: 8px auto 0 !important;
+  }
+
+  .image-modal__actions {
+    order: 4 !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 820px !important;
+    margin: 14px auto 0 !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    flex: 0 0 auto !important;
+  }
+
+  .image-attribution {
+    order: 5 !important;
+  }
+}
+/* End SignMyWord desktop visibility final fix */
+
+
+/* SignMyWord brand system — Fluent 2 structure + Material tonal colour — 2026-10-03 */
+body {
+  background: var(--smw-bg-page);
+  color: var(--smw-text-body);
+  font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", Arial, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, .28) !important;
+  outline-offset: 3px;
+}
+
+.header {
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid rgba(217,226,239,.9);
+}
+
+.brand {
+  color: var(--smw-text-primary);
+}
+
+.brand__accent {
+  color: var(--smw-blue) !important;
+}
+
+.brand__word {
+  color: var(--smw-text-primary) !important;
+}
+
+.brand-tagline {
+  color: var(--smw-text-secondary) !important;
+}
+
+.language-pill {
+  border-color: var(--smw-border);
+  background: #fff;
+  color: var(--smw-text-primary);
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.language-pill:hover:not(:disabled) {
+  border-color: #93b4ff;
+  background: var(--smw-bg-blue-soft);
+}
+
+.language-pill--active {
+  border-color: var(--smw-blue) !important;
+  background: var(--smw-blue) !important;
+  color: #fff !important;
+  box-shadow: 0 3px 10px rgba(37,99,235,.18);
+}
+
+.marketing-hero {
+  background:
+    radial-gradient(circle at 82% 16%, rgba(15,159,148,.12), transparent 26%),
+    radial-gradient(circle at 18% 84%, rgba(124,58,237,.08), transparent 30%),
+    linear-gradient(135deg, #eff6ff 0%, #ffffff 54%, #f5f3ff 100%) !important;
+  border-block-color: #e2e8f0 !important;
+}
+
+.marketing-hero h1,
+.result-section__heading h2,
+.image-modal__header h2 {
+  color: var(--smw-text-primary);
+}
+
+.marketing-hero__intro,
+.result-section .output-meta,
+.image-modal__status {
+  color: var(--smw-text-secondary);
+}
+
+.word-input,
+.hero-word-input {
+  border-color: var(--smw-border-strong) !important;
+  background: #fff !important;
+  color: var(--smw-text-body) !important;
+  box-shadow: 0 1px 2px rgba(16,42,86,.04);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.word-input:focus,
+.hero-word-input:focus {
+  border-color: var(--smw-blue) !important;
+  box-shadow: 0 0 0 4px rgba(37,99,235,.12) !important;
+  outline: 0 !important;
+}
+
+.button {
+  transition: transform 120ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button--primary,
+.hero-go {
+  background: var(--smw-blue) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(37,99,235,.18);
+}
+
+.button--primary:hover,
+.hero-go:hover {
+  background: var(--smw-blue-hover) !important;
+}
+
+.button--primary:active,
+.hero-go:active {
+  background: var(--smw-blue-pressed) !important;
+}
+
+.button--secondary {
+  border: 1px solid var(--smw-border) !important;
+  background: #fff !important;
+  color: var(--smw-blue) !important;
+}
+
+.button--secondary:hover {
+  border-color: #93b4ff !important;
+  background: var(--smw-bg-blue-soft) !important;
+}
+
+.button--image,
+.primary-share-actions__image {
+  background: var(--smw-purple) !important;
+  color: #fff !important;
+  border-color: var(--smw-purple) !important;
+}
+
+.button--image:hover,
+.primary-share-actions__image:hover {
+  background: var(--smw-purple-hover) !important;
+  border-color: var(--smw-purple-hover) !important;
+}
+
+.panel,
+.result-section,
+.image-modal__dialog {
+  border-color: var(--smw-border) !important;
+}
+
+.panel--input {
+  background: var(--smw-bg-blue-soft) !important;
+}
+
+.panel--output {
+  background: var(--smw-bg-green-soft) !important;
+}
+
+.panel--share {
+  background: var(--smw-bg-purple-soft) !important;
+}
+
+.result-section {
+  background: #fff !important;
+  box-shadow: var(--smw-shadow) !important;
+}
+
+.result-section:hover {
+  box-shadow: var(--smw-shadow-hover);
+}
+
+.result-section .output-language {
+  border-color: #cfe1ff !important;
+  background: var(--smw-bg-blue-soft) !important;
+  color: var(--smw-text-primary) !important;
+}
+
+.result-section .letter-card {
+  border-color: #dbeafe !important;
+  background: #eff6ff !important;
+}
+
+.result-section .letter-card__image {
+  border-color: #d9e2ef !important;
+  background: #fff !important;
+}
+
+.popular-word,
+.example-chip,
+.image-style-pill,
+.image-format-pill,
+.image-icon-pill {
+  border-color: var(--smw-border) !important;
+  color: var(--smw-text-primary);
+}
+
+.popular-word:hover,
+.example-chip:hover,
+.image-style-pill:hover,
+.image-format-pill:hover,
+.image-icon-pill:hover {
+  border-color: #93b4ff !important;
+  background: var(--smw-bg-blue-soft);
+}
+
+.image-style-pill--active,
+.image-format-pill--active,
+.image-icon-pill--active {
+  border-color: var(--smw-blue) !important;
+  background: var(--smw-bg-blue-soft) !important;
+  color: var(--smw-blue) !important;
+  box-shadow: inset 0 0 0 1px var(--smw-blue);
+}
+
+.image-customise__body {
+  border-color: var(--smw-border) !important;
+  background: #fff !important;
+}
+
+.image-style-picker__label,
+.image-format-picker__label,
+.image-icon-picker__label {
+  color: var(--smw-text-secondary) !important;
+}
+
+.legal-footer {
+  border-top-color: var(--smw-border);
+  background: #fff;
+}
+
+.share-card--light {
+  background: linear-gradient(145deg, #eff6ff 0%, #ffffff 55%, #f5f3ff 100%) !important;
+  color: var(--smw-text-primary) !important;
+}
+
+.share-card--light .share-card__language {
+  background: rgba(37,99,235,.10) !important;
+  color: var(--smw-blue) !important;
+}
+
+@media (max-width: 760px) {
+  body {
+    background: #fff;
+  }
+
+  .header {
+    background: #fff;
+  }
+}
+/* End SignMyWord brand system */
+
+
+/* SignMyWord mobile single-row language navigation — 2026-10-03 */
+@media (max-width: 760px) {
+  .header {
+    width: min(100% - 28px, 1200px) !important;
+    min-height: 64px !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    padding: 9px 0 !important;
+  }
+
+  .brand-lockup {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    gap: 0 !important;
+  }
+
+  .brand-lockup .brand {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+    font-size: clamp(20px, 5.8vw, 25px) !important;
+    white-space: nowrap !important;
+  }
+
+  /* Give the language navigation room to sit on the same line. */
+  .brand-tagline {
+    display: none !important;
+  }
+
+  .header .language-switcher {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    display: inline-flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 3px !important;
+    border: 1px solid var(--smw-border) !important;
+    border-radius: 14px !important;
+    background: var(--smw-bg-subtle) !important;
+  }
+
+  .header .language-switcher .language-pill {
+    min-width: 58px !important;
+    min-height: 38px !important;
+    padding: 7px 10px !important;
+    gap: 6px !important;
+    border: 0 !important;
+    border-radius: 10px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    font-size: 13px !important;
+    line-height: 1 !important;
+  }
+
+  .header .language-switcher .language-pill--active {
+    background: var(--smw-blue) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, .18) !important;
+  }
+
+  .header .language-switcher .flag-icon {
+    width: 19px !important;
+    height: 13px !important;
+    flex-basis: 19px !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .header {
+    width: calc(100% - 20px) !important;
+    gap: 8px !important;
+  }
+
+  .brand-lockup .brand {
+    font-size: 19px !important;
+  }
+
+  .header .language-switcher .language-pill {
+    min-width: 52px !important;
+    padding-inline: 8px !important;
+    font-size: 12px !important;
+  }
+
+  .header .language-switcher .flag-icon {
+    width: 17px !important;
+    height: 12px !important;
+    flex-basis: 17px !important;
+  }
+}
+/* End SignMyWord mobile single-row language navigation */
+
+
+/* SignMyWord export-card language + icon scale upgrade */
+.share-card__language {
+  gap: 14px;
+  padding: 15px 22px;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.share-card__language .share-flag-svg,
+.share-card__language .flag-icon {
+  width: 54px;
+  height: 34px;
+  flex: 0 0 54px;
+  border-radius: 5px;
+}
+
+.share-card__emoji-badge {
+  width: 116px;
+  height: 116px;
+  flex: 0 0 116px;
+  border-radius: 28px;
+  object-fit: contain;
+}
+
+.share-card--dense .share-card__emoji-badge {
+  width: 94px;
+  height: 94px;
+  flex-basis: 94px;
+  border-radius: 24px;
+}
+
+.share-card--very-dense .share-card__emoji-badge {
+  width: 78px;
+  height: 78px;
+  flex-basis: 78px;
+  border-radius: 20px;
+}
+
+.share-card--format-square .share-card__language {
+  padding: 13px 19px;
+  font-size: 28px;
+}
+
+.share-card--format-square .share-card__language .share-flag-svg,
+.share-card--format-square .share-card__language .flag-icon {
+  width: 48px;
+  height: 30px;
+  flex-basis: 48px;
+}
+
+.share-card--format-square .share-card__emoji-badge {
+  width: 92px;
+  height: 92px;
+  flex-basis: 92px;
+  border-radius: 23px;
+}
+
+.share-card--format-story .share-card__language {
+  padding: 17px 24px;
+  font-size: 36px;
+}
+
+.share-card--format-story .share-card__language .share-flag-svg,
+.share-card--format-story .share-card__language .flag-icon {
+  width: 64px;
+  height: 40px;
+  flex-basis: 64px;
+}
+
+.share-card--format-story .share-card__emoji-badge {
+  width: 132px;
+  height: 132px;
+  flex-basis: 132px;
+  border-radius: 32px;
+}
+/* End export-card language + icon scale upgrade */
+
+
+/* SignMyWord keep export controls visible — 2026-10-03 */
+.image-customise > .image-customise__body,
+.image-customise:not([open]) > .image-customise__body,
+.image-customise[open] > .image-customise__body {
+  display: block !important;
+}
+
+@media (max-width: 760px) {
+  .image-customise {
+    overflow: visible;
+  }
+
+  .image-customise__summary {
+    display: none !important;
+  }
+
+  .image-customise > .image-customise__body {
+    padding: 14px !important;
+  }
+
+  .image-customise .image-style-picker {
+    display: flex !important;
+    margin: 0 0 14px !important;
+  }
+
+  .image-customise .image-format-picker {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+    margin: 0 !important;
+    padding-top: 14px;
+    border-top: 1px solid var(--smw-border);
+  }
+
+  .image-customise .image-format-picker__label,
+  .image-customise .image-icon-picker__label {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 0 0 3px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .image-customise .image-icon-picker {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+    margin: 14px 0 0 !important;
+    padding-top: 14px;
+    border-top: 1px solid var(--smw-border);
+  }
+}
+
+@media (min-width: 761px) {
+  .image-customise {
+    overflow: visible;
+  }
+
+  .image-customise__summary {
+    display: none !important;
+  }
+
+  .image-customise > .image-customise__body {
+    padding: 16px !important;
+  }
+
+  .image-customise .image-style-picker {
+    display: grid !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0 0 14px !important;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .image-customise .image-format-picker {
+    display: grid !important;
+    grid-template-columns: auto repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    align-items: center;
+    margin: 0 !important;
+    padding-top: 14px;
+    border-top: 1px solid var(--smw-border);
+  }
+
+  .image-customise .image-icon-picker {
+    display: grid !important;
+    grid-template-columns: auto repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    align-items: center;
+    margin: 14px 0 0 !important;
+    padding-top: 14px;
+    border-top: 1px solid var(--smw-border);
+  }
+}
+/* End keep export controls visible */
+
+
+/* SignMyWord permanent image customisation panel — 2026-10-03 */
+.image-customise {
+  display: block !important;
+  margin: 16px 0 0;
+  border: 1px solid var(--smw-border);
+  border-radius: 18px;
+  background: #fff;
+  overflow: visible !important;
+}
+
+.image-customise__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--smw-border);
+  color: var(--smw-text-primary);
+}
+
+.image-customise__heading strong {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.image-customise__hint {
+  color: var(--smw-text-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.image-customise__body {
+  display: block !important;
+  padding: 16px !important;
+}
+
+.image-style-picker__label,
+.image-format-picker__label,
+.image-icon-picker__label {
+  color: var(--smw-text-primary);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.image-customise .image-style-picker {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 14px !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.image-customise .image-style-picker__label {
+  grid-column: 1 / -1;
+  margin: 0 0 2px;
+}
+
+.image-customise .image-style-pill {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 8px 6px;
+  text-align: center;
+  border: 2px solid transparent;
+  box-shadow: inset 0 0 0 1px rgba(16,42,86,.12);
+}
+
+.image-customise .image-style-pill[data-card-style="light"] {
+  background: linear-gradient(145deg, #eef6ff 0%, #ffffff 55%, #f6f0ff 100%);
+  color: #102a56;
+}
+
+.image-customise .image-style-pill[data-card-style="dark"] {
+  background: linear-gradient(145deg, #071a38 0%, #102a56 55%, #07152d 100%);
+  color: #fff;
+}
+
+.image-customise .image-style-pill[data-card-style="colourful"] {
+  background: linear-gradient(145deg, #7047eb 0%, #1479f8 50%, #10b9a9 100%);
+  color: #fff;
+}
+
+.image-customise .image-style-pill[data-card-style="love"] {
+  background: linear-gradient(145deg, #ff5f8f 0%, #8b48e8 48%, #5132d4 100%);
+  color: #fff;
+}
+
+.image-customise .image-style-pill[data-card-style="birthday"] {
+  background: linear-gradient(145deg, #ffb347 0%, #ff7d74 44%, #7056ef 100%);
+  color: #fff;
+}
+
+.image-customise .image-style-pill[data-card-style="school"] {
+  background:
+    linear-gradient(rgba(255,255,255,.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px),
+    linear-gradient(145deg, #123d73 0%, #1479f8 52%, #0fa7a0 100%);
+  background-size: 16px 16px, 16px 16px, auto;
+  color: #fff;
+}
+
+.image-customise .image-style-pill.image-style-pill--active {
+  border-color: #fff;
+  outline: 3px solid var(--smw-blue);
+  outline-offset: 1px;
+}
+
+.image-customise .image-format-picker {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  margin: 0 !important;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--smw-border);
+}
+
+.image-customise .image-format-picker__label {
+  grid-column: 1 / -1;
+  margin: 0 0 2px;
+}
+
+.image-customise .image-format-pill {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  text-align: center;
+}
+
+.image-customise .image-icon-picker {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  margin: 14px 0 0 !important;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--smw-border);
+}
+
+.image-customise .image-icon-picker__label {
+  grid-column: 1 / -1;
+  margin: 0 0 2px;
+}
+
+.image-customise .image-icon-pill {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+}
+
+@media (min-width: 761px) {
+  .image-customise__body {
+    padding: 18px !important;
+  }
+
+  .image-customise .image-style-picker {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .image-customise .image-format-picker {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .image-customise .image-icon-picker {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+@media (max-width: 760px) {
+  .image-customise {
+    margin-top: 12px;
+    border-radius: 16px;
+  }
+
+  .image-customise__heading {
+    padding: 12px 14px;
+  }
+
+  .image-customise__heading strong {
+    font-size: 15px;
+  }
+
+  .image-customise__hint {
+    font-size: 11px;
+  }
+
+  .image-customise__body {
+    padding: 14px !important;
+  }
+
+  .image-customise .image-style-pill,
+  .image-customise .image-format-pill,
+  .image-customise .image-icon-pill {
+    font-size: 12px;
+  }
+}
+/* End permanent image customisation panel */
+
+
+/* SignMyWord closer share preview — 2026-10-03 */
+.share-image-preview-wrap {
+  overflow: hidden !important;
+}
+
+.share-image-preview {
+  width: 106% !important;
+  max-width: none !important;
+  height: auto !important;
+  margin-left: -3%;
+  margin-right: -3%;
+}
+
+/* Keep the close-up subtle on smaller screens. */
+@media (max-width: 760px) {
+  .share-image-preview {
+    width: 104% !important;
+    margin-left: -2%;
+    margin-right: -2%;
+  }
+}
+/* End closer share preview */
+
+
+/* SignMyWord export footer + flag/icon sizing — 2026-10-03 */
+.share-card__footer-copy {
+  display: flex !important;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: nowrap !important;
+  min-width: 0;
+}
+
+.share-card__footer-copy strong,
+.share-card__footer-copy span {
+  display: inline !important;
+  white-space: nowrap !important;
+}
+
+.share-card__footer-copy span {
+  font-weight: 600;
+}
+
+.share-card__language {
+  gap: 12px;
+  padding: 12px 18px;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.share-card__language .share-flag-svg,
+.share-card__language .flag-icon {
+  width: 50px !important;
+  height: 32px !important;
+  flex: 0 0 50px !important;
+  border-radius: 5px;
+}
+
+.share-card__emoji-badge {
+  width: 50px !important;
+  height: 50px !important;
+  flex: 0 0 50px !important;
+  border-radius: 14px;
+  object-fit: contain;
+}
+
+.share-card--format-square .share-card__language .share-flag-svg,
+.share-card--format-square .share-card__language .flag-icon {
+  width: 46px !important;
+  height: 30px !important;
+  flex-basis: 46px !important;
+}
+
+.share-card--format-square .share-card__emoji-badge {
+  width: 50px !important;
+  height: 50px !important;
+  flex-basis: 50px !important;
+}
+
+.share-card--format-story .share-card__language .share-flag-svg,
+.share-card--format-story .share-card__language .flag-icon {
+  width: 56px !important;
+  height: 36px !important;
+  flex-basis: 56px !important;
+}
+
+.share-card--format-story .share-card__emoji-badge {
+  width: 58px !important;
+  height: 58px !important;
+  flex-basis: 58px !important;
+}
+
+/* Keep footer copy on one row without crowding the QR code. */
+.share-card__footer {
+  gap: 18px;
+}
+
+.share-card__footer-copy {
+  flex: 1 1 auto;
+}
+
+.share-card__qr {
+  flex: 0 0 auto;
+}
+/* End export footer + flag/icon sizing */
+
+
+
+
+/* SignMyWord bottom export icon — 2026-10-03 */
+.share-card__icon-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 50px;
+  margin-top: 14px;
+}
+
+.share-card__icon-row .share-card__emoji-badge {
+  margin: 0;
+}
+
+.share-card__icon-row:has(.share-card__emoji-badge[hidden]) {
+  min-height: 0;
+  margin-top: 0;
+}
+
+.share-card--format-square .share-card__icon-row {
+  margin-top: 10px;
+}
+
+.share-card--format-story .share-card__icon-row {
+  margin-top: 18px;
+}
+/* End bottom export icon */
+
+
+/* SignMyWord SEO FAQ and author */
+.seo-home .seo-breadcrumb{margin-bottom:22px}
+.seo-home__intro h2{margin:0 0 12px}
+.seo-home__intro p{margin:0}
+.seo-faq{max-width:900px;margin-top:46px}
+.seo-faq details{border-top:1px solid var(--smw-border);padding:16px 0}
+.seo-faq details:last-child{border-bottom:1px solid var(--smw-border)}
+.seo-faq summary{cursor:pointer;font-weight:800}
+.seo-faq p{margin:10px 0 0;color:var(--smw-text-secondary);font-family:"Atkinson Hyperlegible Next",Inter,sans-serif;line-height:1.65}
+.seo-author{max-width:900px;margin-top:42px;padding:20px 22px;border-radius:var(--smw-radius-lg);background:var(--smw-bg-subtle);border:1px solid var(--smw-border)}
+.seo-author h2{margin-top:0}
+.seo-author p{margin-bottom:0;color:var(--smw-text-secondary);font-family:"Atkinson Hyperlegible Next",Inter,sans-serif;line-height:1.65}
+.seo-author a{color:var(--smw-blue);font-weight:700}
+
+
+/* SignMyWord trust, accessibility and practice upgrades — 2026-10-04 */
+.skip-link{position:fixed;left:12px;top:12px;z-index:9999;transform:translateY(-160%);padding:10px 14px;border-radius:10px;background:#102a56;color:#fff;font-weight:800}
+.skip-link:focus{transform:translateY(0)}
+.fingerspelling-disclaimer{max-width:760px;margin:10px 0 0;color:var(--smw-text-secondary);font-size:14px;line-height:1.5}
+.fingerspelling-disclaimer strong{color:var(--smw-text-primary)}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #102a56;outline-offset:3px}
+.practice-panel{margin-top:18px;padding:20px;border:1px solid var(--smw-border);border-radius:20px;background:var(--smw-bg-subtle)}
+.practice-panel[hidden]{display:none}
+.practice-panel__heading{display:flex;align-items:flex-end;justify-content:space-between;gap:18px}
+.practice-panel__heading h3{margin:0;font-size:22px}
+.practice-stage{display:grid;place-items:center;gap:12px;min-height:290px;margin:16px 0;padding:18px;border-radius:18px;background:#fff}
+.practice-stage img{width:min(280px,70vw);height:220px;object-fit:contain}
+.practice-stage strong{font:800 48px/1 Inter,sans-serif}
+.practice-controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.practice-speed{display:flex;align-items:center;gap:8px;font-weight:700}
+.practice-speed select{min-height:42px;border:1px solid var(--smw-border);border-radius:10px;padding:0 10px;background:#fff}
+.practice-mode .result-section .letter-output{display:none}
+.practice-mode .result-section .output-meta,.practice-mode .result-section .mobile-output-meta,.practice-mode .result-section .mobile-output-title{visibility:visible}
+@media(max-width:760px){
+  .fingerspelling-disclaimer{font-size:13px}
+  .practice-controls .button{flex:1 1 30%}
+  .practice-speed{width:100%;justify-content:space-between}
+  .image-customise .image-format-picker{grid-template-columns:1fr!important}
+}
+.classroom-template-picker{display:grid;gap:6px;font-weight:800}
+.classroom-template-picker select{min-height:44px;border:1px solid var(--smw-border);border-radius:12px;padding:0 12px;background:#fff;color:var(--smw-text-primary);font:inherit}
+.classroom-page.classroom-name-cards .classroom-preview{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.classroom-page.classroom-name-cards .classroom-word{text-align:center}
+.classroom-page.classroom-alphabet .classroom-word__letters{grid-template-columns:repeat(auto-fit,minmax(90px,1fr))}
+
+
+/* SignMyWord desktop SEO content width + popular example alignment — 2026-10-04 */
+@media (min-width: 1000px) {
+  .seo-home {
+    width: min(1400px, calc(100% - 72px)) !important;
+    max-width: none !important;
+  }
+
+  .seo-home__intro,
+  .seo-copy,
+  .seo-faq,
+  .seo-author {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .seo-home__intro p,
+  .seo-faq details,
+  .seo-author p {
+    max-width: none !important;
+  }
+
+  .seo-example-links {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+  }
+
+  .seo-example-links a {
+    width: 100%;
+    min-height: 54px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 12px 14px !important;
+    text-align: center;
+    white-space: normal;
+    box-sizing: border-box;
+  }
+
+  .seo-faq {
+    margin-top: 46px;
+  }
+
+  .seo-faq details {
+    box-sizing: border-box;
+  }
+
+  .seo-author {
+    box-sizing: border-box;
+    padding: 26px 28px;
+  }
+}
+
+.seo-example-links a .flag-icon {
+  width: 24px;
+  height: 16px;
+  flex: 0 0 24px;
+  border-radius: 3px;
+}
+
+.seo-example-links .example-icon {
+  flex: 0 0 auto;
+  font-size: 18px;
+  line-height: 1;
+}
+
+@media (min-width: 761px) and (max-width: 999px) {
+  .seo-example-links {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .seo-example-links a {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 760px) {
+  .seo-example-links a {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 7px;
+  }
+}
+/* End desktop SEO content width + popular example alignment */
+
+
+/* SignMyWord classroom print/PDF layout — 2026-10-04 */
+.classroom-print-heading{display:none}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+
+  html,
+  body.classroom-page {
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    color: #102a56 !important;
+  }
+
+  .classroom-page .header,
+  .classroom-page > .seo-breadcrumb,
+  .classroom-toolbar,
+  .classroom-page .seo-author,
+  .classroom-page .legal-footer {
+    display: none !important;
+  }
+
+  .classroom-shell {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .classroom-print-heading {
+    display: flex !important;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 0 8mm;
+    padding: 0 0 4mm;
+    border-bottom: 1.5px solid #102a56;
+  }
+
+  .classroom-print-heading > div {
+    display: grid;
+    gap: 1mm;
+  }
+
+  .classroom-print-brand {
+    font: 800 18pt/1 Inter, Arial, sans-serif;
+    letter-spacing: -.03em;
+  }
+
+  .classroom-print-subtitle,
+  .classroom-print-language {
+    font: 600 9pt/1.25 "Atkinson Hyperlegible Next", Arial, sans-serif;
+    color: #52657d;
+  }
+
+  .classroom-print-language {
+    text-align: right;
+  }
+
+  .classroom-preview {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 5mm !important;
+  }
+
+  .classroom-word {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin: 0 !important;
+    padding: 4mm !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 4mm !important;
+    box-shadow: none !important;
+    background: #fff !important;
+  }
+
+  .classroom-word h2 {
+    margin: 0 0 3mm !important;
+    font: 800 14pt/1.1 Inter, Arial, sans-serif !important;
+    text-align: left !important;
+  }
+
+  .classroom-word__letters {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(22mm, 1fr)) !important;
+    gap: 2.5mm !important;
+    align-items: stretch !important;
+  }
+
+  .classroom-letter {
+    min-height: 0 !important;
+    padding: 2.5mm !important;
+    gap: 1.5mm !important;
+    border: 1px solid #d9e2ef !important;
+    border-radius: 3mm !important;
+    background: #f8fafc !important;
+    break-inside: avoid !important;
+  }
+
+  .classroom-letter strong {
+    font: 800 11pt/1 Inter, Arial, sans-serif !important;
+    text-align: center !important;
+  }
+
+  .classroom-letter img {
+    display: block !important;
+    width: 100% !important;
+    height: 24mm !important;
+    max-height: 24mm !important;
+    object-fit: contain !important;
+    padding: 1mm !important;
+    border-radius: 2mm !important;
+    background: #fff !important;
+  }
+
+  .classroom-page.quiz-mode .classroom-word h2 {
+    visibility: visible !important;
+  }
+
+  .classroom-page.quiz-mode .classroom-letter strong {
+    visibility: hidden !important;
+  }
+
+  .classroom-page.classroom-name-cards .classroom-preview {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 5mm !important;
+  }
+
+  .classroom-page.classroom-name-cards .classroom-word h2 {
+    text-align: center !important;
+    font-size: 16pt !important;
+  }
+
+  .classroom-page.classroom-alphabet .classroom-word__letters {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    gap: 2mm !important;
+  }
+
+  .classroom-page.classroom-alphabet .classroom-letter {
+    padding: 1.5mm !important;
+  }
+
+  .classroom-page.classroom-alphabet .classroom-letter img {
+    height: 18mm !important;
+    max-height: 18mm !important;
+  }
+}
+/* End classroom print/PDF layout */
+
+
+/* SignMyWord content-aware export layout — 2026-10-04 */
+.share-card{
+  --share-footer-height:176px;
+  --share-footer-gap:24px;
+}
+
+.share-card__letters{
+  grid-template-columns:repeat(var(--share-columns,3),minmax(0,1fr))!important;
+  flex:0 0 auto!important;
+  width:100%;
+}
+
+.share-card__word-letters{
+  grid-template-columns:repeat(var(--share-columns,4),minmax(0,1fr))!important;
+  justify-content:center!important;
+  width:100%;
+}
+
+.share-card__letters.share-letter-row,
+.share-card__word-letters.share-letter-row{
+  align-items:stretch;
+}
+
+.share-card__word-letters[data-letter-count="1"],
+.share-card__word-letters[data-letter-count="2"],
+.share-card__word-letters[data-letter-count="3"],
+.share-card__word-letters[data-letter-count="4"]{
+  width:min(100%,720px);
+  margin-inline:auto;
+}
+
+.share-card__word-letters[data-letter-count="3"]{
+  width:min(100%,560px);
+}
+
+.share-card__word-letters[data-letter-count="2"]{
+  width:min(100%,390px);
+}
+
+.share-card__word-letters[data-letter-count="1"]{
+  width:min(100%,200px);
+}
+
+.share-card__icon-row{
+  width:100%;
+  justify-content:center!important;
+  min-height:0!important;
+  margin:26px auto 0!important;
+}
+
+.share-card__icon-row .share-card__emoji-badge{
+  margin:0 auto!important;
+}
+
+.share-card__footer{
+  box-sizing:border-box;
+  min-height:var(--share-footer-height);
+  width:100%;
+  flex:0 0 var(--share-footer-height);
+  margin-top:auto!important;
+  padding:22px 0 0!important;
+  border-top:2px solid rgba(16,42,86,.12);
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 150px;
+  align-items:center!important;
+  gap:var(--share-footer-gap)!important;
+}
+
+.share-card--dark .share-card__footer,
+.share-card--colourful .share-card__footer,
+.share-card--love .share-card__footer,
+.share-card--birthday .share-card__footer,
+.share-card--school .share-card__footer{
+  border-top-color:rgba(255,255,255,.28);
+}
+
+.share-card__footer-copy{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  align-content:center;
+  gap:7px!important;
+  min-width:0;
+  max-width:100%;
+  font-size:19px!important;
+  line-height:1.22!important;
+}
+
+.share-card__footer-copy strong,
+.share-card__footer-copy span{
+  display:block!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere;
+}
+
+.share-card__footer-copy strong{
+  font-size:23px!important;
+  line-height:1.12!important;
+}
+
+.share-card__qr{
+  box-sizing:border-box;
+  width:142px!important;
+  height:142px!important;
+  min-width:142px!important;
+  flex-basis:142px!important;
+  margin:0!important;
+  padding:10px!important;
+  justify-self:end;
+  border:1px solid #d7e3f4;
+  border-radius:18px!important;
+}
+
+.share-card__qr img,
+.share-card__qr canvas{
+  width:122px!important;
+  height:122px!important;
+  max-width:122px!important;
+  max-height:122px!important;
+}
+
+.share-card--phrase .share-card__letters--phrase{
+  flex:0 0 auto!important;
+}
+
+.share-card--phrase .share-card__word-group:first-child .share-card__word-letters,
+.share-card--phrase .share-card__word-group:last-child .share-card__word-letters{
+  grid-template-columns:repeat(var(--share-columns,4),minmax(0,1fr))!important;
+}
+
+.share-card--format-square{
+  --share-footer-height:150px;
+}
+
+.share-card--format-square .share-card__footer{
+  grid-template-columns:minmax(0,1fr) 124px;
+  gap:18px!important;
+  padding-top:16px!important;
+}
+
+.share-card--format-square .share-card__qr{
+  width:118px!important;
+  height:118px!important;
+  min-width:118px!important;
+}
+
+.share-card--format-square .share-card__qr img,
+.share-card--format-square .share-card__qr canvas{
+  width:98px!important;
+  height:98px!important;
+  max-width:98px!important;
+  max-height:98px!important;
+}
+
+.share-card--format-square .share-card__footer-copy{
+  font-size:16px!important;
+}
+
+.share-card--format-square .share-card__footer-copy strong{
+  font-size:20px!important;
+}
+
+.share-card--format-story{
+  --share-footer-height:190px;
+}
+
+.share-card--format-story .share-card__footer{
+  grid-template-columns:minmax(0,1fr) 154px;
+  padding-top:26px!important;
+}
+
+.share-card--dense .share-card__footer,
+.share-card--very-dense .share-card__footer{
+  margin-top:auto!important;
+}
+
+.share-card--very-dense .share-card__qr{
+  width:126px!important;
+  height:126px!important;
+  min-width:126px!important;
+}
+
+.share-card--very-dense .share-card__qr img,
+.share-card--very-dense .share-card__qr canvas{
+  width:106px!important;
+  height:106px!important;
+  max-width:106px!important;
+  max-height:106px!important;
+}
+
+/* Keep one-row words readable instead of wrapping the final letter by itself. */
+.share-card__letters.share-letter-row .share-card__letter,
+.share-card__word-letters.share-letter-row .share-card__letter{
+  padding:11px!important;
+}
+
+.share-card__letters.share-letter-row .share-card__letter-name,
+.share-card__word-letters.share-letter-row .share-card__letter-name{
+  font-size:24px!important;
+  margin-bottom:6px!important;
+}
+
+.share-card__letters.share-letter-row .share-card__letter-box,
+.share-card__word-letters.share-letter-row .share-card__letter-box{
+  min-height:104px!important;
+}
+
+.share-card__letters.share-letter-row .share-card__letter-box img,
+.share-card__word-letters.share-letter-row .share-card__letter-box img{
+  max-height:98px!important;
+}
+
+.share-card--format-story .share-card__letters.share-letter-row .share-card__letter-box,
+.share-card--format-story .share-card__word-letters.share-letter-row .share-card__letter-box{
+  min-height:140px!important;
+}
+
+.share-card--format-story .share-card__letters.share-letter-row .share-card__letter-box img,
+.share-card--format-story .share-card__word-letters.share-letter-row .share-card__letter-box img{
+  max-height:132px!important;
+}
+/* End content-aware export layout */

@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1479f8">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="Guy Orlov">
+  <meta name="description" content="Free BSL and ASL fingerspelling generator. Type any name, word or phrase, see each letter clearly, and create a shareable result with SignMyWord.">
+  <meta property="og:title" content="Free BSL & ASL Fingerspelling Generator | SignMyWord">
+  <meta property="og:description" content="Type any name, word or phrase and see it fingerspelled in BSL or ASL.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SignMyWord">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:image" content="https://signmyword.com/assets/social-preview.svg">
+  <meta property="og:image:alt" content="SignMyWord — type it, fingerspell it, share it">
+  <title>Free BSL & ASL Fingerspelling Generator | SignMyWord</title>
+  <link rel="canonical" href="https://signmyword.com/">
+  <meta property="og:url" content="https://signmyword.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://signmyword.com/assets/social-preview.svg">
+  <meta name="twitter:title" content="Free BSL & ASL Fingerspelling Generator | SignMyWord">
+  <meta name="twitter:description" content="Type any name, word or phrase and see it fingerspelled in BSL or ASL.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://signmyword.com/#app",
+      "name": "SignMyWord",
+      "url": "https://signmyword.com/",
+      "applicationCategory": "EducationalApplication",
+      "description": "Free British Sign Language (BSL) and American Sign Language (ASL) fingerspelling generator for names, words and short phrases.",
+      "operatingSystem": "Any modern web browser",
+      "inLanguage": "en-GB",
+      "isAccessibleForFree": true,
+      "creator": {
+        "@type": "Person",
+        "name": "Guy Orlov",
+        "url": "https://guyorlov.com/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "GBP"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://signmyword.com/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Guy Orlov",
+          "item": "https://guyorlov.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://guyorlov.com/#portfolio"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "SignMyWord",
+          "item": "https://signmyword.com/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://signmyword.com/#faq-schema",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is fingerspelling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fingerspelling uses a manual alphabet to represent written letters with handshapes. It is often used for names, places and words without an established sign."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is BSL fingerspelling the same as ASL fingerspelling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. British Sign Language and American Sign Language use different manual alphabets. BSL fingerspelling is commonly two-handed, while ASL fingerspelling is one-handed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does SignMyWord translate English into sign language?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. SignMyWord shows fingerspelling letter by letter. It does not translate English sentences into BSL or ASL grammar and it does not replace a sign-language dictionary or interpreter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use SignMyWord to fingerspell a name?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Type a name and choose BSL or ASL to see each written letter represented with that manual alphabet. This is different from receiving a sign name."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css?v=20261004-1128">
+</head>
+<body>
+  <a class="skip-link" href="#word-input">Skip to fingerspelling tool</a>
+  <header class="site-shell header">
+    <div class="brand-lockup">
+      <a class="brand" href="./" aria-label="SignMyWord home"><span class="brand__accent">Sign</span><span class="brand__word">MyWord</span></a>
+      <span class="brand-tagline">Type it. Fingerspell it. Share it.</span>
+    </div>
+
+    <div class="language-switcher" aria-label="Choose fingerspelling alphabet">
+      <button class="language-pill language-pill--active" type="button" data-language="bsl" aria-pressed="true"><span class="flag-icon flag-icon--gb" aria-hidden="true"></span><span>BSL</span></button>
+      <button class="language-pill" type="button" data-language="asl" aria-pressed="false"><span class="flag-icon flag-icon--us" aria-hidden="true"></span><span>ASL</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="marketing-hero" aria-labelledby="page-title">
+      <div class="site-shell marketing-hero__inner">
+        <h1 id="page-title">See any word or name in sign language fingerspelling.</h1>
+        <p class="marketing-hero__intro">Choose British Sign Language (BSL) or American Sign Language (ASL), type a word, and see every letter clearly.</p>
+
+        <form class="hero-word-form" id="word-form">
+          <label class="sr-only" for="word-input">Type any word or name</label>
+          <input
+            class="word-input hero-word-input"
+            id="word-input"
+            name="word"
+            type="text"
+            value="HELLO"
+            maxlength="32"
+            autocomplete="off"
+            autocapitalize="characters"
+            spellcheck="false"
+            inputmode="text"
+            aria-describedby="form-message"
+            placeholder="Type a word or name..."
+          >
+          <button class="button button--primary hero-go" type="submit">Show signs</button>
+        </form>
+        <p class="fingerspelling-disclaimer"><strong>Fingerspelling, not full sign-language translation.</strong> SignMyWord shows written letters with the BSL or ASL manual alphabet.</p>
+        <p class="message hero-message" id="form-message" aria-live="polite"></p>
+
+        <section class="popular-searches popular-searches--hero" id="popular-searches" aria-labelledby="popular-searches-title" hidden>
+          <div class="popular-searches__header">
+            <div>
+              <p class="popular-searches__eyebrow" id="popular-searches-eyebrow">Trending now</p>
+              <h2 id="popular-searches-title">Popular fingerspelling</h2>
+              <p class="popular-searches__subtitle" id="popular-searches-subtitle">Only common, privacy-safe words are eligible to appear here.</p>
+            </div>
+            <p class="popular-searches__total" id="popular-searches-total"></p>
+          </div>
+          <div class="popular-word-cloud" id="popular-word-cloud" aria-live="polite"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="site-shell result-section" aria-labelledby="output-heading">
+      <div class="result-section__heading">
+        <div>
+          <p class="result-section__eyebrow">Your result</p>
+          <h2 id="output-heading"><span class="desktop-only-title">Your fingerspelling</span><span class="mobile-only-title mobile-output-title" id="mobile-output-title">Learn how to fingerspell HELLO in British Sign Language (BSL).</span></h2>
+        </div>
+        <span class="output-language" id="output-lang">British Sign Language (BSL)</span>
+      </div>
+
+      <div class="output-meta">
+        <span id="output-meta">HELLO · 5 letters</span>
+      </div>
+
+      <div class="letter-output" id="letter-output" aria-live="polite" aria-label="Fingerspelling sequence"></div>
+      <p class="mobile-output-meta" id="mobile-output-meta">British Sign Language (BSL) · 5 letters</p>
+      <p class="source-note" id="source-note"></p>
+
+      <div class="primary-share-actions">
+        <button class="button button--image primary-share-actions__image" id="open-image-maker" type="button">Create shareable image</button>
+        <button class="button button--secondary" id="copy-link" type="button">Copy link</button>
+        <a class="button button--whatsapp" id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <button class="button button--secondary" id="share-native" type="button">Share</button>
+      </div>
+
+      <div class="result-tools" aria-label="More SignMyWord tools">
+        <button class="result-tool" id="practice-mode" type="button" aria-pressed="false">Practice mode</button>
+        <a class="result-tool" id="classroom-link" href="./classroom.html">Classroom sheets</a>
+        <button class="result-tool" id="copy-embed" type="button">Copy embed</button>
+        <a class="result-tool" id="report-problem" href="mailto:guyorlov@gmail.com?subject=SignMyWord%20hand%20image%20report">Report a hand image or problem</a>
+      </div>
+
+      <section class="practice-panel" id="practice-panel" aria-labelledby="practice-title" hidden>
+        <div class="practice-panel__heading">
+          <div><p class="result-section__eyebrow">Practice</p><h3 id="practice-title">One letter at a time</h3></div>
+          <span id="practice-progress" aria-live="polite"></span>
+        </div>
+        <div class="practice-stage">
+          <img id="practice-image" alt="">
+          <strong id="practice-answer" hidden></strong>
+        </div>
+        <div class="practice-controls">
+          <button class="button button--secondary" id="practice-prev" type="button">Previous</button>
+          <button class="button button--primary" id="practice-reveal" type="button">Reveal answer</button>
+          <button class="button button--secondary" id="practice-next" type="button">Next</button>
+          <label class="practice-speed">Auto next
+            <select id="practice-speed">
+              <option value="0">Off</option>
+              <option value="5">5 sec</option>
+              <option value="3">3 sec</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <div class="share-utility" aria-label="Share link and QR code">
+        <label class="sr-only" for="share-url">Shareable URL</label>
+        <input class="share-url" id="share-url" type="text" readonly>
+        <div class="qr-wrap" id="qr-code" aria-label="QR code for this fingerspelling link"></div>
+      </div>
+    </section>
+
+    <section class="seo-home site-shell" aria-labelledby="learn-signmyword-title">
+      <nav class="seo-breadcrumb" aria-label="Breadcrumb"><a href="https://guyorlov.com/">Guy Orlov</a><span>›</span><span>SignMyWord</span></nav>
+      <div class="seo-home__intro">
+        <h2 id="learn-signmyword-title">Learn BSL and ASL fingerspelling</h2>
+        <p>SignMyWord is a free fingerspelling tool for learning how written letters, names and short words can be represented with the British Sign Language or American Sign Language manual alphabet. It shows fingerspelling rather than full sign-language translation.</p>
+      </div>
+      <div class="seo-card-grid">
+        <a class="seo-card" href="./bsl-fingerspelling.html"><strong>BSL fingerspelling alphabet A–Z</strong><span>See every British Sign Language manual alphabet letter and open any letter in the generator.</span></a>
+        <a class="seo-card" href="./asl-fingerspelling.html"><strong>ASL fingerspelling alphabet A–Z</strong><span>Explore every American Sign Language manual alphabet letter.</span></a>
+        <a class="seo-card" href="./fingerspell-your-name.html"><strong>Fingerspell your name</strong><span>Try a name in BSL or ASL and learn the sequence letter by letter.</span></a>
+      </div>
+      <section class="seo-copy" aria-labelledby="popular-examples-title">
+        <h2 id="popular-examples-title">Popular examples</h2>
+        <div class="seo-example-links">
+          <a href="./words/love-bsl.html"><span class="flag-icon flag-icon--gb" aria-hidden="true"></span><span>Fingerspell LOVE in BSL</span></a>
+          <a href="./words/thank-you-bsl.html"><span class="flag-icon flag-icon--gb" aria-hidden="true"></span><span>Fingerspell THANK YOU in BSL</span></a>
+          <a href="./words/name-bsl.html"><span class="flag-icon flag-icon--gb" aria-hidden="true"></span><span>Fingerspell NAME in BSL</span></a>
+          <a href="./words/hello-asl.html"><span class="flag-icon flag-icon--us" aria-hidden="true"></span><span>Fingerspell HELLO in ASL</span></a>
+          <a href="./classroom.html"><span class="example-icon" aria-hidden="true">✏️</span><span>Classroom worksheet</span></a>
+        </div>
+      </section>
+      <section class="seo-faq" id="faq" aria-labelledby="signmyword-faq-title">
+        <h2 id="signmyword-faq-title">Fingerspelling questions</h2>
+        <details><summary>What is fingerspelling?</summary><p>Fingerspelling uses a manual alphabet to represent written letters with handshapes. It is often used for names, places and words without an established sign.</p></details>
+        <details><summary>Is BSL fingerspelling the same as ASL fingerspelling?</summary><p>No. British Sign Language and American Sign Language use different manual alphabets. BSL fingerspelling is commonly two-handed, while ASL fingerspelling is one-handed.</p></details>
+        <details><summary>Does SignMyWord translate English into sign language?</summary><p>No. SignMyWord shows fingerspelling letter by letter. It does not translate English sentences into BSL or ASL grammar and it does not replace a sign-language dictionary or interpreter.</p></details>
+        <details><summary>Can I use SignMyWord to fingerspell a name?</summary><p>Yes. Type a name and choose BSL or ASL to see each written letter represented with that manual alphabet. This is different from receiving a sign name.</p></details>
+      </section>
+      <section class="seo-author" aria-labelledby="signmyword-author-title">
+        <h2 id="signmyword-author-title">About SignMyWord</h2>
+        <p>SignMyWord was created by <a rel="author" href="https://guyorlov.com/">Guy Orlov</a> as an accessibility-focused learning and sharing tool. The project separates fingerspelling from full sign-language translation so the purpose of the tool is clear.</p>
+      </section>
+    </section>
+
+    <p class="site-shell mobile-disclaimer">Fingerspelling tool · not full sign-language translation</p>
+  </main>
+
+  <footer class="legal-footer">
+    <div class="site-shell legal-footer__inner">
+      <span>© 2026 Guy Orlov</span>
+      <a href="./terms.html">Terms</a>
+    </div>
+  </footer>
+
+  <div class="image-modal" id="image-modal" hidden>
+    <div class="image-modal__backdrop" data-close-image-modal></div>
+    <section class="image-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="image-modal-title">
+      <div class="image-modal__header">
+        <div>
+          <h2 id="image-modal-title"><span class="image-title-desktop">Share your fingerspelling</span><span class="image-title-mobile">Your image</span></h2>
+        </div>
+        <button class="image-modal__close" id="close-image-modal" type="button" aria-label="Close image maker">×</button>
+      </div>
+
+      <section class="image-customise" id="image-customise" aria-label="Customise exported image">
+        <div class="image-customise__heading">
+          <strong>Customise your image</strong>
+          <span class="image-customise__hint" id="image-customise-hint">Light · Portrait · Auto</span>
+        </div>
+        <div class="image-customise__body">
+          <div class="image-style-picker" aria-label="Choose image style">
+            <span class="image-style-picker__label">Theme</span>
+            <button class="image-style-pill image-style-pill--active" type="button" data-card-style="light" aria-pressed="true">Light</button>
+            <button class="image-style-pill" type="button" data-card-style="dark" aria-pressed="false">Dark</button>
+            <button class="image-style-pill" type="button" data-card-style="colourful" aria-pressed="false">Colourful</button>
+            <button class="image-style-pill" type="button" data-card-style="love" aria-pressed="false">Love</button>
+            <button class="image-style-pill" type="button" data-card-style="birthday" aria-pressed="false">Birthday</button>
+            <button class="image-style-pill" type="button" data-card-style="school" aria-pressed="false">School</button>
+          </div>
+
+          <div class="image-format-picker" aria-label="Choose image size">
+            <span class="image-format-picker__label">Size</span>
+            <button class="image-format-pill image-format-pill--active" type="button" data-card-format="portrait" aria-pressed="true">Portrait · 1080×1350</button>
+            <button class="image-format-pill" type="button" data-card-format="square" aria-pressed="false">Square · 1080×1080</button>
+            <button class="image-format-pill" type="button" data-card-format="story" aria-pressed="false">Story · 1080×1920</button>
+          </div>
+
+          <div class="image-icon-picker" aria-label="Choose icon option">
+            <span class="image-icon-picker__label">Icon</span>
+            <button class="image-icon-pill image-icon-pill--active" type="button" data-card-icon-mode="auto" aria-pressed="true">Auto</button>
+            <button class="image-icon-pill" type="button" data-card-icon-mode="none" aria-pressed="false">None</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="share-image-preview-wrap">
+        <div class="share-image-loading" id="share-image-loading">Creating preview…</div>
+        <img class="share-image-preview" id="share-image-preview" alt="Preview of your SignMyWord share image" hidden>
+      </div>
+
+      <p class="image-modal__status" id="image-modal-status" aria-live="polite"></p>
+
+      <div class="image-modal__actions">
+        <button class="button button--primary" id="share-image-file" type="button">Share image</button>
+        <button class="button button--secondary" id="download-share-image" type="button">Download PNG</button>
+        <button class="button button--secondary" id="copy-image" type="button">Copy image</button>
+      </div>
+      <p class="image-attribution"><a href="./terms.html#artwork">Info &amp; licences</a></p>
+    </section>
+  </div>
+
+  <div class="share-card-capture" aria-hidden="true">
+    <article class="share-card share-card--light" id="share-card">
+      <div class="share-card__topline">
+        <div class="share-card__brand">
+          <span class="share-card__brand-name">SignMyWord</span>
+        </div>
+        <div class="share-card__language" id="share-card-language"><span class="flag-icon flag-icon--gb" aria-hidden="true"></span><span>BSL</span></div>
+      </div>
+
+      <div class="share-card__title-row">
+        <h2 class="share-card__title" id="share-card-title">How to fingerspell “HELLO” in British Sign Language (BSL)</h2>
+      </div>
+
+      <div class="share-card__letters" id="share-card-letters"></div>
+
+      <div class="share-card__icon-row">
+        <img class="share-card__emoji-badge" id="share-card-emoji" alt="" hidden aria-hidden="true">
+      </div>
+
+      <div class="share-card__footer">
+        <div class="share-card__footer-copy">
+          <strong>signmyword.com/</strong>
+          <span>Type a word. See the signs. Share your own.</span>
+        </div>
+        <div class="share-card__qr" id="share-card-qr" aria-hidden="true"></div>
+      </div>
+    </article>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <script src="./blocked-words.js" defer></script>
+  <script src="./app.js?v=20261004-1128" defer></script>
+</body>
+</html>
