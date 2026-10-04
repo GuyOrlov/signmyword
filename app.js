@@ -1,3 +1,6 @@
+const SITE_URL = 'https://signmyword.com/';
+const SITE_LABEL = 'signmyword.com';
+
 const state = {
   lang: 'bsl',
   word: 'HELLO',
@@ -67,6 +70,7 @@ const el = {
   shareCardLetters: document.querySelector('#share-card-letters'),
   shareCardQr: document.querySelector('#share-card-qr'),
   shareCardLanguage: document.querySelector('#share-card-language'),
+  shareCardSite: document.querySelector('#share-card-site'),
   popularSection: document.querySelector('#popular-searches'),
   popularCloud: document.querySelector('#popular-word-cloud'),
   popularSubtitle: document.querySelector('#popular-searches-subtitle'),
@@ -134,14 +138,26 @@ const AUTO_ICON_RULES = [
   { icon: 'hello', phrases: ['GOOD MORNING'], words: ['HELLO', 'WELCOME', 'HI'] },
 ];
 
-function autoIconForWord(value = '') {
-  const normalized = String(value)
+function normalizedPhrase(value = '') {
+  return String(value)
     .toUpperCase()
     .replace(/[^A-Z\s'-]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
+}
 
+function autoIconForWord(value = '') {
+  const normalized = normalizedPhrase(value);
   const tokens = new Set(normalized.split(' ').filter(Boolean));
+
+  // ASL has a recognised “I love you” handshape, so use it instead of a heart.
+  if (state.lang === 'asl' && normalized === 'I LOVE YOU') {
+    return {
+      icon: 'asl-ily',
+      emoji: '🤟',
+      label: 'ASL I love you handshape',
+    };
+  }
 
   for (const rule of AUTO_ICON_RULES) {
     if (rule.phrases.some((phrase) => normalized.includes(phrase))) return rule;
@@ -160,16 +176,32 @@ function updateShareCardIcon() {
   if (!el.shareCardEmoji) return;
 
   const icon = currentShareIcon();
+  el.shareCardEmoji.replaceChildren();
+  el.shareCardEmoji.className = 'share-card__emoji-badge';
+  el.shareCardEmoji.removeAttribute('data-icon');
+  el.shareCardEmoji.removeAttribute('aria-label');
+  el.shareCardEmoji.removeAttribute('role');
 
   if (!icon) {
     el.shareCardEmoji.hidden = true;
-    el.shareCardEmoji.removeAttribute('src');
-    el.shareCardEmoji.removeAttribute('data-icon');
     return;
   }
 
-  el.shareCardEmoji.src = `./assets/icons/${icon.icon}.png`;
   el.shareCardEmoji.dataset.icon = icon.icon;
+
+  if (icon.emoji) {
+    el.shareCardEmoji.classList.add('share-card__emoji-badge--text');
+    el.shareCardEmoji.textContent = icon.emoji;
+    el.shareCardEmoji.setAttribute('role', 'img');
+    el.shareCardEmoji.setAttribute('aria-label', icon.label || 'Decorative icon');
+  } else {
+    const image = document.createElement('img');
+    image.src = `./assets/icons/${icon.icon}.png`;
+    image.alt = '';
+    image.setAttribute('aria-hidden', 'true');
+    el.shareCardEmoji.appendChild(image);
+  }
+
   el.shareCardEmoji.hidden = false;
 }
 
@@ -618,6 +650,7 @@ async function renderShareCard() {
   }
 
   el.shareCardTitle.textContent = `How to fingerspell “${word}” in ${config.name} (${config.label})`;
+  if (el.shareCardSite) el.shareCardSite.textContent = SITE_LABEL;
   updateShareCardIcon();
   el.shareCardLetters.replaceChildren();
   el.shareCardLetters.className = 'share-card__letters';
@@ -1353,9 +1386,7 @@ function letterCount(word) {
 }
 
 function shareLink() {
-  const url = new URL(window.location.href);
-  url.search = '';
-  url.hash = '';
+  const url = new URL(SITE_URL);
   url.searchParams.set('lang', state.lang);
   url.searchParams.set('word', state.word);
   return url.toString();
