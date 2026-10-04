@@ -6947,3 +6947,35 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   max-height:132px!important;
 }
 /* End content-aware export layout */
+
+
+/* SignMyWord ASL ILY icon + canonical share footer — 2026-10-04 */
+.share-card__emoji-badge > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.share-card__emoji-badge--text {
+  display: grid !important;
+  place-items: center !important;
+  object-fit: initial !important;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 50px !important;
+  line-height: 1 !important;
+}
+
+.share-card--dense .share-card__emoji-badge--text {
+  font-size: 44px !important;
+}
+
+.share-card--very-dense .share-card__emoji-badge--text,
+.share-card--format-square .share-card__emoji-badge--text {
+  font-size: 40px !important;
+}
+
+.share-card--format-story .share-card__emoji-badge--text {
+  font-size: 56px !important;
+}
+/* End ASL ILY icon + canonical share footer */
