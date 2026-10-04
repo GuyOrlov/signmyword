@@ -7599,3 +7599,60 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   }
 }
 /* End example cards v2 */
+
+
+/* SignMyWord classroom print pagination fix — 2026-10-04 */
+@media print {
+  html,
+  body.classroom-page {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .classroom-print-brand {
+    display: inline-flex;
+    align-items: baseline;
+    font: 800 18pt/1 Inter, Arial, sans-serif;
+    letter-spacing: -.04em;
+  }
+
+  .classroom-print-brand__accent {
+    color: #1479f8 !important;
+  }
+
+  .classroom-print-brand__word {
+    color: #102a56 !important;
+  }
+
+  /* A printable grid can be treated as one unbreakable object by browsers.
+     Use normal document flow for worksheets so the first word starts on page 1. */
+  .classroom-page:not(.classroom-name-cards):not(.classroom-alphabet) .classroom-preview {
+    display: block !important;
+    padding-bottom: 10mm !important;
+  }
+
+  .classroom-page:not(.classroom-name-cards):not(.classroom-alphabet) .classroom-word {
+    margin: 0 0 5mm !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .classroom-page:not(.classroom-name-cards):not(.classroom-alphabet) .classroom-word:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .classroom-print-footer {
+    left: 12mm !important;
+    right: 12mm !important;
+    bottom: 5mm !important;
+    justify-content: center !important;
+    padding-top: 2mm !important;
+    text-align: center;
+  }
+
+  .classroom-print-site {
+    font: 800 8pt/1.2 Inter, Arial, sans-serif !important;
+    color: #102a56 !important;
+  }
+}
+/* End classroom print pagination fix */
