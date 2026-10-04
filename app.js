@@ -269,8 +269,13 @@ function trackMetric(name, detail = {}) {
     // Metrics are optional and stay anonymous on this device.
   }
 
-  if (Array.isArray(window.dataLayer)) {
-    window.dataLayer.push({ event: `signmyword_${name}`, ...detail });
+  // Send only product choices/counts, never the visitor's typed phrase.
+  if (typeof window.gtag === 'function') {
+    const safeDetail = {};
+    for (const key of ['lang', 'letters', 'words', 'category', 'style', 'format', 'file_type']) {
+      if (detail[key] !== undefined) safeDetail[key] = detail[key];
+    }
+    window.gtag('event', `signmyword_${name}`, safeDetail);
   }
 }
 
