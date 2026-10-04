@@ -77,7 +77,6 @@ const el = {
   popularTitle: document.querySelector('#popular-searches-title'),
   popularEyebrow: document.querySelector('#popular-searches-eyebrow'),
   popularTotal: document.querySelector('#popular-searches-total'),
-  heroWordStats: document.querySelector('#hero-word-stats'),
   surpriseWord: document.querySelector('#surprise-word'),
   recentSection: document.querySelector('#recent-searches'),
   recentChips: document.querySelector('#recent-searches-chips'),
@@ -1196,54 +1195,6 @@ function incrementWordUsage(word, lang = state.lang) {
   return next;
 }
 
-function renderHeroWordStats(value = state.word) {
-  if (!el.heroWordStats) return;
-
-  const previewWord = cleanWord(value);
-  el.heroWordStats.replaceChildren();
-
-  if (!previewWord) return;
-
-  const letters = letterCount(previewWord);
-  const words = phraseWords(previewWord).length;
-  const bslCount = wordUsageCount(previewWord, 'bsl');
-  const aslCount = wordUsageCount(previewWord, 'asl');
-
-  const word = document.createElement('strong');
-  word.textContent = previewWord;
-
-  const letterData = document.createElement('span');
-  letterData.className = 'hero-word-stats__letters';
-  letterData.textContent = words > 1
-    ? `${words} words · ${letters} letters`
-    : `${letters} ${letters === 1 ? 'letter' : 'letters'}`;
-
-  const makeLanguageStat = (lang, count) => {
-    const item = document.createElement('span');
-    item.className = 'hero-word-stats__language';
-
-    const flag = document.createElement('span');
-    flag.className = `flag-icon flag-icon--${lang === 'bsl' ? 'gb' : 'us'}`;
-    flag.setAttribute('aria-hidden', 'true');
-
-    const label = document.createElement('span');
-    label.textContent = LANGUAGES[lang].label;
-
-    const usage = document.createElement('span');
-    usage.className = 'hero-word-stats__count';
-    usage.textContent = `${count.toLocaleString()} ${count === 1 ? 'search' : 'searches'}`;
-
-    item.append(flag, label, usage);
-    return item;
-  };
-
-  el.heroWordStats.append(
-    word,
-    letterData,
-    makeLanguageStat('bsl', bslCount),
-    makeLanguageStat('asl', aslCount)
-  );
-}
 
 function removeLiteralBackslashN() {
   const hero = document.querySelector('.marketing-hero__inner');
@@ -1384,18 +1335,22 @@ function renderPopularSuggestions() {
 
   el.popularCloud.replaceChildren();
 
-  suggestions.forEach((word, index) => {
+  suggestions.forEach((word) => {
+    const count = wordUsageCount(word, state.lang);
+
     const button = document.createElement('button');
     button.className = 'popular-word popular-word--suggestion';
     button.type = 'button';
-    button.dataset.tier = 'low';
+    button.dataset.tier = count >= 5 ? 'high' : count >= 2 ? 'medium' : 'low';
     button.dataset.lang = state.lang;
-    button.setAttribute('aria-label', `Number ${index + 1}: ${word}, ${config.label}`);
+    button.setAttribute(
+      'aria-label',
+      `${word}, ${count} ${count === 1 ? 'search' : 'searches'}, ${config.label}`
+    );
 
-    const rank = document.createElement('span');
-    rank.className = 'popular-word__rank';
-    rank.textContent = String(index + 1);
-    rank.setAttribute('aria-hidden', 'true');
+    const countLabel = document.createElement('span');
+    countLabel.className = 'popular-word__count';
+    countLabel.textContent = count.toLocaleString();
 
     const label = document.createElement('span');
     label.className = 'popular-word__label';
@@ -1413,7 +1368,7 @@ function renderPopularSuggestions() {
     languageName.textContent = config.label;
 
     language.append(flag, languageName);
-    button.append(rank, label, language);
+    button.append(countLabel, label, language);
 
     button.addEventListener('click', () => setWord(word, { track: false }));
     el.popularCloud.appendChild(button);
@@ -1466,12 +1421,7 @@ function renderPopularSummary(summary) {
     button.dataset.tier = tier;
     button.dataset.lang = lang;
 
-    const rank = document.createElement('span');
-    rank.className = 'popular-word__rank';
-    rank.textContent = String(index + 1);
-    rank.setAttribute('aria-hidden', 'true');
-
-    const countLabel = document.createElement('span');
+const countLabel = document.createElement('span');
     countLabel.className = 'popular-word__count';
     countLabel.textContent = count;
     countLabel.setAttribute('aria-hidden', 'true');
@@ -1492,7 +1442,7 @@ function renderPopularSummary(summary) {
     languageName.textContent = config.label;
 
     language.append(flag, languageName);
-    button.append(rank, label, language);
+    button.append(countLabel, label, language);
 
     button.addEventListener('click', () => {
       setLanguage(lang);
@@ -1777,7 +1727,6 @@ function render() {
   renderShare();
   updateClassroomLink();
   updateReportLink();
-  renderHeroWordStats();
   renderRecentSearches();
   if (practiceModeActive) renderPracticeCard();
   invalidateShareImage();
@@ -1838,7 +1787,6 @@ function setLanguage(language) {
   if (!LANGUAGES[language]) return;
   state.lang = language;
   render();
-  renderHeroWordStats();
   refreshPopularSearches();
   trackMetric('language_selected', { lang: language });
 }
@@ -1890,10 +1838,6 @@ function loadFromUrl() {
     el.message.textContent = 'That word or phrase isn’t available on SignMyWord. Try another.';
   }
 }
-
-el.input.addEventListener('input', () => {
-  renderHeroWordStats(el.input.value);
-});
 
 el.form.addEventListener('submit', (event) => {
   event.preventDefault();
