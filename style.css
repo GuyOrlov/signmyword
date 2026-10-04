@@ -6979,3 +6979,160 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   font-size: 56px !important;
 }
 /* End ASL ILY icon + canonical share footer */
+
+
+/* SignMyWord centred export composition + website-matched logo — 2026-10-04 */
+.share-card__brand-name {
+  display: inline-flex;
+  align-items: baseline;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.share-card__brand-accent {
+  color: #1479f8 !important;
+}
+
+.share-card__brand-word {
+  color: #102a56 !important;
+}
+
+/* Keep the brand matching the website even on decorative export themes. */
+.share-card--dark .share-card__brand-name,
+.share-card--colourful .share-card__brand-name,
+.share-card--love .share-card__brand-name,
+.share-card--birthday .share-card__brand-name,
+.share-card--school .share-card__brand-name {
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.94);
+}
+
+.share-card__topline {
+  flex: 0 0 auto;
+  width: 100%;
+  margin-bottom: 0 !important;
+}
+
+.share-card__main {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 22px 0;
+}
+
+.share-card__main-inner {
+  width: min(100%, 920px);
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin: auto;
+}
+
+.share-card__title-row {
+  width: 100%;
+  justify-content: center !important;
+  margin: 0 !important;
+}
+
+.share-card__title-row .share-card__title,
+.share-card__title {
+  max-width: 900px;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+.share-card__letters,
+.share-card__letters--phrase {
+  width: 100% !important;
+  margin-inline: auto !important;
+  justify-content: center !important;
+  justify-items: center !important;
+  align-content: center !important;
+}
+
+.share-card__word-group {
+  width: 100%;
+  margin-inline: auto;
+}
+
+.share-card__word-title {
+  text-align: center !important;
+}
+
+.share-card__word-letters {
+  margin-inline: auto !important;
+  justify-content: center !important;
+  justify-items: center !important;
+}
+
+.share-card__letter {
+  width: 100%;
+  margin-inline: auto;
+}
+
+.share-card__icon-row {
+  flex: 0 0 auto;
+  margin: 0 auto !important;
+}
+
+/* Format-aware centring: use the available middle space rather than hugging the top. */
+.share-card--format-portrait .share-card__main {
+  padding-block: 30px 24px;
+}
+
+.share-card--format-square .share-card__main {
+  padding-block: 18px 14px;
+}
+
+.share-card--format-story .share-card__main {
+  padding-block: 54px 34px;
+}
+
+.share-card--format-square .share-card__main-inner {
+  width: min(100%, 860px);
+  gap: 16px;
+}
+
+.share-card--format-story .share-card__main-inner {
+  width: min(100%, 920px);
+  gap: 30px;
+}
+
+/* Dense phrases still centre as one visual group, but use tighter spacing to avoid clipping. */
+.share-card--dense .share-card__main-inner {
+  gap: 14px;
+}
+
+.share-card--very-dense .share-card__main-inner {
+  gap: 10px;
+}
+
+.share-card--dense .share-card__main,
+.share-card--very-dense .share-card__main {
+  padding-block: 12px;
+}
+
+/* Short words get a balanced, central presentation across every output size. */
+.share-card--short .share-card__letters {
+  align-self: center !important;
+  margin-inline: auto !important;
+}
+
+.share-card--format-square.share-card--short .share-card__letters {
+  width: min(100%, 760px) !important;
+}
+
+.share-card--format-portrait.share-card--short .share-card__letters {
+  width: min(100%, 820px) !important;
+}
+
+.share-card--format-story.share-card--short .share-card__letters {
+  width: min(100%, 880px) !important;
+}
+/* End centred export composition */
