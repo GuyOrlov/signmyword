@@ -7262,3 +7262,112 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   max-height: 54px !important;
 }
 /* End square export overflow fix */
+
+
+/* SignMyWord cleaner example cards — 2026-10-04 */
+.seo-examples {
+  max-width: none !important;
+  margin-top: 34px;
+}
+
+.seo-examples__heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.seo-examples__heading h2 {
+  margin-bottom: 5px !important;
+}
+
+.seo-examples__heading p {
+  margin: 0;
+  color: var(--smw-text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.seo-example-links {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px !important;
+}
+
+.seo-example-links a {
+  min-height: 96px;
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 18px !important;
+  border: 1px solid var(--smw-border) !important;
+  border-radius: 18px !important;
+  background: #fff !important;
+  color: var(--smw-text-primary) !important;
+  text-decoration: none !important;
+  box-shadow: 0 8px 22px rgba(16,42,86,.035);
+  transition: border-color .16s ease, transform .16s ease, box-shadow .16s ease;
+}
+
+.seo-example-links a:hover {
+  border-color: var(--smw-blue) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(16,42,86,.07);
+}
+
+.seo-example-links__word {
+  color: var(--smw-text-primary);
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.seo-example-links__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--smw-text-secondary);
+  font-size: .84rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.seo-example-links__meta .flag-icon {
+  width: 21px;
+  height: 14px;
+  flex-basis: 21px;
+}
+
+.seo-example-links__classroom {
+  background: var(--smw-bg-blue-soft) !important;
+}
+
+@media (max-width: 1050px) {
+  .seo-example-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .seo-examples {
+    margin-top: 26px;
+  }
+
+  .seo-examples__heading {
+    margin-bottom: 12px;
+  }
+
+  .seo-example-links {
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+  }
+
+  .seo-example-links a {
+    min-height: 0;
+    padding: 14px 16px !important;
+  }
+}
+/* End cleaner example cards */
