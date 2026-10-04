@@ -8066,3 +8066,73 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   }
 }
 /* End BSL + ASL hero stats */
+
+
+/* Simplified popular examples + export size limits — 2026-10-04 */
+.popular-searches--hero .popular-searches__eyebrow:empty,
+.popular-searches--hero .popular-searches__subtitle:empty,
+.popular-searches--hero .popular-searches__total:empty {
+  display: none !important;
+}
+
+.popular-searches--hero .popular-searches__header {
+  margin-bottom: 10px !important;
+}
+
+.popular-searches--hero .popular-word {
+  min-height: 50px !important;
+  display: grid !important;
+  grid-template-columns: auto minmax(0,1fr) auto !important;
+  grid-template-areas: "rank label language" !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 11px !important;
+  border-radius: 14px !important;
+}
+
+.popular-searches--hero .popular-word__rank {
+  grid-area: rank;
+}
+
+.popular-searches--hero .popular-word__label {
+  grid-area: label;
+  align-self: center !important;
+  text-align: left;
+}
+
+.popular-searches--hero .popular-word__language {
+  grid-area: language;
+  justify-self: end !important;
+  align-self: center !important;
+  margin: 0 !important;
+  padding: 3px 6px !important;
+}
+
+.popular-searches--hero .popular-word__data,
+.popular-searches--hero .popular-word__count {
+  display: none !important;
+}
+
+.image-size-limit-hint {
+  grid-column: 1 / -1;
+  display: block;
+  margin-top: 2px;
+  color: var(--smw-text-secondary);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.image-format-pill:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  background: #f5f7fa;
+  color: #7b8798;
+}
+
+@media (max-width: 760px) {
+  .popular-searches--hero .popular-word {
+    min-height: 52px !important;
+    grid-template-columns: auto minmax(0,1fr) auto !important;
+  }
+}
+/* End simplified examples + export limits */
