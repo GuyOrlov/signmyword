@@ -8015,3 +8015,54 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   }
 }
 /* End per-word usage line */
+
+
+/* Hero word stats: show BSL + ASL together — 2026-10-04 */
+.hero-word-stats {
+  gap: 8px !important;
+}
+
+.hero-word-stats > * + *::before {
+  content: none !important;
+}
+
+.hero-word-stats__letters,
+.hero-word-stats__language {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 5px 9px;
+  border: 1px solid var(--smw-border);
+  border-radius: 999px;
+  background: rgba(255,255,255,.92);
+}
+
+.hero-word-stats__language .flag-icon {
+  width: 18px;
+  height: 12px;
+  flex: 0 0 18px;
+}
+
+.hero-word-stats__language {
+  color: var(--smw-text-primary);
+  font-weight: 800;
+}
+
+.hero-word-stats__count {
+  color: var(--smw-blue);
+  font-weight: 800;
+}
+
+@media (max-width: 760px) {
+  .hero-word-stats {
+    justify-content: center;
+  }
+
+  .hero-word-stats__letters,
+  .hero-word-stats__language {
+    min-height: 28px;
+    padding: 4px 8px;
+  }
+}
+/* End BSL + ASL hero stats */
