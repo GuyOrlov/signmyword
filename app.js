@@ -1115,34 +1115,58 @@ function renderHeroWordStats(value = state.word) {
 
   if (!previewWord) return;
 
-  const config = LANGUAGES[state.lang];
-  const country = state.lang === 'bsl' ? 'UK' : 'USA';
   const letters = letterCount(previewWord);
   const words = phraseWords(previewWord).length;
-  const count = wordUsageCount(previewWord, state.lang);
+  const bslCount = wordUsageCount(previewWord, 'bsl');
+  const aslCount = wordUsageCount(previewWord, 'asl');
 
   const word = document.createElement('strong');
   word.textContent = previewWord;
 
-  const flag = document.createElement('span');
-  flag.className = `flag-icon flag-icon--${state.lang === 'bsl' ? 'gb' : 'us'}`;
-  flag.setAttribute('aria-hidden', 'true');
-
-  const language = document.createElement('span');
-  language.textContent = `${config.label} · ${country}`;
-
   const letterData = document.createElement('span');
+  letterData.className = 'hero-word-stats__letters';
   letterData.textContent = words > 1
     ? `${words} words · ${letters} letters`
     : `${letters} ${letters === 1 ? 'letter' : 'letters'}`;
 
-  const usage = document.createElement('span');
-  usage.className = 'hero-word-stats__count';
-  usage.textContent = count > 0
-    ? `${count.toLocaleString()} ${count === 1 ? 'search' : 'searches'} on this device`
-    : 'New on this device';
+  const makeLanguageStat = (lang, count) => {
+    const item = document.createElement('span');
+    item.className = 'hero-word-stats__language';
 
-  el.heroWordStats.append(word, flag, language, letterData, usage);
+    const flag = document.createElement('span');
+    flag.className = `flag-icon flag-icon--${lang === 'bsl' ? 'gb' : 'us'}`;
+    flag.setAttribute('aria-hidden', 'true');
+
+    const label = document.createElement('span');
+    label.textContent = LANGUAGES[lang].label;
+
+    const usage = document.createElement('span');
+    usage.className = 'hero-word-stats__count';
+    usage.textContent = `${count.toLocaleString()} ${count === 1 ? 'search' : 'searches'}`;
+
+    item.append(flag, label, usage);
+    return item;
+  };
+
+  el.heroWordStats.append(
+    word,
+    letterData,
+    makeLanguageStat('bsl', bslCount),
+    makeLanguageStat('asl', aslCount)
+  );
+}
+
+function removeLiteralBackslashN() {
+  const hero = document.querySelector('.marketing-hero__inner');
+  if (!hero) return;
+
+  const walker = document.createTreeWalker(hero, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+
+  nodes.forEach((node) => {
+    if (/^\s*\\n\s*$/.test(node.nodeValue || '')) node.remove();
+  });
 }
 
 function eligiblePopularWord(word) {
@@ -1959,6 +1983,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 loadFromUrl();
+removeLiteralBackslashN();
 applyEmbedMode();
 render();
 renderRecentSearches();
