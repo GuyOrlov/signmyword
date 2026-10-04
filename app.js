@@ -1107,18 +1107,22 @@ function incrementWordUsage(word, lang = state.lang) {
   return next;
 }
 
-function renderHeroWordStats() {
+function renderHeroWordStats(value = state.word) {
   if (!el.heroWordStats) return;
+
+  const previewWord = cleanWord(value);
+  el.heroWordStats.replaceChildren();
+
+  if (!previewWord) return;
 
   const config = LANGUAGES[state.lang];
   const country = state.lang === 'bsl' ? 'UK' : 'USA';
-  const letters = letterCount(state.word);
-  const count = wordUsageCount(state.word, state.lang);
-
-  el.heroWordStats.replaceChildren();
+  const letters = letterCount(previewWord);
+  const words = phraseWords(previewWord).length;
+  const count = wordUsageCount(previewWord, state.lang);
 
   const word = document.createElement('strong');
-  word.textContent = state.word;
+  word.textContent = previewWord;
 
   const flag = document.createElement('span');
   flag.className = `flag-icon flag-icon--${state.lang === 'bsl' ? 'gb' : 'us'}`;
@@ -1128,11 +1132,15 @@ function renderHeroWordStats() {
   language.textContent = `${config.label} · ${country}`;
 
   const letterData = document.createElement('span');
-  letterData.textContent = `${letters} ${letters === 1 ? 'letter' : 'letters'}`;
+  letterData.textContent = words > 1
+    ? `${words} words · ${letters} letters`
+    : `${letters} ${letters === 1 ? 'letter' : 'letters'}`;
 
   const usage = document.createElement('span');
   usage.className = 'hero-word-stats__count';
-  usage.textContent = `${count.toLocaleString()} ${count === 1 ? 'search' : 'searches'} on this device`;
+  usage.textContent = count > 0
+    ? `${count.toLocaleString()} ${count === 1 ? 'search' : 'searches'} on this device`
+    : 'New on this device';
 
   el.heroWordStats.append(word, flag, language, letterData, usage);
 }
@@ -1821,6 +1829,10 @@ function loadFromUrl() {
     el.message.textContent = 'That word or phrase isn’t available on SignMyWord. Try another.';
   }
 }
+
+el.input.addEventListener('input', () => {
+  renderHeroWordStats(el.input.value);
+});
 
 el.form.addEventListener('submit', (event) => {
   event.preventDefault();
