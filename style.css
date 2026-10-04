@@ -8136,3 +8136,57 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   }
 }
 /* End simplified examples + export limits */
+
+
+/* Popular words: count + word + flag + language only — 2026-10-04 */
+.hero-word-stats {
+  display: none !important;
+}
+
+.popular-searches--hero .popular-word {
+  min-height: 50px !important;
+  display: grid !important;
+  grid-template-columns: auto minmax(0,1fr) auto !important;
+  grid-template-areas: "count label language" !important;
+  align-items: center !important;
+  gap: 9px !important;
+  padding: 8px 12px !important;
+  border-radius: 14px !important;
+}
+
+.popular-searches--hero .popular-word__count {
+  grid-area: count !important;
+  min-width: 30px !important;
+  height: 30px !important;
+  padding: 0 8px !important;
+  font-size: 12px !important;
+  font-weight: 800;
+}
+
+.popular-searches--hero .popular-word__label {
+  grid-area: label !important;
+  align-self: center !important;
+  text-align: left !important;
+  font-size: 13px !important;
+  font-weight: 800;
+}
+
+.popular-searches--hero .popular-word__language {
+  grid-area: language !important;
+  justify-self: end !important;
+  align-self: center !important;
+  margin: 0 !important;
+  padding: 3px 6px !important;
+}
+
+.popular-searches--hero .popular-word__rank,
+.popular-searches--hero .popular-word__data {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .popular-searches--hero .popular-word {
+    min-height: 52px !important;
+  }
+}
+/* End popular words simplification */
