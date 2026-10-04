@@ -7656,3 +7656,138 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   }
 }
 /* End classroom print pagination fix */
+
+
+/* Homepage hero polish: centred disclaimer + richer quick examples — 2026-10-04 */
+.fingerspelling-disclaimer {
+  width: min(820px, 100%);
+  max-width: 820px;
+  margin: 12px auto 0 !important;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  text-align: center;
+  color: var(--smw-text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.fingerspelling-disclaimer strong {
+  color: var(--smw-text-primary);
+}
+
+.fingerspelling-disclaimer span {
+  display: inline;
+}
+
+.popular-searches--hero {
+  width: min(980px, 100%);
+  margin-top: 20px !important;
+}
+
+.popular-searches--hero .popular-searches__header {
+  justify-content: center;
+  text-align: center;
+}
+
+.popular-searches--hero .popular-searches__header > div {
+  text-align: center;
+}
+
+.popular-searches--hero .popular-searches__total {
+  position: absolute;
+  right: 0;
+}
+
+.popular-searches--hero .popular-word-cloud {
+  gap: 10px;
+}
+
+.popular-searches--hero .popular-word {
+  min-height: 52px;
+  display: grid !important;
+  grid-template-columns: auto auto;
+  grid-template-areas:
+    "label data"
+    "language language";
+  align-items: center;
+  justify-content: center;
+  gap: 5px 9px;
+  padding: 8px 12px;
+  border-radius: 16px;
+}
+
+.popular-searches--hero .popular-word__label {
+  grid-area: label;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.popular-searches--hero .popular-word__data {
+  grid-area: data;
+  padding: 3px 6px;
+  border-radius: 999px;
+  background: #f3f7fc;
+  color: #52657d;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.popular-searches--hero .popular-word__language {
+  grid-area: language;
+  justify-self: center;
+  margin: 0;
+  padding: 3px 6px;
+  background: transparent;
+  color: var(--smw-text-secondary);
+  font-size: 9px;
+}
+
+.popular-searches--hero .popular-word__count {
+  grid-area: data;
+}
+
+.popular-searches--hero .popular-word__flag.flag-icon {
+  width: 17px;
+  height: 11px;
+  flex-basis: 17px;
+}
+
+@media (max-width: 760px) {
+  .fingerspelling-disclaimer {
+    width: 100%;
+    margin-top: 12px !important;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .popular-searches--hero .popular-searches__header,
+  .popular-searches--hero .popular-searches__header > div {
+    text-align: center;
+  }
+
+  .popular-searches--hero .popular-searches__total {
+    position: static;
+    justify-content: center;
+  }
+
+  .popular-searches--hero .popular-word-cloud {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .popular-searches--hero .popular-word {
+    width: 100%;
+    min-height: 72px;
+  }
+}
+
+@media (max-width: 430px) {
+  .popular-searches--hero .popular-word-cloud {
+    grid-template-columns: 1fr;
+  }
+}
+/* End homepage hero polish */
