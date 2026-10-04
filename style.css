@@ -7415,3 +7415,187 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   }
 }
 /* End classroom print footer */
+
+
+/* SignMyWord example cards v2: centred + useful data — 2026-10-04 */
+.seo-examples {
+  max-width: none !important;
+  margin-top: 40px;
+  padding: 30px;
+  border: 1px solid var(--smw-border);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(20,121,248,.10), transparent 42%),
+    linear-gradient(180deg, #fbfdff 0%, #f7faff 100%);
+}
+
+.seo-examples__heading {
+  display: grid !important;
+  justify-items: center;
+  gap: 6px;
+  margin: 0 auto 22px !important;
+  text-align: center;
+}
+
+.seo-examples__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--smw-bg-blue-soft);
+  color: var(--smw-blue);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.seo-examples__heading h2 {
+  margin: 0 !important;
+}
+
+.seo-examples__heading p {
+  max-width: 680px;
+  margin: 0 !important;
+  color: var(--smw-text-secondary);
+  font-size: .98rem;
+  line-height: 1.55;
+}
+
+.seo-example-links {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px !important;
+}
+
+.seo-example-links a {
+  min-height: 150px;
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
+  padding: 18px !important;
+  border: 1px solid #d9e5f4 !important;
+  border-radius: 20px !important;
+  background: rgba(255,255,255,.94) !important;
+  color: var(--smw-text-primary) !important;
+  text-decoration: none !important;
+  box-shadow: 0 8px 24px rgba(16,42,86,.045);
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+.seo-example-links a:hover {
+  transform: translateY(-3px);
+  border-color: var(--smw-blue) !important;
+  box-shadow: 0 14px 30px rgba(16,42,86,.09);
+}
+
+.seo-example-links__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.seo-example-links__language {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  color: var(--smw-text-secondary);
+  font-size: .79rem;
+  font-weight: 800;
+}
+
+.seo-example-links__language .flag-icon {
+  width: 22px;
+  height: 15px;
+  flex-basis: 22px;
+}
+
+.seo-example-links__data {
+  flex: 0 0 auto;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #f3f7fc;
+  color: #52657d;
+  font-size: .72rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.seo-example-links__word {
+  display: block;
+  margin-block: auto;
+  color: var(--smw-text-primary);
+  font-size: clamp(1.08rem, 1.4vw, 1.28rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -.02em;
+  text-align: center;
+}
+
+.seo-example-links__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--smw-blue);
+  font-size: .8rem;
+  font-weight: 800;
+}
+
+.seo-example-links__classroom {
+  background: linear-gradient(180deg, #f6f9ff 0%, #eef5ff 100%) !important;
+}
+
+@media (max-width: 1180px) {
+  .seo-example-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .seo-examples {
+    margin-top: 28px;
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  .seo-examples__heading {
+    margin-bottom: 16px !important;
+  }
+
+  .seo-example-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .seo-example-links a {
+    min-height: 132px;
+    padding: 14px !important;
+  }
+
+  .seo-example-links__top {
+    align-items: flex-start;
+  }
+
+  .seo-example-links__data {
+    white-space: normal;
+    text-align: right;
+  }
+}
+
+@media (max-width: 480px) {
+  .seo-example-links {
+    grid-template-columns: 1fr !important;
+  }
+
+  .seo-example-links a {
+    min-height: 118px;
+  }
+}
+/* End example cards v2 */
