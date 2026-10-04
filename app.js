@@ -40,6 +40,7 @@ const LANGUAGES = {
 const el = {
   form: document.querySelector('#word-form'),
   input: document.querySelector('#word-input'),
+  wordLimitCounter: document.querySelector('#word-limit-counter'),
   output: document.querySelector('#letter-output'),
   outputMeta: document.querySelector('#output-meta'),
   outputLang: document.querySelector('#output-lang'),
@@ -125,6 +126,9 @@ const shareImageState = {
   blob: null,
   previewUrl: null,
 };
+
+const GENERATOR_MAX_LETTERS = 24;
+const GENERATOR_MAX_WORDS = 5;
 
 const SHARE_FORMATS = {
   portrait: { width: 1080, height: 1350, label: 'portrait' },
@@ -1527,7 +1531,21 @@ function cleanWord(value) {
     .replace(/[^A-Z\s'-]/g, '')
     .replace(/\s+/g, ' ')
     .trim()
-    .slice(0, 32);
+    .slice(0, GENERATOR_MAX_LETTERS);
+}
+
+function updateWordLimitCounter(value = el.input?.value || state.word) {
+  if (!el.wordLimitCounter) return;
+  const cleaned = cleanWord(value);
+  const letters = letterCount(cleaned);
+  const words = phraseWords(cleaned).length;
+  el.wordLimitCounter.textContent =
+    `${letters} / ${GENERATOR_MAX_LETTERS} letters` +
+    (words ? ` · ${words} / ${GENERATOR_MAX_WORDS} words` : '');
+  el.wordLimitCounter.classList.toggle(
+    'word-limit-counter--warning',
+    letters >= GENERATOR_MAX_LETTERS - 3 || words >= GENERATOR_MAX_WORDS
+  );
 }
 
 function letterCount(word) {
@@ -1739,6 +1757,7 @@ function render() {
   renderShare();
   updateClassroomLink();
   updateReportLink();
+  updateWordLimitCounter();
   renderRecentSearches();
   if (practiceModeActive) renderPracticeCard();
   invalidateShareImage();
@@ -1756,6 +1775,13 @@ function setWord(value, options = {}) {
   if (!next) {
     el.message.textContent = 'Please enter at least one letter A–Z.';
     el.input.focus();
+    return;
+  }
+
+  if (phraseWords(next).length > GENERATOR_MAX_WORDS) {
+    el.message.textContent = `Please use ${GENERATOR_MAX_WORDS} words or fewer.`;
+    el.input.focus();
+    updateWordLimitCounter(next);
     return;
   }
   state.word = next;
@@ -1850,6 +1876,16 @@ function loadFromUrl() {
     el.message.textContent = 'That word or phrase isn’t available on SignMyWord. Try another.';
   }
 }
+
+el.input.addEventListener('input', () => {
+  updateWordLimitCounter(el.input.value);
+  const cleaned = cleanWord(el.input.value);
+  if (phraseWords(cleaned).length > GENERATOR_MAX_WORDS) {
+    el.message.textContent = `Maximum ${GENERATOR_MAX_WORDS} words.`;
+  } else if (el.message.textContent === `Maximum ${GENERATOR_MAX_WORDS} words.`) {
+    el.message.textContent = '';
+  }
+});
 
 el.form.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -1984,4 +2020,5 @@ renderRecentSearches();
 updatePracticeMode();
 syncShareFormatAvailability({ autoSelect: true });
 updateImageCustomiseHint();
+updateWordLimitCounter();
 refreshPopularSearches();
