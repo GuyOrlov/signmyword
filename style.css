@@ -8190,3 +8190,81 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   }
 }
 /* End popular words simplification */
+
+
+/* Mixed BSL + ASL popular cards with visible counts — 2026-10-04 */
+.popular-searches--hero .popular-word-cloud {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+}
+
+.popular-searches--hero .popular-word {
+  width: auto !important;
+  min-width: 150px;
+  min-height: 50px !important;
+  display: grid !important;
+  grid-template-columns: auto minmax(0,1fr) auto !important;
+  grid-template-areas: "count label language" !important;
+  align-items: center !important;
+  gap: 9px !important;
+  padding: 8px 12px !important;
+}
+
+.popular-searches--hero .popular-word__count {
+  display: inline-flex !important;
+  grid-area: count !important;
+  min-width: 30px !important;
+  height: 30px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 8px !important;
+  border-radius: 999px !important;
+  background: #eef5ff !important;
+  color: #155eef !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+}
+
+.popular-searches--hero .popular-word__label {
+  grid-area: label !important;
+  white-space: nowrap;
+}
+
+.popular-searches--hero .popular-word__language {
+  grid-area: language !important;
+  display: inline-flex !important;
+  justify-self: end !important;
+  align-items: center !important;
+  gap: 4px !important;
+  margin: 0 !important;
+  padding: 3px 5px !important;
+}
+
+.popular-searches--hero .popular-word__flag.flag-icon {
+  width: 17px !important;
+  height: 11px !important;
+  flex-basis: 17px !important;
+}
+
+@media (max-width: 760px) {
+  .popular-searches--hero .popular-word-cloud {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .popular-searches--hero .popular-word {
+    min-width: 0;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .popular-searches--hero .popular-word-cloud {
+    grid-template-columns: 1fr !important;
+  }
+}
+/* End mixed BSL + ASL popular cards */
