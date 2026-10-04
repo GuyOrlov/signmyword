@@ -89,6 +89,7 @@ const el = {
   copyImage: document.querySelector('#copy-image'),
   imageCustomise: document.querySelector('#image-customise'),
   imageCustomiseHint: document.querySelector('#image-customise-hint'),
+  imageSizeLimitHint: document.querySelector('#image-size-limit-hint'),
   reportProblem: document.querySelector('#report-problem'),
   practicePanel: document.querySelector('#practice-panel'),
   practiceImage: document.querySelector('#practice-image'),
@@ -130,6 +131,12 @@ const SHARE_FORMATS = {
   portrait: { width: 1080, height: 1350, label: 'portrait' },
   square: { width: 1080, height: 1080, label: 'square' },
   story: { width: 1080, height: 1920, label: 'story' },
+};
+
+const SHARE_LIMITS = {
+  square: { letters: 10, words: 3 },
+  portrait: { letters: 16, words: 4 },
+  story: { letters: 24, words: 5 },
 };
 
 const AUTO_ICON_RULES = [
@@ -303,6 +310,69 @@ function setImageModalStatus(message = '') {
 
 function imageChoiceLabel(value = '') {
   return String(value).charAt(0).toUpperCase() + String(value).slice(1);
+}
+
+function sharePhraseMetrics() {
+  return {
+    letters: letterCount(state.word),
+    words: phraseWords(state.word).length,
+  };
+}
+
+function shareFormatFits(format, metrics = sharePhraseMetrics()) {
+  const limit = SHARE_LIMITS[format];
+  if (!limit) return false;
+  return metrics.letters <= limit.letters && metrics.words <= limit.words;
+}
+
+function minimumShareFormat(metrics = sharePhraseMetrics()) {
+  if (shareFormatFits('square', metrics)) return 'square';
+  if (shareFormatFits('portrait', metrics)) return 'portrait';
+  if (shareFormatFits('story', metrics)) return 'story';
+  return null;
+}
+
+function syncShareFormatAvailability({ autoSelect = false } = {}) {
+  const metrics = sharePhraseMetrics();
+  const minimum = minimumShareFormat(metrics);
+
+  el.imageFormatButtons.forEach((button) => {
+    const format = button.dataset.cardFormat;
+    const fits = shareFormatFits(format, metrics);
+    button.disabled = !fits;
+    button.setAttribute('aria-disabled', String(!fits));
+    button.title = fits
+      ? ''
+      : `Too long for ${imageChoiceLabel(format)}. Maximum: ${SHARE_LIMITS[format].letters} letters and ${SHARE_LIMITS[format].words} words.`;
+  });
+
+  if (autoSelect && minimum && !shareFormatFits(shareImageState.format, metrics)) {
+    shareImageState.format = minimum;
+  }
+
+  el.imageFormatButtons.forEach((button) => {
+    const active = button.dataset.cardFormat === shareImageState.format;
+    button.classList.toggle('image-format-pill--active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+
+  if (el.imageSizeLimitHint) {
+    if (!minimum) {
+      el.imageSizeLimitHint.textContent =
+        `Too long for a share image: ${metrics.letters} letters, ${metrics.words} words. Maximum is 24 letters and 5 words.`;
+    } else if (minimum === 'story') {
+      el.imageSizeLimitHint.textContent =
+        `Story selected automatically for ${metrics.letters} letters / ${metrics.words} words.`;
+    } else if (minimum === 'portrait') {
+      el.imageSizeLimitHint.textContent =
+        `Portrait or Story fits this phrase (${metrics.letters} letters / ${metrics.words} words).`;
+    } else {
+      el.imageSizeLimitHint.textContent =
+        `Square, Portrait or Story all fit (${metrics.letters} letters / ${metrics.words} words).`;
+    }
+  }
+
+  return minimum;
 }
 
 function updateImageCustomiseHint() {
@@ -636,6 +706,15 @@ async function renderShareCard() {
   const count = letterCount(word);
   const words = phraseWords(word);
   const isPhrase = words.length > 1;
+  const metrics = { letters: count, words: words.length };
+
+  if (!minimumShareFormat(metrics)) {
+    throw new Error('This phrase is too long for a share image. Use 24 letters / 5 words or fewer.');
+  }
+
+  if (!shareFormatFits(shareImageState.format, metrics)) {
+    throw new Error(`This phrase is too long for ${imageChoiceLabel(shareImageState.format)}. Choose a larger image size.`);
+  }
 
   const format = SHARE_FORMATS[shareImageState.format] || SHARE_FORMATS.portrait;
   el.shareCard.className = `share-card share-card--${shareImageState.style} share-card--format-${shareImageState.format}`;
@@ -773,11 +852,21 @@ async function openImageMaker() {
   if (!el.imageModal) return;
 
   trackMetric('image_maker_opened', { lang: state.lang });
+  const minimumFormat = syncShareFormatAvailability({ autoSelect: true });
   updateImageCustomiseHint();
   el.imageModal.hidden = false;
   document.body.classList.add('modal-open');
   setImageModalStatus('');
   invalidateShareImage();
+
+  if (!minimumFormat) {
+    if (el.imageLoading) {
+      el.imageLoading.hidden = false;
+      el.imageLoading.textContent = 'Phrase too long for a share image';
+    }
+    setImageModalStatus('Shorten the phrase to 24 letters and 5 words or fewer.');
+    return;
+  }
 
   try {
     await generateShareImageBlob();
@@ -1292,22 +1381,16 @@ function renderPopularSuggestions() {
 
   const suggestions = SAFE_POPULAR_WORDS.slice(0, 6);
   const config = LANGUAGES[state.lang];
-  const country = state.lang === 'bsl' ? 'UK' : 'USA';
 
   el.popularCloud.replaceChildren();
 
   suggestions.forEach((word, index) => {
-    const letters = letterCount(word);
-
     const button = document.createElement('button');
     button.className = 'popular-word popular-word--suggestion';
     button.type = 'button';
     button.dataset.tier = 'low';
     button.dataset.lang = state.lang;
-    button.setAttribute(
-      'aria-label',
-      `Number ${index + 1}: ${word}, ${config.name}, ${letters} ${letters === 1 ? 'letter' : 'letters'}`
-    );
+    button.setAttribute('aria-label', `Number ${index + 1}: ${word}, ${config.label}`);
 
     const rank = document.createElement('span');
     rank.className = 'popular-word__rank';
@@ -1318,10 +1401,6 @@ function renderPopularSuggestions() {
     label.className = 'popular-word__label';
     label.textContent = word;
 
-    const data = document.createElement('span');
-    data.className = 'popular-word__data';
-    data.textContent = `${letters} ${letters === 1 ? 'letter' : 'letters'}`;
-
     const language = document.createElement('span');
     language.className = 'popular-word__language';
     language.setAttribute('aria-hidden', 'true');
@@ -1331,18 +1410,18 @@ function renderPopularSuggestions() {
 
     const languageName = document.createElement('span');
     languageName.className = 'popular-word__language-name';
-    languageName.textContent = `${config.label} · ${country}`;
+    languageName.textContent = config.label;
 
     language.append(flag, languageName);
-    button.append(rank, label, data, language);
+    button.append(rank, label, language);
 
     button.addEventListener('click', () => setWord(word, { track: false }));
     el.popularCloud.appendChild(button);
   });
 
-  if (el.popularEyebrow) el.popularEyebrow.textContent = 'Suggested words';
+  if (el.popularEyebrow) el.popularEyebrow.textContent = '';
   if (el.popularTitle) el.popularTitle.textContent = `Popular ${config.label} examples`;
-  el.popularSubtitle.textContent = `Six privacy-safe examples in ${config.name}. Live search rankings appear once enough usage data is available.`;
+  el.popularSubtitle.textContent = '';
   el.popularTotal.textContent = '';
   el.popularSection.hidden = false;
 }
@@ -1355,7 +1434,7 @@ function renderPopularSummary(summary) {
     renderPopularSuggestions();
     return;
   }
-  if (el.popularEyebrow) el.popularEyebrow.textContent = 'Trending now';
+  if (el.popularEyebrow) el.popularEyebrow.textContent = '';
   if (el.popularTitle) el.popularTitle.textContent = 'Popular this week';
 
   const counts = words.map((item) => item.count);
@@ -1413,7 +1492,7 @@ function renderPopularSummary(summary) {
     languageName.textContent = config.label;
 
     language.append(flag, languageName);
-    button.append(rank, countLabel, label, language);
+    button.append(rank, label, language);
 
     button.addEventListener('click', () => {
       setLanguage(lang);
@@ -1424,51 +1503,9 @@ function renderPopularSummary(summary) {
     el.popularCloud.appendChild(button);
   });
 
-  const totals = summary.languageTotals || { bsl: 0, asl: 0 };
-
   el.popularTotal.replaceChildren();
 
-  const addLanguageTotal = (lang, count) => {
-    if (!count) return;
-
-    if (el.popularTotal.childNodes.length) {
-      const separator = document.createElement('span');
-      separator.className = 'popular-searches__separator';
-      separator.textContent = '·';
-      separator.setAttribute('aria-hidden', 'true');
-      el.popularTotal.appendChild(separator);
-    }
-
-    const item = document.createElement('span');
-    item.className = 'popular-searches__language-total';
-
-    const number = document.createElement('span');
-    number.textContent = count.toLocaleString();
-
-    const flag = document.createElement('span');
-    flag.className = `flag-icon flag-icon--${lang === 'bsl' ? 'gb' : 'us'}`;
-    flag.setAttribute('aria-hidden', 'true');
-
-    const label = document.createElement('span');
-    label.textContent = LANGUAGES[lang].label;
-
-    item.append(number, flag, label);
-    el.popularTotal.appendChild(item);
-  };
-
-  addLanguageTotal('bsl', totals.bsl);
-  addLanguageTotal('asl', totals.asl);
-
-  if (!el.popularTotal.childNodes.length) {
-    el.popularTotal.textContent =
-      `${summary.total.toLocaleString()} ${summary.total === 1 ? 'search' : 'searches'} this week`;
-  }
-
-  if (summary.source === 'site') {
-    el.popularSubtitle.textContent = 'Top BSL and ASL searches from the last 7 days.';
-  } else {
-    el.popularSubtitle.textContent = 'Top searches on this device from the last 7 days.';
-  }
+  el.popularSubtitle.textContent = '';
 
   el.popularSection.hidden = false;
 }
@@ -1915,6 +1952,7 @@ el.copyImage?.addEventListener('click', copyGeneratedImage);
 
 el.imageFormatButtons.forEach((button) => {
   button.addEventListener('click', async () => {
+    if (button.disabled) return;
     shareImageState.format = button.dataset.cardFormat || 'portrait';
     trackMetric('format_selected', { format: shareImageState.format, lang: state.lang });
 
@@ -1988,5 +2026,6 @@ applyEmbedMode();
 render();
 renderRecentSearches();
 updatePracticeMode();
+syncShareFormatAvailability({ autoSelect: true });
 updateImageCustomiseHint();
 refreshPopularSearches();
