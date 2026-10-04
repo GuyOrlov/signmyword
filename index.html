@@ -114,7 +114,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css?v=20261004-1835">
+  <link rel="stylesheet" href="./style.css?v=20261004-1905">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZX7FJNJ1Y"></script>
   <script>
@@ -152,7 +152,7 @@
             name="word"
             type="text"
             value="HELLO"
-            maxlength="32"
+            maxlength="24"
             autocomplete="off"
             autocapitalize="characters"
             spellcheck="false"
@@ -162,6 +162,7 @@
           >
           <button class="button button--primary hero-go" type="submit">Show signs</button>
         </form>
+        <p class="word-limit-counter" id="word-limit-counter" aria-live="polite">0 / 24 letters</p>
         <p class="fingerspelling-disclaimer"><strong>Fingerspelling, not full sign-language translation.</strong><span>SignMyWord shows written letters with the BSL or ASL manual alphabet.</span></p>
         <p class="message hero-message" id="form-message" aria-live="polite"></p>
 
@@ -367,6 +368,6 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
   <script src="./blocked-words.js" defer></script>
-  <script src="./app.js?v=20261004-1835" defer></script>
+  <script src="./app.js?v=20261004-1905" defer></script>
 </body>
 </html>
