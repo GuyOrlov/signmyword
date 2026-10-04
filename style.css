@@ -7854,3 +7854,108 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   }
 }
 /* End homepage ranked examples */
+
+
+/* Homepage popular header cleanup — 2026-10-04 */
+.popular-searches--hero .popular-searches__header {
+  position: static !important;
+  display: grid !important;
+  justify-items: center !important;
+  align-items: center !important;
+  gap: 7px !important;
+  margin: 0 0 12px !important;
+  text-align: center !important;
+}
+
+.popular-searches--hero .popular-searches__header > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+  text-align: center !important;
+}
+
+.popular-searches--hero .popular-searches__eyebrow,
+.popular-searches--hero h2 {
+  display: inline-block !important;
+  margin: 0 !important;
+}
+
+.popular-searches--hero .popular-searches__eyebrow {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--smw-bg-blue-soft);
+  color: var(--smw-blue);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.popular-searches--hero h2 {
+  color: var(--smw-text-secondary);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.popular-searches--hero .popular-searches__total {
+  position: static !important;
+  inset: auto !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center !important;
+  flex-wrap: wrap;
+  gap: 6px !important;
+  margin: 0 !important;
+  width: auto !important;
+  max-width: 100%;
+  color: var(--smw-text-secondary);
+  font-size: 10px !important;
+  text-align: center !important;
+}
+
+.popular-searches--hero .popular-searches__language-total {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 28px;
+  padding: 5px 9px;
+  border: 1px solid var(--smw-border);
+  border-radius: 999px;
+  background: rgba(255,255,255,.9);
+  color: var(--smw-text-primary);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.popular-searches--hero .popular-searches__language-total .flag-icon {
+  width: 17px;
+  height: 11px;
+  flex-basis: 17px;
+}
+
+.popular-searches--hero .popular-searches__separator {
+  display: none !important;
+}
+
+.popular-searches--hero .popular-word-cloud {
+  justify-content: center !important;
+}
+
+@media (max-width: 760px) {
+  .popular-searches--hero .popular-searches__header {
+    display: grid !important;
+    justify-items: center !important;
+    gap: 7px !important;
+  }
+
+  .popular-searches--hero .popular-searches__header > div {
+    justify-content: center !important;
+  }
+
+  .popular-searches--hero .popular-searches__total {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+/* End homepage popular header cleanup */
