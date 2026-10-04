@@ -23,7 +23,20 @@ const quiz = document.querySelector('#classroom-quiz');
 const classroomStatus = document.querySelector('#classroom-status');
 const classroomTemplate = document.querySelector('#classroom-template');
 const classroomPrintLanguage = document.querySelector('#classroom-print-language');
+const classroomPrintDateTime = document.querySelector('#classroom-print-datetime');
 const languageButtons = [...document.querySelectorAll('[data-classroom-language]')];
+
+function updateClassroomPrintFooter() {
+  if (!classroomPrintDateTime) return;
+  classroomPrintDateTime.textContent = new Intl.DateTimeFormat('en-GB', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }).format(new Date());
+}
 
 function isBlockedClassroomInput(value) {
   return Boolean(window.SignMyWordModeration?.check(value)?.blocked);
@@ -155,9 +168,14 @@ languageButtons.forEach((button) => {
 
 generate.addEventListener('click', renderClassroom);
 classroomTemplate?.addEventListener('change', renderClassroom);
-printButton.addEventListener('click', () => window.print());
+printButton.addEventListener('click', () => {
+  updateClassroomPrintFooter();
+  window.print();
+});
+window.addEventListener('beforeprint', updateClassroomPrintFooter);
 quiz.addEventListener('change', () => {
   document.body.classList.toggle('quiz-mode', quiz.checked);
 });
 
+updateClassroomPrintFooter();
 setClassroomLanguage(classroomLanguage);
