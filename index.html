@@ -114,7 +114,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css?v=20261004-1205">
+  <link rel="stylesheet" href="./style.css?v=20261004-1245">
 </head>
 <body>
   <a class="skip-link" href="#word-input">Skip to fingerspelling tool</a>
@@ -336,20 +336,24 @@
   <div class="share-card-capture" aria-hidden="true">
     <article class="share-card share-card--light" id="share-card">
       <div class="share-card__topline">
-        <div class="share-card__brand">
-          <span class="share-card__brand-name">SignMyWord</span>
+        <div class="share-card__brand" aria-label="SignMyWord">
+          <span class="share-card__brand-name"><span class="share-card__brand-accent">Sign</span><span class="share-card__brand-word">MyWord</span></span>
         </div>
         <div class="share-card__language" id="share-card-language"><span class="flag-icon flag-icon--gb" aria-hidden="true"></span><span>BSL</span></div>
       </div>
 
-      <div class="share-card__title-row">
-        <h2 class="share-card__title" id="share-card-title">How to fingerspell “HELLO” in British Sign Language (BSL)</h2>
-      </div>
+      <div class="share-card__main">
+        <div class="share-card__main-inner">
+          <div class="share-card__title-row">
+            <h2 class="share-card__title" id="share-card-title">How to fingerspell “HELLO” in British Sign Language (BSL)</h2>
+          </div>
 
-      <div class="share-card__letters" id="share-card-letters"></div>
+          <div class="share-card__letters" id="share-card-letters"></div>
 
-      <div class="share-card__icon-row">
-        <span class="share-card__emoji-badge" id="share-card-emoji" hidden></span>
+          <div class="share-card__icon-row">
+            <span class="share-card__emoji-badge" id="share-card-emoji" hidden></span>
+          </div>
+        </div>
       </div>
 
       <div class="share-card__footer">
@@ -364,6 +368,6 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
   <script src="./blocked-words.js" defer></script>
-  <script src="./app.js?v=20261004-1205" defer></script>
+  <script src="./app.js?v=20261004-1245" defer></script>
 </body>
 </html>
