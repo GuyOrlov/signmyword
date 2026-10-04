@@ -77,6 +77,7 @@ const el = {
   popularTitle: document.querySelector('#popular-searches-title'),
   popularEyebrow: document.querySelector('#popular-searches-eyebrow'),
   popularTotal: document.querySelector('#popular-searches-total'),
+  heroWordStats: document.querySelector('#hero-word-stats'),
   surpriseWord: document.querySelector('#surprise-word'),
   recentSection: document.querySelector('#recent-searches'),
   recentChips: document.querySelector('#recent-searches-chips'),
@@ -1058,6 +1059,7 @@ function applyEmbedMode() {
   document.body.classList.toggle('embed-mode', params.get('embed') === '1');
 }
 
+const WORD_USAGE_STORAGE_KEY = 'signmyword-word-usage-v1';
 const POPULAR_STORAGE_KEY = 'signmyword-popular-searches-v1';
 const POPULAR_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
 const POPULAR_API_URL = window.SIGNMYWORD_POPULAR_API || '';
@@ -1068,6 +1070,72 @@ const SAFE_POPULAR_WORDS = [
   'SORRY','YES','NO','WEEKEND','SMILE','MUM','DAD','SISTER','BROTHER'
 ];
 const SAFE_POPULAR_SET = new Set(SAFE_POPULAR_WORDS);
+
+function readWordUsageCounts() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(WORD_USAGE_STORAGE_KEY) || '{}');
+    return raw && typeof raw === 'object' && !Array.isArray(raw) ? raw : {};
+  } catch {
+    return {};
+  }
+}
+
+function wordUsageKey(word, lang = state.lang) {
+  return `${lang}::${cleanWord(word)}`;
+}
+
+function wordUsageCount(word, lang = state.lang) {
+  const counts = readWordUsageCounts();
+  return Number(counts[wordUsageKey(word, lang)] || 0);
+}
+
+function incrementWordUsage(word, lang = state.lang) {
+  const cleaned = cleanWord(word);
+  if (!cleaned) return 0;
+
+  const counts = readWordUsageCounts();
+  const key = wordUsageKey(cleaned, lang);
+  const next = Number(counts[key] || 0) + 1;
+  counts[key] = next;
+
+  try {
+    localStorage.setItem(WORD_USAGE_STORAGE_KEY, JSON.stringify(counts));
+  } catch {
+    // Per-word usage is optional; the generator must keep working without storage.
+  }
+
+  return next;
+}
+
+function renderHeroWordStats() {
+  if (!el.heroWordStats) return;
+
+  const config = LANGUAGES[state.lang];
+  const country = state.lang === 'bsl' ? 'UK' : 'USA';
+  const letters = letterCount(state.word);
+  const count = wordUsageCount(state.word, state.lang);
+
+  el.heroWordStats.replaceChildren();
+
+  const word = document.createElement('strong');
+  word.textContent = state.word;
+
+  const flag = document.createElement('span');
+  flag.className = `flag-icon flag-icon--${state.lang === 'bsl' ? 'gb' : 'us'}`;
+  flag.setAttribute('aria-hidden', 'true');
+
+  const language = document.createElement('span');
+  language.textContent = `${config.label} · ${country}`;
+
+  const letterData = document.createElement('span');
+  letterData.textContent = `${letters} ${letters === 1 ? 'letter' : 'letters'}`;
+
+  const usage = document.createElement('span');
+  usage.className = 'hero-word-stats__count';
+  usage.textContent = `${count.toLocaleString()} ${count === 1 ? 'search' : 'searches'} on this device`;
+
+  el.heroWordStats.append(word, flag, language, letterData, usage);
+}
 
 function eligiblePopularWord(word) {
   return SAFE_POPULAR_SET.has(word) && !isBlockedInput(word);
@@ -1640,6 +1708,7 @@ function render() {
   renderShare();
   updateClassroomLink();
   updateReportLink();
+  renderHeroWordStats();
   renderRecentSearches();
   if (practiceModeActive) renderPracticeCard();
   invalidateShareImage();
@@ -1664,6 +1733,7 @@ function setWord(value, options = {}) {
   el.message.textContent = '';
   practiceModeActive = false;
   updatePracticeMode();
+  if (options.track !== false) incrementWordUsage(next, state.lang);
   render();
 
   if (options.recent !== false) {
@@ -1699,6 +1769,7 @@ function setLanguage(language) {
   if (!LANGUAGES[language]) return;
   state.lang = language;
   render();
+  renderHeroWordStats();
   refreshPopularSearches();
   trackMetric('language_selected', { lang: language });
 }
