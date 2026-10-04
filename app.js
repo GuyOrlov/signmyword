@@ -1196,7 +1196,7 @@ function renderPopularSuggestions() {
 
   el.popularCloud.replaceChildren();
 
-  suggestions.forEach((word) => {
+  suggestions.forEach((word, index) => {
     const letters = letterCount(word);
 
     const button = document.createElement('button');
@@ -1206,8 +1206,13 @@ function renderPopularSuggestions() {
     button.dataset.lang = state.lang;
     button.setAttribute(
       'aria-label',
-      `${word}, ${config.name}, ${letters} ${letters === 1 ? 'letter' : 'letters'}`
+      `Number ${index + 1}: ${word}, ${config.name}, ${letters} ${letters === 1 ? 'letter' : 'letters'}`
     );
+
+    const rank = document.createElement('span');
+    rank.className = 'popular-word__rank';
+    rank.textContent = String(index + 1);
+    rank.setAttribute('aria-hidden', 'true');
 
     const label = document.createElement('span');
     label.className = 'popular-word__label';
@@ -1229,15 +1234,15 @@ function renderPopularSuggestions() {
     languageName.textContent = `${config.label} · ${country}`;
 
     language.append(flag, languageName);
-    button.append(label, data, language);
+    button.append(rank, label, data, language);
 
     button.addEventListener('click', () => setWord(word, { track: false }));
     el.popularCloud.appendChild(button);
   });
 
-  if (el.popularEyebrow) el.popularEyebrow.textContent = 'Quick examples';
-  if (el.popularTitle) el.popularTitle.textContent = 'Try a popular word';
-  el.popularSubtitle.textContent = `Examples in ${config.name}. Live search counts appear once enough privacy-safe data is available.`;
+  if (el.popularEyebrow) el.popularEyebrow.textContent = 'Suggested words';
+  if (el.popularTitle) el.popularTitle.textContent = `Popular ${config.label} examples`;
+  el.popularSubtitle.textContent = `Six privacy-safe examples in ${config.name}. Live search rankings appear once enough usage data is available.`;
   el.popularTotal.textContent = '';
   el.popularSection.hidden = false;
 }
@@ -1259,7 +1264,7 @@ function renderPopularSummary(summary) {
 
   el.popularCloud.replaceChildren();
 
-  words.forEach(({ word, lang, count }) => {
+  words.forEach(({ word, lang, count }, index) => {
     if (!LANGUAGES[lang]) return;
 
     const config = LANGUAGES[lang];
@@ -1282,6 +1287,11 @@ function renderPopularSummary(summary) {
     button.dataset.tier = tier;
     button.dataset.lang = lang;
 
+    const rank = document.createElement('span');
+    rank.className = 'popular-word__rank';
+    rank.textContent = String(index + 1);
+    rank.setAttribute('aria-hidden', 'true');
+
     const countLabel = document.createElement('span');
     countLabel.className = 'popular-word__count';
     countLabel.textContent = count;
@@ -1303,7 +1313,7 @@ function renderPopularSummary(summary) {
     languageName.textContent = config.label;
 
     language.append(flag, languageName);
-    button.append(countLabel, label, language);
+    button.append(rank, countLabel, label, language);
 
     button.addEventListener('click', () => {
       setLanguage(lang);
