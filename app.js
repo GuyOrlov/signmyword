@@ -74,6 +74,7 @@ const el = {
   popularSection: document.querySelector('#popular-searches'),
   popularCloud: document.querySelector('#popular-word-cloud'),
   popularSubtitle: document.querySelector('#popular-searches-subtitle'),
+  popularTitle: document.querySelector('#popular-searches-title'),
   popularEyebrow: document.querySelector('#popular-searches-eyebrow'),
   popularTotal: document.querySelector('#popular-searches-total'),
   surpriseWord: document.querySelector('#surprise-word'),
@@ -1182,23 +1183,55 @@ function cloudSize(count, min, max) {
 
 function renderPopularSuggestions() {
   if (!el.popularSection || !el.popularCloud || !el.popularTotal || !el.popularSubtitle) return;
+
   const suggestions = SAFE_POPULAR_WORDS.slice(0, 6);
+  const config = LANGUAGES[state.lang];
+  const country = state.lang === 'bsl' ? 'UK' : 'USA';
+
   el.popularCloud.replaceChildren();
+
   suggestions.forEach((word) => {
+    const letters = letterCount(word);
+
     const button = document.createElement('button');
-    button.className = 'popular-word';
+    button.className = 'popular-word popular-word--suggestion';
     button.type = 'button';
     button.dataset.tier = 'low';
-    button.style.setProperty('--popular-size', '18px');
+    button.dataset.lang = state.lang;
+    button.setAttribute(
+      'aria-label',
+      `${word}, ${config.name}, ${letters} ${letters === 1 ? 'letter' : 'letters'}`
+    );
+
     const label = document.createElement('span');
     label.className = 'popular-word__label';
     label.textContent = word;
-    button.appendChild(label);
+
+    const data = document.createElement('span');
+    data.className = 'popular-word__data';
+    data.textContent = `${letters} ${letters === 1 ? 'letter' : 'letters'}`;
+
+    const language = document.createElement('span');
+    language.className = 'popular-word__language';
+    language.setAttribute('aria-hidden', 'true');
+
+    const flag = document.createElement('span');
+    flag.className = `popular-word__flag flag-icon flag-icon--${state.lang === 'bsl' ? 'gb' : 'us'}`;
+
+    const languageName = document.createElement('span');
+    languageName.className = 'popular-word__language-name';
+    languageName.textContent = `${config.label} · ${country}`;
+
+    language.append(flag, languageName);
+    button.append(label, data, language);
+
     button.addEventListener('click', () => setWord(word, { track: false }));
     el.popularCloud.appendChild(button);
   });
-  if (el.popularEyebrow) el.popularEyebrow.textContent = 'Try these words';
-  el.popularSubtitle.textContent = 'Popular data is not shown until a common word has enough searches. No names or private phrases are published.';
+
+  if (el.popularEyebrow) el.popularEyebrow.textContent = 'Quick examples';
+  if (el.popularTitle) el.popularTitle.textContent = 'Try a popular word';
+  el.popularSubtitle.textContent = `Examples in ${config.name}. Live search counts appear once enough privacy-safe data is available.`;
   el.popularTotal.textContent = '';
   el.popularSection.hidden = false;
 }
@@ -1212,6 +1245,7 @@ function renderPopularSummary(summary) {
     return;
   }
   if (el.popularEyebrow) el.popularEyebrow.textContent = 'Trending now';
+  if (el.popularTitle) el.popularTitle.textContent = 'Popular this week';
 
   const counts = words.map((item) => item.count);
   const min = Math.min(...counts);
@@ -1649,6 +1683,7 @@ function setLanguage(language) {
   if (!LANGUAGES[language]) return;
   state.lang = language;
   render();
+  refreshPopularSearches();
   trackMetric('language_selected', { lang: language });
 }
 
