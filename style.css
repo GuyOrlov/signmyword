@@ -7371,3 +7371,47 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   }
 }
 /* End cleaner example cards */
+
+/* SignMyWord classroom print footer — 2026-10-04 */
+.classroom-print-footer {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 12mm 18mm;
+  }
+
+  .classroom-print-footer {
+    position: fixed;
+    left: 12mm;
+    right: 12mm;
+    bottom: 6mm;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12mm;
+    padding-top: 2.5mm;
+    border-top: 0.6pt solid #cbd5e1;
+    color: #52657d;
+    background: #fff;
+    font: 600 7.5pt/1.25 "Atkinson Hyperlegible Next", Arial, sans-serif;
+    z-index: 9999;
+  }
+
+  .classroom-print-datetime,
+  .classroom-print-site {
+    white-space: nowrap;
+  }
+
+  .classroom-print-site {
+    color: #102a56;
+    font-weight: 800;
+  }
+
+  .classroom-preview {
+    padding-bottom: 8mm !important;
+  }
+}
+/* End classroom print footer */
