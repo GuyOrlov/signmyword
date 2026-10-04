@@ -1045,7 +1045,7 @@ function renderRecentSearches() {
     button.textContent = `${LANGUAGES[item.lang].label} · ${item.word}`;
     button.addEventListener('click', () => {
       state.lang = item.lang;
-      setWord(item.word, { track: false, recent: false });
+      setWord(item.word, { recent: false });
       document.querySelector('.result-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     el.recentChips.appendChild(button);
@@ -1384,7 +1384,7 @@ function renderPopularSuggestions() {
 
     button.addEventListener('click', () => {
       setLanguage(lang);
-      setWord(word, { track: false });
+      setWord(word);
     });
 
     el.popularCloud.appendChild(button);
@@ -1462,7 +1462,7 @@ const countLabel = document.createElement('span');
 
     button.addEventListener('click', () => {
       setLanguage(lang);
-      setWord(word, { track: false });
+      setWord(word);
       document.querySelector('.result-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
@@ -1797,6 +1797,7 @@ function setWord(value, options = {}) {
   }
 
   if (options.track !== false) {
+    refreshPopularSearches();
     recordPopularSearch(next);
     trackMetric('word_generated', {
       lang: state.lang,
